@@ -1,0 +1,2 @@
+ALTER TABLE wcf1_gmap DROP INDEX `pt`;
+ALTER TABLE wcf1_gmap ADD SPATIAL KEY pt (pt);

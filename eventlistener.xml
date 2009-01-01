@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/eventListeners.dtd">
+<data>	
+	<import>
+		<eventlistener><!-- wcf: userprofile form //-->
+			<eventclassname>UserProfileEditForm</eventclassname>
+			<eventname>saved</eventname>
+			<listenerclassfile>lib/system/event/listener/GMapUserProfileEditFormListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener><!-- wcf: user page //-->
+			<eventclassname>UserPage</eventclassname>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/GMapUserPageListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserPage</eventclassname>
+			<eventname>readData</eventname>
+			<listenerclassfile>lib/system/event/listener/GMapUserPageListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserPage</eventclassname>
+			<eventname>readParameters</eventname>
+			<listenerclassfile>lib/system/event/listener/GMapUserPageListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- admin -->
+		<eventlistener>
+			<eventClassName>OptionForm</eventClassName>
+			<eventName>assignVariables</eventName>
+			<environment>admin</environment>
+			<listenerClassFile>lib/system/event/listener/GMapOptionFormListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>UserEditForm</eventClassName>
+			<eventName>saved</eventName>
+			<environment>admin</environment>
+			<listenerClassFile>lib/system/event/listener/GMapUserProfileEditFormListener.class.php</listenerClassFile>
+		</eventlistener>
+		<!-- /admin -->
+	</import>
+</data>

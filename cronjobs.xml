@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE import SYSTEM "DTD/import.dtd">
+<data>
+	<import>
+		<cronjob>
+			<classPath>lib/system/cronjob/CoordCronjob.class.php</classPath>
+			<description>Map: Google Geolookup</description>
+			<startMinute>17</startMinute>
+			<startHour>*</startHour>
+			<startDom>*</startDom>
+			<startMonth>*</startMonth>
+			<startDow>*</startDow>
+			<execMultiple>0</execMultiple>
+			<canbeedited>1</canbeedited>
+			<canbedisabled>1</canbedisabled>
+		</cronjob>
+	</import>
+</data>

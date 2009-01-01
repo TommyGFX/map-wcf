@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/userCPMenu.dtd">
+<data>	
+	<delete>
+		<usercpmenuitem name="wcf.user.usercp.menu.link.profile.map"/>
+	</delete>
+</data>

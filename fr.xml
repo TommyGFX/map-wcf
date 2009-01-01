@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="fr">
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.map"><![CDATA[Carte]]></item>
+	</category>
+	<category name="wcf.user.profile">
+		<item name="wcf.user.profile.map"><![CDATA[Carte]]></item>
+	</category>
+	<category name="wcf.usersOnline">
+		<item name="wcf.usersOnline.location.map"><![CDATA[<a href="index.php?page=Map">Carte</a>]]></item>
+	</category>
+	<category name="wcf.user.usercp">
+		<item name="wcf.user.usercp.menu.link.profile.map"><![CDATA[Carte]]></item>
+	</category>
+	<category name="wcf.map">
+		<item name="wcf.map.forbidden"><![CDATA[Vous n’êtes pas autorisé à accéder à la carte.]]></item>
+		<item name="wcf.map.tomuchentries"><![CDATA[Trop de marqueurs.]]></item>
+		<item name="wcf.map.clicknow"><![CDATA[Cliquez sur un point de la carte où vous voulez ajouter un marqueur.]]></item>
+		<item name="wcf.map.copyright"><![CDATA[G-Map vVERSION, par Torben Brodt. Traduction française : Guillaume Perucha]]></item>
+		<item name="wcf.map.copyright_small"><![CDATA[powered by G-Map Mod]]></item>
+		<item name="wcf.map.counter_user"><![CDATA[Utilisateur]]></item>
+		<item name="wcf.map.counter_marker"><![CDATA[Marqueur]]></item>
+		<item name="wcf.map.satellite"><![CDATA[satellite]]></item>
+		<item name="wcf.map.hybrid"><![CDATA[mixte]]></item>
+		<item name="wcf.map.map"><![CDATA[plan]]></item>
+		<item name="wcf.map.zoom"><![CDATA[Zoom]]></item>
+		<item name="wcf.map.user_in_bigmap"><![CDATA[Afficher sur la grande carte]]></item>
+		<item name="wcf.map.filter_online"><![CDATA[Connecté]]></item>
+		<item name="wcf.map.groupfilter_none"><![CDATA[Ne pas afficher]]></item>
+		<item name="wcf.map.groupfilter_inlay"><![CDATA[afficher sur la carte]]></item>
+		<item name="wcf.map.groupfilter_sub"><![CDATA[Afficher sous la carte]]></item>
+		<item name="wcf.map.administrateOn"><![CDATA[Activer le mode « modifications »]]></item>
+		<item name="wcf.map.administrateOff"><![CDATA[Désactiver le mode « modifications »]]></item>
+		<item name="wcf.map.marker"><![CDATA[Marqueur]]></item>
+		<item name="wcf.map.markerAdd"><![CDATA[Ajouter un marqueur]]></item>
+		<item name="wcf.map.markerUrl"><![CDATA[URL]]></item>
+		<item name="wcf.map.markerTitle"><![CDATA[Titre]]></item>
+		<item name="wcf.map.markerInfo"><![CDATA[Info]]></item>
+		<item name="wcf.map.markerSave"><![CDATA[Enregistrer]]></item>
+		<item name="wcf.map.markerCancel"><![CDATA[Annuler]]></item>
+		<item name="wcf.map.markerRemove"><![CDATA[Supprimer]]></item>
+		<item name="wcf.map.markerClickToAdd"><![CDATA[Cliquez maintenant sur la zone de la carte où vous voulez placer le nouveau marqueur.]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.map"><![CDATA[Carte G-Map]]></item>
+		<item name="wcf.acp.option.category.map.preview"><![CDATA[Prévisualisation]]></item>
+		<item name="wcf.acp.option.category.map.description"><![CDATA[Configuration du plugin G-Map]]></item>
+		<item name="wcf.acp.option.category.map.general"><![CDATA[Général]]></item>
+		<item name="wcf.acp.option.category.map.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.bigmap"><![CDATA[Carte du monde]]></item>
+		<item name="wcf.acp.option.category.map.bigmap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.usermap"><![CDATA[Carte du profil des utilisateurs]]></item>
+		<item name="wcf.acp.option.category.map.usermap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.groups"><![CDATA[Sélection des groupes]]></item>
+		<item name="wcf.acp.option.category.map.groups.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_api"><![CDATA[Clef Api (Api-Key)]]></item>
+		<item name="wcf.acp.option.map_api.description"><![CDATA[Entrez ici votre API-Key. (<a href="http://www.google.com/apis/maps/signup.html" target="_blank">Obtenir une API-Key</a>)]]></item>
+		<item name="wcf.acp.option.map_cron_ip"><![CDATA[Serveur Google]]></item>
+		<item name="wcf.acp.option.map_cron_ip.description"><![CDATA[Pour utilisateurs confirmés seulement. Par défaut : "maps.google.com"]]></item>
+		<item name="wcf.acp.option.map_bigmap_center"><![CDATA[Centrage de la carte du monde]]></item>
+		<item name="wcf.acp.option.map_bigmap_center.description"><![CDATA[Format des coordonnées : France : 47.2,3.0 - Par défaut : 20,0]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom"><![CDATA[Niveau de zoom de la carte du monde]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom.description"><![CDATA[Nombre entier entre 1 et 17. Par défaut : 2]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi"><![CDATA[Afficher la navigation]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type"><![CDATA[Afficher le sélecteur de type (plan/satellite)]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal"><![CDATA[Afficher l’échelle]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over"><![CDATA[Afficher la mini-carte]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom"><![CDATA[Activer le zoom à partir de la molette de la souris]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_type"><![CDATA[Type de carte]]></item>
+		<item name="wcf.acp.option.map_bigmap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter"><![CDATA[Groupfilter]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_all"><![CDATA[ALL-Option einblenden]]></item>
+		<item name="wcf.acp.option.map_group_all.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_team"><![CDATA[TEAM-Option]]></item>
+		<item name="wcf.acp.option.map_group_team.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_active"><![CDATA[ACTIVE-Option]]></item>
+		<item name="wcf.acp.option.map_group_active.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_online"><![CDATA[ONLINE-Option]]></item>
+		<item name="wcf.acp.option.map_group_online.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi"><![CDATA[Afficher les flèches de navigation]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type"><![CDATA[Afficher le sélecteur de type (plan/satellite)]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal"><![CDATA[Afficher l’échelle]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over"><![CDATA[Afficher la mini-carte]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_type"><![CDATA[Type de carte]]></item>
+		<item name="wcf.acp.option.map_usermap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom"><![CDATA[Niveau de zoom de la carte du profil des utilisateurs]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom.description"><![CDATA[Nombre entier entre 1 et 17. Par défaut : 4]]></item>
+		<item name="wcf.acp.option.map_usermap_width"><![CDATA[Largeur (carte du milieu)]]></item>
+		<item name="wcf.acp.option.map_usermap_width.description"><![CDATA[(% ou px) Seulement pour la carte du milieu. Par défaut : 100%]]></item>
+		<item name="wcf.acp.option.map_usermap_height"><![CDATA[Hauteur (carte du milieu)]]></item>
+		<item name="wcf.acp.option.map_usermap_height.description"><![CDATA[(% or px) Seulement pour la carte du milieu. Par défaut : 300px]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right"><![CDATA[Affichage de la carte de droite]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right.description"><![CDATA[Afficher la carte de droite ?]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center"><![CDATA[Affichage de la carte du milieu]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center.description"><![CDATA[Afficher la carte du milieu ?]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys"><![CDATA[Nombre maximum d’éléments affichés sur la carte du monde]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys.description"><![CDATA[Afficher plus de 300 éléments sur la carte du monde peut ralentir votre ordinateur !]]></item>
+	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.map"><![CDATA[G-Map]]></item>
+		<item name="wcf.acp.group.option.category.user.map.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse"><![CDATA[Droits d’utilisateur]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse.description"><![CDATA[Peut localiser son lieu d’habitation.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd"><![CDATA[Droits d’écriture]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd.description"><![CDATA[L’utilisateur peut ajouter ses propres positions sur la carte.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount"><![CDATA[Nombre d’entrées.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount.description"><![CDATA[Nombre d’entrées que l’utilisateur est autorisé à ajouter.]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal"><![CDATA[Accès d’écriture pour les marqueurs non-personnels]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal.description"><![CDATA[Peut modifier les marqueurs des autres utilisateurs.]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal"><![CDATA[Droits de lecture des marqueurs]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal.description"><![CDATA[Peut voir les marqueurs ajoutés manuellement par les utilisateurs autentifiés.]]></item>
+		<item name="wcf.acp.group.option.user.map.canView"><![CDATA[Droits de lecture des utilisateurs]]></item>
+		<item name="wcf.acp.group.option.user.map.canView.description"><![CDATA[Peut voir les lieux d’habitation des utilisateurs.]]></item>
+		<item name="wcf.acp.group.option.user.map.header"><![CDATA[Afficher dans l’entête]]></item>
+		<item name="wcf.acp.group.option.user.map.header.description"><![CDATA[Affiche l’icône de la carte dans l’entête.]]></item>
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.category.map"><![CDATA[Carte]]></item>
+		<item name="wcf.user.option.map"><![CDATA[Carte]]></item>
+		<item name="wcf.user.option.category.profile.map"><![CDATA[Paramètres de la carte]]></item>
+		<item name="wcf.user.option.map_enable"><![CDATA[Activer]]></item>
+		<item name="wcf.user.option.map_enable.description"><![CDATA[Activer cette option pour autoriser les utilisateurs à vous trouver sur la carte.]]></item>
+		<item name="wcf.user.option.map_street"><![CDATA[Rue]]></item>
+		<item name="wcf.user.option.map_street.description"><![CDATA[Facultatif. Permet d’améliorer le niveau de localisation sur la <a href=index.php?page=Map>carte</a>.]]></item>
+		<item name="wcf.user.option.map_zip"><![CDATA[Code postal]]></item>
+		<item name="wcf.user.option.map_zip.description"><![CDATA[Facultatif. Permet d’améliorer le niveau de localisation sur la <a href=index.php?page=Map>carte</a>.]]></item>
+		<item name="wcf.user.option.map_city"><![CDATA[Ville]]></item>
+		<item name="wcf.user.option.map_city.description"><![CDATA[Facultatif. Permet d’améliorer le niveau de localisation sur la <a href=index.php?page=Map>carte</a>.]]></item>
+		<item name="wcf.user.option.map_country"><![CDATA[Pays]]></item>
+		<item name="wcf.user.option.map_country.description"><![CDATA[Facultatif. Permet d’améliorer le niveau de localisation sur la <a href=index.php?page=Map>carte</a>.]]></item>
+	</category>
+</language>

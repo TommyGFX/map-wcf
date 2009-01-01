@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/pageLocations.dtd">
+<data>	
+	<import>
+		<pagelocation name="wcf.usersOnline.location.map">
+			<pattern><![CDATA[index\.php\?page=Map]]></pattern>
+		</pagelocation>
+	</import>
+</data>

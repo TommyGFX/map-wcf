@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="en">
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.map"><![CDATA[Map]]></item>
+	</category>
+	<category name="wcf.user.profile">
+		<item name="wcf.user.profile.map"><![CDATA[Map]]></item>
+	</category>
+	<category name="wcf.usersOnline">
+		<item name="wcf.usersOnline.location.map"><![CDATA[<a href="index.php?page=Map">Map</a>]]></item>
+	</category>
+	<category name="wcf.user.usercp">
+		<item name="wcf.user.usercp.menu.link.profile.map"><![CDATA[Karte]]></item>
+	</category>
+	<category name="wcf.map">
+		<item name="wcf.map.forbidden"><![CDATA[You are not authorized to view the map.]]></item>
+		<item name="wcf.map.tomuchentries"><![CDATA[To many markers.]]></item>
+		<item name="wcf.map.clicknow"><![CDATA[Klicken Sie nun auf einen Punkt auf der Karte um den Marker zu setzen.]]></item>
+		<item name="wcf.map.copyright"><![CDATA[G-Map vVERSION by Torben Brodt]]></item>
+		<item name="wcf.map.copyright_small"><![CDATA[Powered by G-Map Mod]]></item>
+		<item name="wcf.map.counter_user"><![CDATA[User]]></item>
+		<item name="wcf.map.counter_marker"><![CDATA[Marker]]></item>
+		<item name="wcf.map.satellite"><![CDATA[Satellite only]]></item>
+		<item name="wcf.map.hybrid"><![CDATA[Hybrid]]></item>
+		<item name="wcf.map.map"><![CDATA[Map only]]></item>
+		<item name="wcf.map.zoom"><![CDATA[zoom]]></item>
+		<item name="wcf.map.user_in_bigmap"><![CDATA[Show on big map]]></item>
+		<item name="wcf.map.filter_online"><![CDATA[Online]]></item>
+		<item name="wcf.map.groupfilter_none"><![CDATA[Do not show]]></item>
+		<item name="wcf.map.groupfilter_inlay"><![CDATA[show in the map]]></item>
+		<item name="wcf.map.groupfilter_sub"><![CDATA[show under the map]]></item>
+		<item name="wcf.map.administrateOn"><![CDATA[turn on administration]]></item>
+		<item name="wcf.map.administrateOff"><![CDATA[turn off administration]]></item>
+		<item name="wcf.map.marker"><![CDATA[Marker]]></item>
+		<item name="wcf.map.markerAdd"><![CDATA[Add marker]]></item>
+		<item name="wcf.map.markerUrl"><![CDATA[URL]]></item>
+		<item name="wcf.map.markerTitle"><![CDATA[Title]]></item>
+		<item name="wcf.map.markerInfo"><![CDATA[Info]]></item>
+		<item name="wcf.map.markerSave"><![CDATA[Save]]></item>
+		<item name="wcf.map.markerCancel"><![CDATA[Cancel]]></item>
+		<item name="wcf.map.markerRemove"><![CDATA[Remove]]></item>
+		<item name="wcf.map.markerClickToAdd"><![CDATA[Now click on the position on the map, where you want to place the new marker.]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.map"><![CDATA[G-Map Settings]]></item>
+		<item name="wcf.acp.option.category.map.preview"><![CDATA[Preview]]></item>
+		<item name="wcf.acp.option.category.map.description"><![CDATA[Config for the G-Map Plugin]]></item>
+		<item name="wcf.acp.option.category.map.general"><![CDATA[General]]></item>
+		<item name="wcf.acp.option.category.map.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.bigmap"><![CDATA[Worldmap]]></item>
+		<item name="wcf.acp.option.category.map.bigmap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.usermap"><![CDATA[Profilemap]]></item>
+		<item name="wcf.acp.option.category.map.usermap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.groups"><![CDATA[Group Selections]]></item>
+		<item name="wcf.acp.option.category.map.groups.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_api"><![CDATA[Api-Key]]></item>
+		<item name="wcf.acp.option.map_api.description"><![CDATA[Enter your boards API-Key here. (<a href="http://www.google.com/apis/maps/signup.html" target="_blank">KEY</a>)]]></item>
+		<item name="wcf.acp.option.map_cron_ip"><![CDATA[Google-Server]]></item>
+		<item name="wcf.acp.option.map_cron_ip.description"><![CDATA[For advanced users only. Default: "maps.google.com"]]></item>
+		<item name="wcf.acp.option.map_bigmap_center"><![CDATA[Worldmap Center]]></item>
+		<item name="wcf.acp.option.map_bigmap_center.description"><![CDATA[Expects Coordinates: Germany: 51.1,10.5 Standard: 20,0]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom"><![CDATA[Worldmap Zoomlevel]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom.description"><![CDATA[Integer between 1 and 17. Standard:2]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi"><![CDATA[Show Navigation]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type"><![CDATA[Show Type selector (Map/Satellite)]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal"><![CDATA[Show Scale]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over"><![CDATA[Show Overview]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom"><![CDATA[Activate mousewheelzoom]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_type"><![CDATA[Maptype]]></item>
+		<item name="wcf.acp.option.map_bigmap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter"><![CDATA[Groupfilter]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_all"><![CDATA[ALL-Option einblenden]]></item>
+		<item name="wcf.acp.option.map_group_all.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_team"><![CDATA[TEAM-Option]]></item>
+		<item name="wcf.acp.option.map_group_team.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_active"><![CDATA[ACTIVE-Option]]></item>
+		<item name="wcf.acp.option.map_group_active.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_online"><![CDATA[ONLINE-Option]]></item>
+		<item name="wcf.acp.option.map_group_online.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi"><![CDATA[Show Navigation]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type"><![CDATA[Show Type selector (Map/Satellite)]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal"><![CDATA[Show Scale]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over"><![CDATA[Show Overview]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_type"><![CDATA[Maptyp]]></item>
+		<item name="wcf.acp.option.map_usermap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom"><![CDATA[UserProfile Zoomlevel]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom.description"><![CDATA[Integer between 1 and 17. Standard:4]]></item>
+		<item name="wcf.acp.option.map_usermap_width"><![CDATA[Width (center)]]></item>
+		<item name="wcf.acp.option.map_usermap_width.description"><![CDATA[(% or px) Only for the "Show Center". Standard:100%]]></item>
+		<item name="wcf.acp.option.map_usermap_height"><![CDATA[height (center)]]></item>
+		<item name="wcf.acp.option.map_usermap_height.description"><![CDATA[(% or px) Only for the "Show Center". Standard:300px]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right"><![CDATA[Show right]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right.description"><![CDATA[Show/Hide Map at the right side?]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center"><![CDATA[Show centered]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center.description"><![CDATA[Show/Hide Map in the center?]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys"><![CDATA[Worldmap entry limit]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys.description"><![CDATA[Showing more than 300 Entrys on the worldmap can slow down your machine!]]></item>
+	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.map"><![CDATA[G-Map]]></item>
+		<item name="wcf.acp.group.option.category.user.map.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse"><![CDATA[Usage privileges]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse.description"><![CDATA[Can set his habitation.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd"><![CDATA[Write access]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd.description"><![CDATA[The user can add own positions to the map.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount"><![CDATA[Number of entries.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount.description"><![CDATA[How many entries is the user allowed to add.]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal"><![CDATA[Write access for foreign markers]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal.description"><![CDATA[Can change markers from other users.]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal"><![CDATA[Read access for markers]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal.description"><![CDATA[Can view markers, which are added manually by authenticated users.]]></item>
+		<item name="wcf.acp.group.option.user.map.canView"><![CDATA[Read access for users]]></item>
+		<item name="wcf.acp.group.option.user.map.canView.description"><![CDATA[Can view habitats of users.]]></item>
+		<item name="wcf.acp.group.option.user.map.header"><![CDATA[Show in Header]]></item>
+		<item name="wcf.acp.group.option.user.map.header.description"><![CDATA[If you dont want to display the header item.]]></item>
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.category.map"><![CDATA[Map]]></item>
+		<item name="wcf.user.option.map"><![CDATA[Map]]></item>
+		<item name="wcf.user.option.category.profile.map"><![CDATA[Mapsettings]]></item>
+		<item name="wcf.user.option.map_enable"><![CDATA[Activate]]></item>
+		<item name="wcf.user.option.map_enable.description"><![CDATA[Activate this checkbox to let users find you on the map.]]></item>
+		<item name="wcf.user.option.map_street"><![CDATA[Street]]></item>
+		<item name="wcf.user.option.map_street.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_zip"><![CDATA[ZIP-Code]]></item>
+		<item name="wcf.user.option.map_zip.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_city"><![CDATA[City]]></item>
+		<item name="wcf.user.option.map_city.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_country"><![CDATA[Country]]></item>
+		<item name="wcf.user.option.map_country.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+	</category>
+</language>

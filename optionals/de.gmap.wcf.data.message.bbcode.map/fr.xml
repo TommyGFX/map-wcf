@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="fr">
+	<category name="wcf.bbcode">
+		<item name="wcf.bbcode.map.title"><![CDATA[Carte]]></item>
+	</category>
+</language>

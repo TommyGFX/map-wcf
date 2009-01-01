@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="fr">
+	<category name="wcf.map">
+		<item name="wcf.map.filter_spammers"><![CDATA[Spammer]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.map_group_spammers"><![CDATA[Options SPAMMER]]></item>
+		<item name="wcf.acp.option.map_group_spammers.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_api_page_urls"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_api_page_urls.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.pageurls"><![CDATA[API-Keys supplémentaires]]></item>
+		<item name="wcf.acp.option.category.map.pageurls.description"><![CDATA[Chaque domaine nécessite sa propre API-key.]]></item>
+	</category>
+	<category name="wbb.acp.updateCounters">
+		<item name="wbb.acp.updateCounters.counter.map"><![CDATA[Recalculer toutes les positions des utilisateurs]]></item>
+	</category>
+</language>

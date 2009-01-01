@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTD/options.dtd">
+<data>
+	<import>
+		<options>
+			<option name="map_group_spammers">
+				<categoryname>map.groups</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue><![CDATA[1]]></defaultvalue>
+			</option>
+			<option name="map_api_page_urls">
+				<categoryname>map.general</categoryname>
+				<optiontype>textarea</optiontype>
+				<defaultvalue><![CDATA[a:0:{}]]></defaultvalue>
+			</option>
+		</options>
+	</import>
+</data>
