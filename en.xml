@@ -123,21 +123,21 @@
 		<item name="wcf.acp.group.option.user.map.canView"><![CDATA[Read access for users]]></item>
 		<item name="wcf.acp.group.option.user.map.canView.description"><![CDATA[Can view habitats of users.]]></item>
 		<item name="wcf.acp.group.option.user.map.header"><![CDATA[Show in Header]]></item>
-		<item name="wcf.acp.group.option.user.map.header.description"><![CDATA[If you dont want to display the header item.]]></item>
+		<item name="wcf.acp.group.option.user.map.header.description"><![CDATA[If you do not want to display the header item.]]></item>
 	</category>
 	<category name="wcf.user.option">
 		<item name="wcf.user.option.category.map"><![CDATA[Map]]></item>
 		<item name="wcf.user.option.map"><![CDATA[Map]]></item>
-		<item name="wcf.user.option.category.profile.map"><![CDATA[Mapsettings]]></item>
+		<item name="wcf.user.option.category.profile.map"><![CDATA[Map settings]]></item>
 		<item name="wcf.user.option.map_enable"><![CDATA[Activate]]></item>
 		<item name="wcf.user.option.map_enable.description"><![CDATA[Activate this checkbox to let users find you on the map.]]></item>
 		<item name="wcf.user.option.map_street"><![CDATA[Street]]></item>
-		<item name="wcf.user.option.map_street.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_street.description"><![CDATA[You do not have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
 		<item name="wcf.user.option.map_zip"><![CDATA[ZIP-Code]]></item>
-		<item name="wcf.user.option.map_zip.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_zip.description"><![CDATA[You do not have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
 		<item name="wcf.user.option.map_city"><![CDATA[City]]></item>
-		<item name="wcf.user.option.map_city.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_city.description"><![CDATA[You do not have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
 		<item name="wcf.user.option.map_country"><![CDATA[Country]]></item>
-		<item name="wcf.user.option.map_country.description"><![CDATA[You dont have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
+		<item name="wcf.user.option.map_country.description"><![CDATA[You do not have to enter values. They will improve the accuracy of your <a href=index.php?page=Map>map</a> marker.]]></item>
 	</category>
 </language>
