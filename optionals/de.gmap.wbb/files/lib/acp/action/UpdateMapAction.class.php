@@ -11,12 +11,19 @@ require_once(WCF_DIR.'lib/util/MapDiscover.class.php');
  */
 class UpdateMapAction extends UpdateCounterAction {
 	public $action = 'UpdateMap';
-        public $everything = true;
 	
 	/**
-	 * updates the user positions
+	 * @see Action::execute()
 	 */
-	private function myupdate($limit, $offset, $google, $col) {
+	public function execute() {
+		parent::execute();
+		
+		$google = new MapDiscover(true);
+		
+		// fetch column names
+                $col = $google->getColumns();
+                
+                
 		//Setting default Values. (Location to City)
 		$sql = "UPDATE		wcf".WCF_N."_user_option_value 
 			SET 
@@ -29,35 +36,10 @@ class UpdateMapAction extends UpdateCounterAction {
 
 		// if there is no api key specified - abort
 		if (defined('MAP_API') && MAP_API != "Api-Key") {
-			$sql = "SELECT		userID, 
-						".$col['street']." AS street,
-						".$col['zip']." AS zip,
-						".$col['city']." AS city,
-						".$col['country']." AS country
-				FROM		wcf".WCF_N."_user_option_value
-				WHERE		(".$col['enable']." = 1 AND ".$col['location']." != '') 
-				GROUP BY	CONCAT(".$col['street'].",".$col['zip'].",".$col['city'].",".$col['country'].")
-				LIMIT 		$limit
-				OFFSET		$offset";
-			$result = WCF::getDB()->sendQuery($sql);
-
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				$google->update($row['street'], $row['zip'], $row['city'], $row['country']);
-			}
+			$this->calcProgress();
+			$this->finish();
 		}
-	}
-	
-	/**
-	 * @see Action::execute()
-	 */
-	public function execute() {
-		parent::execute();
-		
-		$google = new MapDiscover(true);
-		
-		// fetch column names
-                $col = $google->getColumns();
-		
+                
 		// count
 		$sql = "SELECT 	COUNT(userID) AS c
 			FROM (
@@ -69,13 +51,28 @@ class UpdateMapAction extends UpdateCounterAction {
 		$row = WCF::getDB()->getFirstRow($sql);
 		$count = $row['c'];
 
-		$this->myupdate($this->limit, ($this->limit * $this->loop), $google, $col);
+		
+		$sql = "SELECT		userID, 
+					".$col['street']." AS street,
+					".$col['zip']." AS zip,
+					".$col['city']." AS city,
+					".$col['country']." AS country
+			FROM		wcf".WCF_N."_user_option_value
+			WHERE		(".$col['enable']." = 1 AND ".$col['location']." != '') 
+			GROUP BY	CONCAT(".$col['street'].",".$col['zip'].",".$col['city'].",".$col['country'].")";
+		$result = WCF::getDB()->sendQuery($sql, $this->limit, ($this->limit * $this->loop));
+		if (!WCF::getDB()->countRows($result)) {
+			$this->calcProgress();
+			$this->finish();
+		}
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$google->update($row['street'], $row['zip'], $row['city'], $row['country']);
+		}
+		
 		$this->executed();
 
-		if($this->everything) {
-			$this->calcProgress(($this->limit * $this->loop), $count);
-			$this->nextLoop();
-		}
+		$this->calcProgress(($this->limit * $this->loop), $count);
+		$this->nextLoop();
 	}
 }
 ?>
