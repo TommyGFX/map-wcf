@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "DTD/language.dtd">
+<!-- Türkce Ceviri BY §@M3T
+www.narkotikboard.uni.cc -->
+<language languagecode="tr">
+	<category name="wbb.portal">
+		<item name="wbb.portal.box.gmap.title"><![CDATA[Etkin Kullanıcı Haritası]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.portal.gmap"><![CDATA[G-Map]]></item>
+		<item name="wcf.acp.option.category.portal.gmap.description"><![CDATA[Etkin Kullanıcı Haritası]]></item>
+	</category>
+</language>

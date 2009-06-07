@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<!-- Türkce Ceviri By §@M3T
+www.narkotikboard.uni.cc -->
+<language languagecode="tr">
+	<category name="wcf.bbcode">
+		<item name="wcf.bbcode.map.title"><![CDATA[Harita]]></item>
+	</category>
+</language>

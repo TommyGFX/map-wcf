@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<!-- Türkce Ceviri By §@M3T
+www.narkotikboard.uni.cc
+-->
+<language languagecode="tr">
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.map"><![CDATA[Harita]]></item>
+	</category>
+	<category name="wcf.user.profile">
+		<item name="wcf.user.profile.map"><![CDATA[Harita]]></item>
+	</category>
+	<category name="wcf.usersOnline">
+		<item name="wcf.usersOnline.location.map"><![CDATA[<a href="index.php?page=Map">Harita</a>]]></item>
+	</category>
+	<category name="wcf.user.usercp">
+		<item name="wcf.user.usercp.menu.link.profile.map"><![CDATA[Harita]]></item>
+	</category>
+	<category name="wcf.map">
+		<item name="wcf.map.forbidden"><![CDATA[Haritayi İnceleyemezsiniz.]]></item>
+		<item name="wcf.map.tomuchentries"><![CDATA[Çok Nokta Var.]]></item>
+		<item name="wcf.map.clicknow"><![CDATA[İstediğiniz Yeri İşaretlemek için Haritaya Tiklayin.]]></item>
+		<item name="wcf.map.copyright"><![CDATA[G-Map v1.3.6 by Michael Senkler, Torben Brodt]]></item>
+		<item name="wcf.map.copyright_small"><![CDATA[Powered by G-Map Mod]]></item>
+		<item name="wcf.map.counter_user"><![CDATA[Kullanici]]></item>
+		<item name="wcf.map.counter_marker"><![CDATA[İşaret]]></item>
+		<item name="wcf.map.satellite"><![CDATA[Sadece Uydu Resimleri]]></item>
+		<item name="wcf.map.hybrid"><![CDATA[Harita + Uydu Resimleri]]></item>
+		<item name="wcf.map.map"><![CDATA[Sadece Harita]]></item>
+		<item name="wcf.map.zoom"><![CDATA[Yakınlaştır]]></item>
+		<item name="wcf.map.user_in_bigmap"><![CDATA[Büyük Haritada Göster]]></item>
+		<item name="wcf.map.filter_online"><![CDATA[Çevrimici]]></item>
+		<item name="wcf.map.groupfilter_none"><![CDATA[Gösterme]]></item>
+		<item name="wcf.map.groupfilter_inlay"><![CDATA[Haritada Göster]]></item>
+		<item name="wcf.map.groupfilter_sub"><![CDATA[Haritanın Altinda Göster]]></item>
+		<item name="wcf.map.administrateOn"><![CDATA[Yönetim Modunu Etkinleştir]]></item>
+		<item name="wcf.map.administrateOff"><![CDATA[Yönetim Modunu Kapat]]></item>
+		<item name="wcf.map.marker"><![CDATA[İşaretleyici]]></item>
+		<item name="wcf.map.markerAdd"><![CDATA[Nokta Ekle]]></item>
+		<item name="wcf.map.markerUrl"><![CDATA[URL]]></item>
+		<item name="wcf.map.markerTitle"><![CDATA[Başlik]]></item>
+		<item name="wcf.map.markerInfo"><![CDATA[Bilgi]]></item>
+		<item name="wcf.map.markerSave"><![CDATA[Kaydet]]></item>
+		<item name="wcf.map.markerCancel"><![CDATA[İptal]]></item>
+		<item name="wcf.map.markerRemove"><![CDATA[Sil]]></item>
+		<item name="wcf.map.markerClickToAdd"><![CDATA[Haritadaki Pozisyona Tiklayarak İşaret Ekleyebilirsiniz.]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.map"><![CDATA[G-Map Ayarlari]]></item>
+		<item name="wcf.acp.option.category.map.preview"><![CDATA[Ön İzleme]]></item>
+		<item name="wcf.acp.option.category.map.description"><![CDATA[G-Map için Ayarlar]]></item>
+		<item name="wcf.acp.option.category.map.general"><![CDATA[Genel]]></item>
+		<item name="wcf.acp.option.category.map.general.description"><![CDATA[Bu Ayarlar Doldurulmalıdır]]></item>
+		<item name="wcf.acp.option.category.map.bigmap"><![CDATA[Büyük Harita]]></item>
+		<item name="wcf.acp.option.category.map.bigmap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.usermap"><![CDATA[Profil Haritası]]></item>
+		<item name="wcf.acp.option.category.map.usermap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.map.groups"><![CDATA[Gruplar]]></item>
+		<item name="wcf.acp.option.category.map.groups.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_api"><![CDATA[Api-Key]]></item>
+		<item name="wcf.acp.option.map_api.description"><![CDATA[Buraya Sitenin Anahtarını Yazınız (<a href="http://www.google.com/apis/maps/signup.html" target="_blank">KEY</a>)]]></item>
+		<item name="wcf.acp.option.map_cron_ip"><![CDATA[Google-Server]]></item>
+		<item name="wcf.acp.option.map_cron_ip.description"><![CDATA[Deneyimli Kullanıcılar için. Aksı Takdirde "maps.google.com"a Bırakınız !]]></item>
+		<item name="wcf.acp.option.map_bigmap_center"><![CDATA[Merkez]]></item>
+		<item name="wcf.acp.option.map_bigmap_center.description"><![CDATA[Kordinat Yazmalısınız: Almanya: 51.1,10.5 Standart: 20,0]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom"><![CDATA[Yaklaşma Derecesi]]></item>
+		<item name="wcf.acp.option.map_bigmap_zoom.description"><![CDATA[1 ve 17 Arası. Almanya:6 Standart:2]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi"><![CDATA[Navi Ayarlarını Göster]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type"><![CDATA[Typetools göster (Map/Uydu Resimleri)]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal"><![CDATA[Metreyi Göster]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over"><![CDATA[Genel Bakışı Göster]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom"><![CDATA[Fare Zoomunu Ektinleştir]]></item>
+		<item name="wcf.acp.option.map_bigmap_ctl_mousewheelzoom.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_type"><![CDATA[Harita Tipi]]></item>
+		<item name="wcf.acp.option.map_bigmap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter"><![CDATA[Grup filtresi]]></item>
+		<item name="wcf.acp.option.map_bigmap_groupfilter.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_all"><![CDATA[TÜM Özellikleri Göster]]></item>
+		<item name="wcf.acp.option.map_group_all.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_team"><![CDATA[Takım Özelliklerini Göster]]></item>
+		<item name="wcf.acp.option.map_group_team.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_active"><![CDATA[Etkin Özelliklerini Göster]]></item>
+		<item name="wcf.acp.option.map_group_active.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_group_online"><![CDATA[Çevrim içi Özelliklerini Göster]]></item>
+		<item name="wcf.acp.option.map_group_online.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi"><![CDATA[Gezinme Araçlarını Göster]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_navi.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type"><![CDATA[Typetools Göster (Map/Uydu Resimleri)]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal"><![CDATA[Ölçeği göster]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_scal.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over"><![CDATA[Genel Bakışı Göster]]></item>
+		<item name="wcf.acp.option.map_usermap_ctl_over.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_type"><![CDATA[Harita Tipi]]></item>
+		<item name="wcf.acp.option.map_usermap_type.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom"><![CDATA[Zoomlevel]]></item>
+		<item name="wcf.acp.option.map_usermap_zoom.description"><![CDATA[1 ile 17 arası. Standart:4]]></item>
+		<item name="wcf.acp.option.map_usermap_width"><![CDATA[Genişliği (orta)]]></item>
+		<item name="wcf.acp.option.map_usermap_width.description"><![CDATA[(% veya px) Profil Kartı Ortadaysa. Standart:100%]]></item>
+		<item name="wcf.acp.option.map_usermap_height"><![CDATA[Yükseklik (Orta)]]></item>
+		<item name="wcf.acp.option.map_usermap_height.description"><![CDATA[(% veya px) Profil Kartı Ortadaysa. Standart:300px]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right"><![CDATA[Sagda Göster]]></item>
+		<item name="wcf.acp.option.map_usermap_show_right.description"><![CDATA[Profildeki Kartı Sagda Göster?]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center"><![CDATA[Ortada Göster]]></item>
+		<item name="wcf.acp.option.map_usermap_show_center.description"><![CDATA[Profıldeki Kartı Ortada Göster?]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys"><![CDATA[Max. Kayıtlar: Harita]]></item>
+		<item name="wcf.acp.option.map_bigmap_max_entrys.description"><![CDATA[Harita 300 Kayıttan Sonra 'Yavaşlayabilir. 1 Kişinin Yaşadıgı Bölgeler Kesilir. Büyük Şehirlerde 30 dan Az Kişi Varsa Kalır.]]></item>
+	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.map"><![CDATA[G-Map]]></item>
+		<item name="wcf.acp.group.option.category.user.map.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse"><![CDATA[Kullanim Haklari]]></item>
+		<item name="wcf.acp.group.option.user.map.canUse.description"><![CDATA[Oturdugu Yeri Belirleye Bilir.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd"><![CDATA[Yazı Hakları]]></item>
+		<item name="wcf.acp.group.option.user.map.canAdd.description"><![CDATA[Kullanıcı Haritaya Kendi Noktalarını Ekleyebilir.]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount"><![CDATA[Kayit Sayısı]]></item>
+		<item name="wcf.acp.group.option.user.map.canAddCount.description"><![CDATA[Kullanıcı Kaç Tane Nokta Ekleyebilir.]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal"><![CDATA[İşaret Yapma İzni]]></item>
+		<item name="wcf.acp.group.option.user.map.canUpdateNonPersonal.description"><![CDATA[Başkalarının İşaretlerini Degiştirebilir.]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal"><![CDATA[İşaretleri Görme İzni]]></item>
+		<item name="wcf.acp.group.option.user.map.canViewPersonal.description"><![CDATA[Kullanıcıların Haritada İşaretlediği Bölgeleri Görebilirmi.]]></item>
+		<item name="wcf.acp.group.option.user.map.canView"><![CDATA[Kullanıcı Okuma Hakkı]]></item>
+		<item name="wcf.acp.group.option.user.map.canView.description"><![CDATA[Kullanıcıların Adreslerini Haritada Görebilir.]]></item>
+		<item name="wcf.acp.group.option.user.map.header"><![CDATA[Header Butonu]]></item>
+		<item name="wcf.acp.group.option.user.map.header.description"><![CDATA[Menüde Butonu Göster. (Menü Çok Doluysa Butonu Kapatıp Baska Biryerden Haritaya Giriş Linki Verebilirsiniz.)]]></item>
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.category.map"><![CDATA[Harita]]></item>
+		<item name="wcf.user.option.map"><![CDATA[Harita]]></item>
+		<item name="wcf.user.option.category.profile.map"><![CDATA[Harita Ayarları]]></item>
+		<item name="wcf.user.option.map_enable"><![CDATA[Etkinleştir]]></item>
+		<item name="wcf.user.option.map_enable.description"><![CDATA[Haritada Görünmek istiyorsanız Burayi İsaretleyiniz.]]></item>
+		<item name="wcf.user.option.map_street"><![CDATA[Sokak]]></item>
+		<item name="wcf.user.option.map_street.description"><![CDATA[Ne Kadar Fazla Bilgi Girerseniz O Kadar İyi <a href=index.php?page=Map>Haritada</a> Bulunursunuz.]]></item>
+		<item name="wcf.user.option.map_zip"><![CDATA[Posta Kodu]]></item>
+		<item name="wcf.user.option.map_zip.description"><![CDATA[Ne Kadar Fazla Bilgi Girerseniz O Kadar İyi <a href=index.php?page=Map>Haritada</a> Bulunursunuz.]]></item>
+		<item name="wcf.user.option.map_city"><![CDATA[Şehir]]></item>
+		<item name="wcf.user.option.map_city.description"><![CDATA[Ne Kadar Fazla Bilgi Girerseniz O Kadar İyi <a href=index.php?page=Map>Haritada</a> Bulunursunuz.]]></item>
+		<item name="wcf.user.option.map_country"><![CDATA[Ülke]]></item>
+		<item name="wcf.user.option.map_country.description"><![CDATA[Ne Kadar Fazla Bilgi Girerseniz O Kadar İyi <a href=index.php?page=Map>Haritada</a> Bulunursunuz.]]></item>
+	</category>
+</language>

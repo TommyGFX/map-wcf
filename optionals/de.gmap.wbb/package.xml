@@ -6,6 +6,7 @@
 		<packagedescription><![CDATA[This Package adds some WBB optimizations to the G-Map for WCF.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Dieses Paket optimiert einige G-Map Funktionen, wenn das Paket im WBB aufgerufen wird.]]></packagedescription>
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute quelques optimisations WBB à la G-Map pour le WCF.]]></packagedescription>
+		<packagedescription language="tr"><![CDATA[Bu Paket G-Mapin Bazi Özelliklerini WBB Uyarliyor.]]></packagedescription>
 		<isunique>1</isunique>
 		<version>1.0.3</version>
 		<date>DATE</date>
@@ -29,6 +30,7 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<options>options.xml</options>
 		<eventlistener>eventlistener.xml</eventlistener>
 	</instructions>
@@ -40,6 +42,7 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 	
 	<instructions type="update" fromversion="1.0.1">
@@ -49,6 +52,7 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 
 	<instructions type="update" fromversion="1.0.0">
@@ -58,5 +62,6 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 </package>

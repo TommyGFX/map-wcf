@@ -6,6 +6,7 @@
 		<packagedescription><![CDATA[This Package adds a Google Map to your board.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Dieses Paket fügt ihrem Forum eine Google-Maps Karte hinzu.]]></packagedescription>
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute une carte Google Map à vos forums.]]></packagedescription>
+		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<isunique>1</isunique>
 		<version>1.3.7</version>
 		<date>DATE</date>
@@ -37,6 +38,7 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<cronjobs>cronjobs.xml</cronjobs>
 		<useroptions>useroptions.xml</useroptions>
 		<groupoptions>groupoptions.xml</groupoptions>
@@ -47,24 +49,28 @@
 	</instructions>
 	
 	<instructions type="update" fromversion="1.3.6 pl 2">
+		<languages languagecode="tr">tr.xml</languages>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>update.sql</sql>
         </instructions>
 	
 	<instructions type="update" fromversion="1.3.6 pl 1">
+		<languages languagecode="tr">tr.xml</languages>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>update.sql</sql>
         </instructions>
         
         <instructions type="update" fromversion="1.3.6">
+		<languages languagecode="tr">tr.xml</languages>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>update.sql</sql>
         </instructions>
 	
 	<instructions type="update" fromversion="1.3.5 pl 1">
+		<languages languagecode="tr">tr.xml</languages>
                 <files>files.tar</files>
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
@@ -76,6 +82,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<sql>update.sql</sql>
         </instructions>
 	
@@ -83,6 +90,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 	
 	<instructions type="update" fromversion="1.3.3">
@@ -90,6 +98,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<sql>update.sql</sql>
 	</instructions>
 	
@@ -98,6 +107,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 	
 	<instructions type="update" fromversion="1.3.1">
@@ -105,6 +115,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<options>options.xml</options>
 		<useroptions>useroptions.xml</useroptions>
 		<sql>update.sql</sql>
@@ -115,6 +126,7 @@
                 <templates>templates.tar</templates>
                 <acptemplates>acptemplates.tar</acptemplates>
 		<languages languagecode="fr">fr.xml</languages>
+		<languages languagecode="tr">tr.xml</languages>
 		<options>options.xml</options>
 		<useroptions>useroptions.xml</useroptions>
 		<eventlistener>eventlistener.xml</eventlistener>
