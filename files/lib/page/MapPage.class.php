@@ -53,8 +53,14 @@ class MapPage extends AbstractPage {
                 EventHandler::fireAction($this, 'construct'); // overwrite api key?
                 
 		// sql query to fetch groups
-		$sql = "SELECT          groupID, groupName      
-			FROM            wcf".WCF_N."_group
+		// left join to see if user is member
+		$sql = "SELECT          g.groupID, 
+					g.groupName,
+					(NOT ISNULL(ug.groupID)) AS isMember
+			FROM            wcf".WCF_N."_group g
+			LEFT JOIN	wcf".WCF_N."_user_to_groups ug
+			ON		ug.groupID = g.groupID
+			AND		ug.userID = ".intval(WCF::getUser()->userID)."
 			WHERE           groupID > 2
 			AND             (
 					SELECT 	COUNT( userID )
@@ -66,9 +72,8 @@ class MapPage extends AbstractPage {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$key = $row['groupID'];
 			$val = addslashes(StringUtil::encodeHTML($row['groupName']));
-			$this->groups[] = array($key, $val);
+			$this->groups[] = array($key, $val, $row['isMember']);
 		}
-
         }
 
          /**

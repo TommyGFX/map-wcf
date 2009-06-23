@@ -104,7 +104,7 @@
 					gAddGroup(function(){ gFilterOption('markers', this.checked); }, '{lang}wcf.map.marker{/lang}', ajax_filter.markers);
 					{/if}
 					{foreach from=$gmap_groups item=$group}
-					gAddGroup(function(){ gFilter('{$group[0]}', this.checked); },'{$group[1]}', true);
+					gAddGroup(function(){ gFilter('{$group[0]}', this.checked); },'{$group[1]}', {if $group[2]}1{else}0{/if});
 				        {/foreach}
 			        {/if}
 			        
