@@ -9,21 +9,18 @@
 		</div>
 	</div>
 </div>
-<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;key={$gmap_map_key}&amp;oe={CHARSET}" type="text/javascript"></script>
+{include file='gmapConstants'}
+<script src="{@RELATIVE_WCF_DIR}js/gmap/Map.class.js" type="text/javascript"></script>
 <script type="text/javascript">
-//<![CDATA[
-var usercoordside = new GLatLng({@$user->map_coord}); 
-var mapside = new GMap2(document.getElementById("map")); 
-mapside.setCenter(usercoordside, {@MAP_USERMAP_ZOOM}); 
-var markerside = new GMarker(usercoordside); 
-GEvent.addListener(markerside, "click", function() {
-	var url = 'index.php?page=Map&type=distance&users={@$user->userID}{@SID_ARG_2ND}';
-	window.location.href = url;
-	});
-mapside.addOverlay(markerside); 
-{if MAP_USERMAP_TYPE == "m"}mapside.setMapType(G_NORMAL_MAP);{/if}
-{if MAP_USERMAP_TYPE == "h"}mapside.setMapType(G_HYBRID_MAP);{/if}
-{if MAP_USERMAP_TYPE == "s"}mapside.setMapType(G_SATELLITE_MAP);{/if}
-{if MAP_USERMAP_CTL_NAVI}mapside.addControl(new GSmallMapControl());{/if}
-//]]>
+	//<![CDATA[
+	if (GMAP_API_KEY != '')  { 
+	        document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
+	        onloadEvents.push(function() {
+	                if (GBrowserIsCompatible()) {
+				var gmap = new Map('{@$id}');
+				gmap.setLocation('{$user->location|encodeJS}');
+	                }
+	        });
+	}
+	//]]>
 </script>

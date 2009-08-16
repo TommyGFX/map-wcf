@@ -20,7 +20,7 @@ www.narkotikboard.uni.cc
 		<item name="wcf.map.forbidden"><![CDATA[Haritayi İnceleyemezsiniz.]]></item>
 		<item name="wcf.map.tomuchentries"><![CDATA[Çok Nokta Var.]]></item>
 		<item name="wcf.map.clicknow"><![CDATA[İstediğiniz Yeri İşaretlemek için Haritaya Tiklayin.]]></item>
-		<item name="wcf.map.copyright"><![CDATA[G-Map v1.3.6 by Michael Senkler, Torben Brodt]]></item>
+		<item name="wcf.map.copyright"><![CDATA[G-Map v1.3.6 by Torben Brodt]]></item>
 		<item name="wcf.map.copyright_small"><![CDATA[Powered by G-Map Mod]]></item>
 		<item name="wcf.map.counter_user"><![CDATA[Kullanici]]></item>
 		<item name="wcf.map.counter_marker"><![CDATA[İşaret]]></item>

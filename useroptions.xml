@@ -1,55 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE data SYSTEM "http://www.woltlab.com/DTD/options.dtd">
 <data>
-	<import>
-		<categories>
-			<category name="profile.map">
-				<icon>icon/glob24.png</icon>
-				<parent>profile</parent>
-				<showorder>15</showorder>
-			</category>
-		</categories>
-		<options>
-			<option name="map_enable">
-				<categoryname>profile.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-				<enableoptions>map_street,map_zip,map_city,map_country</enableoptions>
-				<visible>4</visible>
-			</option>
-			<option name="map_street">
-				<categoryname>profile.map</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-			</option>
-			<option name="map_zip">
-				<categoryname>profile.map</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-			</option>
-			<option name="map_city">
-				<categoryname>profile.map</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-				<searchable>1</searchable>
-			</option>
-			<option name="map_country">
-				<categoryname>profile.map</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-			</option>
-			<option name="map_coord">
-				<categoryname>hidden</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-				<editable>4</editable>
-			</option>
-			<option name="map_lastlookup">
-				<categoryname>hidden</categoryname>
-				<optiontype>text</optiontype>
-				<visible>4</visible>
-				<editable>4</editable>
-			</option>
-		</options>
-	</import>
+	<delete>
+		<category name="profile.map"></category>
+		<option name="map_enable"></option>
+		<option name="map_street"></option>
+		<option name="map_zip"></option>
+		<option name="map_city"></option>
+		<option name="map_country"></option>
+		<option name="map_coord"></option>
+		<option name="map_lastlookup"></option>
+	</delete>
 </data>

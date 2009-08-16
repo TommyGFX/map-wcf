@@ -3,7 +3,7 @@
 <data>
 	<import>
 		<headermenuitem name="wcf.header.menu.map">
-			<icon>icon/glob24.png</icon>
+			<icon>glob24.png</icon>
 			<link>index.php?page=Map</link>
 			<showorder>11</showorder>
 			<permissions>user.map.header</permissions>
