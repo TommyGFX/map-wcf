@@ -24,9 +24,12 @@ class GMapUserPageListener implements EventListener {
 				'gmap_map_key' => $this->map_key
 			));
 
+			// show left
 			if(MAP_USERMAP_SHOW_RIGHT) {
 				WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
 			}
+			
+			// or show right - both is possible
 			if(MAP_USERMAP_SHOW_CENTER) {
 				WCF::getTPL()->append('additionalContent3', WCF::getTPL()->fetch('userProfileMapCenter'));
 			}

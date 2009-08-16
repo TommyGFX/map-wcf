@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  * Returns the abstract page for for the Gooogle Map
  *
  * @package     de.gmap.wcf.data.page
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapPage extends AbstractPage {

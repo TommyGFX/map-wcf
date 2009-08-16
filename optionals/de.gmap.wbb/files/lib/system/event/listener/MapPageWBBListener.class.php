@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  * optimizes wcf package for wbb support
  *
  * @package     de.gmap.wbb.system.event.listener
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapPageWBBListener implements EventListener {

@@ -5,62 +5,24 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
  * discovers geoposition to data and updates database
  *
  * @package     de.gmap.wcf.util
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapDiscover {
-	protected $columns;
-	protected $debug;
-
-	/**
-         * fetchs columns
-         */
-        public function __construct($debug=false) {
-        	$this->debug = $debug;
-		$arr = array();
-
-		$arr['location'] = "userOption".User::getUserOptionID('location');
-		$arr['coord'] = "userOption".User::getUserOptionID('map_coord');
-		$arr['street'] = "userOption".User::getUserOptionID('map_street');
-		$arr['city'] = "userOption".User::getUserOptionID('map_city');
-		$arr['country'] = "userOption".User::getUserOptionID('map_country');
-		$arr['zip'] = "userOption".User::getUserOptionID('map_zip');
-		$arr['enable'] = "userOption".User::getUserOptionID('map_enable');
-		$arr['lastlookup'] = "userOption".User::getUserOptionID('map_lastlookup');
-		
-		if(count(array_filter($arr, create_function('$a','return $a == "userOption";'))) > 0) {
-			require_once(WCF_DIR . 'lib/system/exception/SystemException.class.php');
-			throw new SystemException("userOptions are not set.\n\n".print_r($arr,1));
-		}
-		
-		$this->columns = $arr;
-        }
-        
-        /**
-         * get columns
-         */
-        public function getColumns() {
-        	return $this->columns;
-        }
         
         /**
 	 * ask google for geopositions
-	 * @param street
-	 * @param zip
-	 * @param city
-	 * @param country
+	 * @param location
 	 */
-	public function search($street, $zip="", $city="", $country="") {
-		$res = array('x'=>"0",'y'=>"0");
-		$c = $this->columns;
+	public static function search($location) {
+		$res = array(
+			'x' => 0,
+			'y' => 0
+		);
 
-		$lookupstring = sprintf("%s %s %s %s", $street, $zip, $city, $country);
-		$lookupstring = trim($lookupstring);
-		$lookupstring = urlencode($lookupstring);
+		$lookupstring = urlencode(trim($location));
 
-		// Debug: forces ip without DNS-Lookup. 
-		// $req_url = "maps.google.com";
-		$req_url = MAP_CRON_IP ;
+		$req_url = "maps.google.com";
 		$io = @fsockopen($req_url, 80, $errno, $errstr, 5 );
 		if ($io) {
 			$send  = "GET /maps/geo?q=".$lookupstring."&key=".MAP_API."&output=csv HTTP/1.1\r\n";
@@ -78,38 +40,44 @@ class MapDiscover {
 				}
 			}
 			fclose($io);
-		} else {
-			if($this->debug) {
-				require_once(WCF_DIR . 'lib/system/exception/SystemException.class.php');
-				throw new SystemException("$req_url - $errstr ($errno)");
-			}
 		}
 		
 		return $res;
 	}
 
 	/**
-	 * ask google for geopositions
-	 * @param street
-	 * @param zip
-	 * @param city
-	 * @param country
+	 * try to update database position
+	 *
+	 * @param location
 	 */
-	public function update($street, $zip, $city, $country) {
-		$c = $this->columns;
-		$res = $this->search($street, $zip, $city, $country);
+	public static function update($location) {
+		$column = "userOption".User::getUserOptionID('location');
+		if(empty($column)) return;
 
-		$sql_update = "UPDATE	wcf".WCF_N."_user_option_value 
-			SET 
-					{$c['coord']} 		= '".$res['x'].",".$res['y']."', 
-					{$c['lastlookup']}	= CONCAT({$c['street']},{$c['zip']},{$c['city']},{$c['country']}) 
-			WHERE		{$c['enable']} 		= 1
-			AND		{$c['street']} 		= '".escapeString($street)."'
-			AND 		{$c['zip']} 		= '".escapeString($zip)."'
-			AND 		{$c['city']} 		= '".escapeString($city)."'
-			AND 		{$c['country']} 	= '".escapeString($country)."'; ";
+		// ask geocoder
+		$res = self::search($street, $zip, $city, $country);
 
-		WCF::getDB()->sendQuery($sql_update);
+		// update all locations
+		$sql = "UPDATE		wcf".WCF_N."_user
+			USING		wcf".WCF_N."_user_option_value
+			INNER JOIN	wcf".WCF_N."_user USING(userID)
+			SET 		coords = PointFromText('POINT(".$res['x']." ".$res['y'].")')
+			WHERE		".$column." = '".escapeString($location)."';";
+		WCF::getDB()->sendQuery($sql);
+	}
+        
+        /**
+         *
+         * @param pt1 -> point1 in format array(lat, lng)
+         * @param pt2 -> point2 in format array(lat, lng)
+         */
+        public static function getDistance($pt1, $pt2) {
+        	$lat1 = $pt1[0];
+        	$lng1 = $pt1[1];
+        	$lat2 = $pt2[0];
+        	$lng2 = $pt2[1];
+
+		return round(acos((sin($lat1) * sin($lat2)) + (cos($lat1) * cos($lat2) * cos($lng1 - $lng2))) * 6380 / 100 * 1.609344,2);
 	}
 }
 ?>

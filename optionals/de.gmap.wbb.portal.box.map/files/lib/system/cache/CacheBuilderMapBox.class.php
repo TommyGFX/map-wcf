@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
  * Cache Builder for Map Box
  *
  * @package     de.gmap.wcf.system.cache
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class CacheBuilderMapBox implements CacheBuilder {

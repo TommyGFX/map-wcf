@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS wcf1_gmap;
-CREATE TABLE wcf1_gmap (
+CREATE TABLE IF NOT EXISTS wcf1_gmap (
 	mapID int(11) UNSIGNED NOT NULL auto_increment,
 	userID int(11) UNSIGNED NOT NULL DEFAULT 0,
 	pt point NOT NULL,
@@ -10,3 +9,6 @@ CREATE TABLE wcf1_gmap (
 	SPATIAL KEY pt (pt)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE wcf1_user ADD coords point NULL;
+ALTER TABLE wcf1_user ADD SPATIAL KEY coords (pt);

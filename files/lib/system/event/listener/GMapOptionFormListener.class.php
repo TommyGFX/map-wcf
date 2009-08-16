@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 
 /**
- * Displays a map in the acp to set center and zoom
+ * ACP Listener: Displays a map in the acp to set center and zoom
  *
  * @package     de.gmap.wcf.system.event.listener
  * @author      Michael Senkler, Torben Brodt

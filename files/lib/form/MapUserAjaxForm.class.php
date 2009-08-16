@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/message/bbcode/MessageParser.class.php');
  * Handles actions for personal maps
  *
  * @package     de.gmap.wcf.data.form
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapUserAjaxForm extends AbstractForm {

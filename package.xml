@@ -40,7 +40,6 @@
 		<languages languagecode="en">en.xml</languages>
 		<languages languagecode="fr">fr.xml</languages>
 		<languages languagecode="tr">tr.xml</languages>
-		<cronjobs>cronjobs.xml</cronjobs>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<headermenu>headermenu.xml</headermenu>
 		<options>options.xml</options>
@@ -50,99 +49,7 @@
 	
 	<instructions type="update" fromversion="1.3.7">
 		<useroptions>useroptions.xml</useroptions>
+		<sql>install.sql</sql>
+		<cronjobs>cronjobs.xml</cronjobs>
         </instructions>
-	
-	<instructions type="update" fromversion="1.3.6 pl 2">
-		<languages languagecode="tr">tr.xml</languages>
-		<templates>templates.tar</templates>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-        </instructions>
-	
-	<instructions type="update" fromversion="1.3.6 pl 1">
-		<languages languagecode="tr">tr.xml</languages>
-		<templates>templates.tar</templates>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-        </instructions>
-        
-        <instructions type="update" fromversion="1.3.6">
-		<languages languagecode="tr">tr.xml</languages>
-		<templates>templates.tar</templates>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-        </instructions>
-	
-	<instructions type="update" fromversion="1.3.5 pl 1">
-		<languages languagecode="tr">tr.xml</languages>
-                <files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-        </instructions>
-
-	<instructions type="update" fromversion="1.3.5">
-                <files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-        </instructions>
-	
-	<instructions type="update" fromversion="1.3.4">
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.3.3">
-		<files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<sql>update.sql</sql>
-		<useroptions>useroptions.xml</useroptions>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.3.2">
-		<files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<useroptions>useroptions.xml</useroptions>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.3.1">
-		<files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<options>options.xml</options>
-		<useroptions>useroptions.xml</useroptions>
-		<sql>update.sql</sql>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.3.0">
-		<files>files.tar</files>
-                <templates>templates.tar</templates>
-                <acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<options>options.xml</options>
-		<useroptions>useroptions.xml</useroptions>
-		<eventlistener>eventlistener.xml</eventlistener>
-		<sql>update.sql</sql>
-	</instructions>
 </package>

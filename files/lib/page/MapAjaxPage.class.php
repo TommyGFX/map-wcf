@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/util/BoundsUtil.class.php');
  * Returns the AJAX Content for the Gooogle Map
  *
  * @package     de.gmap.wcf.data.page
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapAjaxPage extends AbstractPage {
@@ -105,20 +105,6 @@ class MapAjaxPage extends AbstractPage {
 		$this->extGroups[$type] = array_key_exists($type, $this->extGroups) ? array_merge($this->extGroups[$type], $groups) : $groups;
 		$this->extOrders[$type] = array_key_exists($type, $this->extOrders) ? array_merge($this->extOrders[$type], $orders) : $orders;
 	}
-        
-        /**
-         *
-         * @param pt1 -> point1 in format array(lat, lng)
-         * @param pt2 -> point2 in format array(lat, lng)
-         */
-        private function getDistance($pt1, $pt2) {
-        	$lat1 = $pt1[0];
-        	$lng1 = $pt1[1];
-        	$lat2 = $pt2[0];
-        	$lng2 = $pt2[1];
-
-		return round(acos((sin($lat1) * sin($lat2)) + (cos($lat1) * cos($lat2) * cos($lng1 - $lng2))) * 6380 / 100 * 1.609344,2);
-	}
 
 	/**
 	 * cleans and optimizes data for individual encoding
@@ -159,17 +145,6 @@ class MapAjaxPage extends AbstractPage {
 		
 		return $userlist;
 	}
-        
-        /**
-         * fetchs columns
-         */
-        private function fetchColumns() {
-		$this->coord = "userOption".User::getUserOptionID('map_coord');
-		$this->city = "userOption".User::getUserOptionID('map_city');
-		$this->zip = "userOption".User::getUserOptionID('map_zip');
-		$this->enable = "userOption".User::getUserOptionID('map_enable');
-		$this->max = MAP_BIGMAP_MAX_ENTRYS;
-        }
         
 	/**
 	 * apply filters on given sql query
@@ -269,23 +244,21 @@ class MapAjaxPage extends AbstractPage {
 		if(!WCF::getUser()->getPermission('user.map.canView'))
 			return;
 
-		$max = $this->max - $this->pins;
+		$max = MAP_BIGMAP_MAX_ENTRYS - $this->pins;
         	
 		// sql query		
 		$sql = "SELECT		COUNT(*) AS c,
 					GROUP_CONCAT(REPLACE(user.username,' ','&nbsp;') SEPARATOR ' ') AS mixNames, 
 					GROUP_CONCAT(user.userID SEPARATOR ' ') AS mixIDs, 
-					user_option_value.{$this->coord} AS pos,
-					CONCAT(user_option_value.{$this->city}, ' (', COUNT(*), ')') AS head
+					coords AS pos,
+					CONCAT(location, ' (', COUNT(*), ')') AS head
 					".$this->pluginColumns('cities')."
-			FROM		wcf".WCF_N."_user_option_value user_option_value 
-					NATURAL JOIN  wcf".WCF_N."_user user 
+			FROM		wcf".WCF_N."_user user 
 					".$this->pluginJoins('cities')."
 			WHERE    	{$this->enable} = 1
-			AND		{$this->coord} != '0,0' 
-			AND      	{$this->coord} != ''
+			AND		coords IS NOT NULL
 					".$this->pluginConditions('cities',false)." 
-			GROUP BY 	{$this->coord}
+			GROUP BY 	coords
 					".$this->pluginGroups('cities',false)."
 			ORDER BY 	c DESC
 					".$this->pluginOrders('cities',false)." 
@@ -428,15 +401,14 @@ class MapAjaxPage extends AbstractPage {
         
 		// sql query		
 		$sql = "SELECT		user.userID, user.username,
-					user_option_value.{$this->coord} AS coord,
-					user_option_value.{$this->city} AS head
+					coords AS coord,
+					location AS head
 					".$this->pluginColumns('distance')."
-			FROM		wcf".WCF_N."_user_option_value user_option_value 
-					NATURAL JOIN  wcf".WCF_N."_user user
+			FROM		wcf".WCF_N."_user user
 					".$this->pluginJoins('distance')."
 			WHERE    	{$this->enable} = 1
-			AND	    	{$this->coord} != '0,0' 
-			AND      	{$this->coord} != '' 
+			AND	    	coords != '0,0' 
+			AND      	coords != '' 
 			AND		user.userID IN (".implode(",", $this->users).") 
 					".$this->pluginConditions('distance',empty($this->users))."
 					".$this->pluginGroups('distance',true)."
@@ -467,7 +439,7 @@ class MapAjaxPage extends AbstractPage {
 		}
 		
 		if(count($this->positions) > 1) {
-			$this->dist = $this->getDistance($this->positions[0]['pos'], $this->positions[1]['pos']);
+			$this->dist = MapDiscover::getDistance($this->positions[0]['pos'], $this->positions[1]['pos']);
 		}
         }
 
@@ -485,9 +457,6 @@ class MapAjaxPage extends AbstractPage {
 			$this->errors[] = 0; // PERMISSION_DENIED
 			return;
 		}
-
-		// fetch column names
-                $this->fetchColumns();
 
                 // read positions
                 switch($this->type) {

@@ -4,7 +4,7 @@
  * Map Box
  *
  * @package     de.gmap.wcf.data.boxes
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapBox {
