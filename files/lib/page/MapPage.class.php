@@ -61,11 +61,11 @@ class MapPage extends AbstractPage {
 			LEFT JOIN	wcf".WCF_N."_user_to_groups ug
 			ON		ug.groupID = g.groupID
 			AND		ug.userID = ".intval(WCF::getUser()->userID)."
-			WHERE           groupID > 2
+			WHERE           g.groupID > 2
 			AND             (
 					SELECT 	COUNT( userID )
 					FROM 	wcf".WCF_N."_user_to_groups user_to_groups
-					WHERE 	wcf".WCF_N."_group.groupID = user_to_groups.groupID
+					WHERE 	g.groupID = user_to_groups.groupID
 					) > 0;";
 
 		$result = WCF::getDB()->sendQuery($sql);
