@@ -19,19 +19,24 @@ class GMapUserPageListener implements EventListener {
 			return;
 
 		if($eventName == 'assignVariables') {
-			WCF::getTPL()->assign(array(
-				'user' => $eventObj->frame->getUser(),
-				'gmap_map_key' => $this->map_key
-			));
+			$map_coord = "userOption".User::getUserOptionID('map_coord');
+			$map_enable = "userOption".User::getUserOptionID('map_enable');
+			$user = $eventObj->frame->getUser();
 
-			// show left
-			if(MAP_USERMAP_SHOW_RIGHT) {
-				WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
-			}
-			
-			// or show right - both is possible
-			if(MAP_USERMAP_SHOW_CENTER) {
-				WCF::getTPL()->append('additionalContent3', WCF::getTPL()->fetch('userProfileMapCenter'));
+			if($user->$map_coord != "0,0" && $user->$map_coord != "" && $user->$map_enable == "1") {
+				EventHandler::fireAction($this, 'construct'); // overwrite api key?
+
+				WCF::getTPL()->assign(array(
+					'user' => $user,
+					'gmap_map_key' => $this->map_key
+				));
+
+				if(MAP_USERMAP_SHOW_RIGHT) {
+					WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
+				}
+				if(MAP_USERMAP_SHOW_CENTER) {
+					WCF::getTPL()->append('additionalContents3', WCF::getTPL()->fetch('userProfileMapCenter'));
+				}
 			}
 		}
 	}
