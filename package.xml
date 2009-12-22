@@ -50,5 +50,6 @@
 	<instructions type="update" fromversion="1.3.7">
 		<files>files.tar</files>
 		<useroptions>useroptions.xml</useroptions>
+		<sql>update.sql</sql>
         </instructions>
 </package>

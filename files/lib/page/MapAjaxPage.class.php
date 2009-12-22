@@ -26,8 +26,7 @@ class MapAjaxPage extends AbstractPage {
 	private $pins = 0;
 	private $total = 0;
 	private $dist;
-	private $positions = array();	
-	private $coord, $city, $zip, $enable, $max; // column names
+	private $positions = array();
 	
 	// extensions hell
 	private $extColumns = array();
@@ -255,9 +254,7 @@ class MapAjaxPage extends AbstractPage {
 					".$this->pluginColumns('cities')."
 			FROM		wcf".WCF_N."_user user 
 					".$this->pluginJoins('cities')."
-			WHERE    	{$this->enable} = 1
-			AND		coords IS NOT NULL
-					".$this->pluginConditions('cities',false)." 
+			WHERE    	
 			GROUP BY 	coords
 					".$this->pluginGroups('cities',false)."
 			ORDER BY 	c DESC
@@ -406,13 +403,10 @@ class MapAjaxPage extends AbstractPage {
 					".$this->pluginColumns('distance')."
 			FROM		wcf".WCF_N."_user user
 					".$this->pluginJoins('distance')."
-			WHERE    	{$this->enable} = 1
-			AND	    	coords != '0,0' 
-			AND      	coords != '' 
-			AND		user.userID IN (".implode(",", $this->users).") 
-					".$this->pluginConditions('distance',empty($this->users))."
-					".$this->pluginGroups('distance',true)."
-					".$this->pluginOrders('distance',true);
+			WHERE    	user.userID IN (".implode(",", $this->users).") 
+					".$this->pluginConditions('distance', false)."
+					".$this->pluginGroups('distance', true)."
+					".$this->pluginOrders('distance', true);
 
 		// apply filters
 		$sql = $this->applyFilters($sql, $this->filter);
