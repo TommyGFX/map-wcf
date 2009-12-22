@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE import SYSTEM "DTD/import.dtd">
+<data>
+	<import>
+		<pagemenuitem name="wcf.header.menu.license">
+			<icon>licenseM.png</icon>
+			<link>index.php?page=LicensesList</link>
+			<showorder>10</showorder>
+			<position>header</position>
+		</pagemenuitem>
+	</import>
+</data>
