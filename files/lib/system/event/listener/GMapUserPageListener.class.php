@@ -53,11 +53,11 @@ class GMapUserPageListener implements EventListener {
 				'coordinate' => $this->coordinate
 			));
 			// if user position exists
-			WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
+			WCF::getTPL()->append('additionalBoxes1', WCF::getTPL()->fetch('userProfileMapSide'));
 		}
 
 		// if user is owner or user has personal maps
-		if(WCF::getUser()->userID == $this->userID || $this->personal_maps) {
+		if(false && WCF::getUser()->userID == $this->userID || $this->personal_maps) {
 			WCF::getTPL()->append('additionalContents3', WCF::getTPL()->fetch('userProfileMapCenter'));
 		}
 	}

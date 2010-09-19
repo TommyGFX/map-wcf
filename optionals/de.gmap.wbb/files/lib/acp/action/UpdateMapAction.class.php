@@ -41,7 +41,8 @@ class UpdateMapAction extends UpdateCounterAction {
 		$sql = "SELECT		userID,
 					".$col." AS loc
 			FROM		wcf".WCF_N."_user_option_value
-			ORDER BY	userID";
+			WHERE		".$col." != ''
+			ORDER BY	userID ASC";
 		$result = WCF::getDB()->sendQuery($sql, $this->limit, ($this->limit * $this->loop));
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$point = $api->search($row['loc']);
