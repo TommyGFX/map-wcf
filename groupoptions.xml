@@ -3,57 +3,22 @@
 <data>	
 	<import>
 		<categories>
-			<category name="user.map">
-				<parent>user</parent>
+			<category name="general.gmap.personal">
+				<parent>general.gmap</parent>
 			</category>
 		</categories>
 		<options>
-			<option name="user.map.canUse"><!-- can add its own position //-->
-				<categoryname>user.map</categoryname>
+			<option name="general.gmap.personalMap">
+				<categoryname>general.gmap.personal</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
-				<showorder>1</showorder>
+				<enableoptions>general.gmap.personalMap.count</enableoptions>
 			</option>
-			<option name="user.map.canAdd">
-				<categoryname>user.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-				<showorder>2</showorder>
-				<enableoptions>user.map.canAddCount,user.map.canUpdateNonPersonal</enableoptions>
-			</option>
-			<option name="user.map.canAddCount">
-				<categoryname>user.map</categoryname>
+			<option name="general.gmap.personalMap.count">
+				<categoryname>general.gmap.personal</categoryname>
 				<optiontype>integer</optiontype>
-				<defaultvalue>0</defaultvalue><!-- an higher value (as default for guests) could irritate //-->
-				<showorder>3</showorder>
-			</option>
-			<option name="user.map.canUpdateNonPersonal">
-				<categoryname>user.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-				<showorder>4</showorder>
-			</option>
-			<option name="user.map.canViewPersonal"><!-- can view personal markers //-->
-				<categoryname>user.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-				<showorder>5</showorder>
-			</option>
-			<option name="user.map.canView"><!-- can view users //-->
-				<categoryname>user.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-				<showorder>6</showorder>
-			</option>
-			<option name="user.map.header">
-				<categoryname>user.map</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-				<showorder>7</showorder>
+				<defaultvalue>5</defaultvalue>
 			</option>
 		</options>
 	</import>
-	
-	<delete>
-	</delete>
 </data>

@@ -8,7 +8,7 @@
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute une carte Google Map à vos forums.]]></packagedescription>
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>1.4.0</version>
+		<version>2.0.0</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -32,7 +32,6 @@
 	<instructions type="install">
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
-		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>install.sql</sql>
 		<pagelocation>pagelocation.xml</pagelocation>
 		<languages languagecode="de">de.xml</languages>

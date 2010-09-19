@@ -2,9 +2,9 @@
 <!DOCTYPE import SYSTEM "DTD/import.dtd">
 <data>
 	<import>
-		<pagemenuitem name="wcf.header.menu.license">
-			<icon>licenseM.png</icon>
-			<link>index.php?page=LicensesList</link>
+		<pagemenuitem name="wcf.header.menu.map">
+			<icon>mapM.png</icon>
+			<link>index.php?page=Map</link>
 			<showorder>10</showorder>
 			<position>header</position>
 		</pagemenuitem>

@@ -15,9 +15,6 @@ class GMapUserPageListener implements EventListener {
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		if(!WCF::getUser()->getPermission('user.map.canView')) // check permission
-			return;
-
 		if($eventName == 'assignVariables') {
 			$map_coord = "userOption".User::getUserOptionID('map_coord');
 			$map_enable = "userOption".User::getUserOptionID('map_enable');

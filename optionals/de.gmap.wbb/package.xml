@@ -8,7 +8,7 @@
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute quelques optimisations WBB à la G-Map pour le WCF.]]></packagedescription>
 		<packagedescription language="tr"><![CDATA[Bu Paket G-Mapin Bazi Özelliklerini WBB Uyarliyor.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.4</version>
+		<version>2.0.0 RC 1</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wbb</plugin>
 	</packageinformation>
@@ -25,48 +25,10 @@
 	
 	<instructions type="install">
 		<files>files.tar</files>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-		<options>options.xml</options>
 		<eventlistener>eventlistener.xml</eventlistener>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.3">
-		<files>files.tar</files>
-		<languages languagecode="tr">tr.xml</languages>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.2">
-		<files>files.tar</files>
-		<eventlistener>eventlistener.xml</eventlistener>
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.1">
-		<files>files.tar</files>
-		<eventlistener>eventlistener.xml</eventlistener>
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 
-	<instructions type="update" fromversion="1.0.0">
+	<instructions type="update" fromversion="2.0.0 RC 1">
 		<files>files.tar</files>
-		<eventlistener>eventlistener.xml</eventlistener>
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
-		<languages languagecode="fr">fr.xml</languages>
-		<languages languagecode="tr">tr.xml</languages>
 	</instructions>
 </package>

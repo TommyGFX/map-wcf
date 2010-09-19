@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/util/MapDiscover.class.php');
  * Fetchs position data from google maps and stores them in database
  *
  * @package     de.gmap.wcf.data.cronjobs
- * @author      Michael Senkler, Torben Brodt
+ * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class CoordCronjob implements Cronjob {
@@ -25,16 +25,6 @@ class CoordCronjob implements Cronjob {
 		
 		// fetch column names
                 $col = $google->getColumns();
-	
-		//Setting default Values. (Location to City)
-		$sql = "UPDATE		wcf".WCF_N."_user_option_value 
-			SET 
-					".$col['city']." = ".$col['location']."
-			WHERE 		".$col['enable']." = 1 
-			AND		".$col['location']." != '' 
-			AND 		".$col['city']." = '' 
-			AND		".$col['lastlookup']." = ''; ";
-		WCF::getDB()->sendQuery($sql);
 
 		// if there is no api key specified - abort
 		if (defined('MAP_API') && MAP_API != "Api-Key") {

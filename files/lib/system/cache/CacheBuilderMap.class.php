@@ -2,13 +2,13 @@
 require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 /**
- * Caches map ajax data
+ * Caches mapMarker images
  *
  * @package     de.gmap.wcf.data.cronjobs
  * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
-class CacheBuilderMapAjax implements CacheBuilder {
+class CacheBuilderMap implements CacheBuilder {
 	/**
 	 * @see CacheBuilder::getData()
 	 */

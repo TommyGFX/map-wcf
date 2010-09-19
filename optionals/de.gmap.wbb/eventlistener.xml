@@ -2,73 +2,23 @@
 <!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/eventListeners.dtd">
 <data>	
 	<import>
-		<eventlistener><!-- api key listener //-->
-			<eventClassName>MapPage</eventClassName>
-			<eventName>construct</eventName>
-			<listenerClassFile>lib/system/event/listener/MapKeyListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>GMapUserPageListener</eventClassName>
-			<eventName>construct</eventName>
-			<listenerClassFile>lib/system/event/listener/MapKeyListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener><!-- mappage listener //-->
-			<eventClassName>MapPage</eventClassName>
-			<eventName>readParameters</eventName>
-			<listenerClassFile>lib/system/event/listener/MapPageWBBListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>MapPage</eventClassName>
-			<eventName>assignVariables</eventName>
-			<listenerClassFile>lib/system/event/listener/MapPageWBBListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>MapAjaxPage</eventClassName>
-			<eventName>readParameters</eventName>
-			<listenerClassFile>lib/system/event/listener/MapAjaxPageWBBListener.class.php</listenerClassFile>
-		</eventlistener>
-		
-		<!-- admin -->
-		<eventlistener><!--more page urls//-->
-			<eventClassName>OptionForm</eventClassName>
-			<eventName>assignVariables</eventName>
-			<environment>admin</environment>
-			<listenerClassFile>lib/system/event/listener/GMapWBBOptionFormListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>OptionForm</eventClassName>
-			<eventName>readFormParameters</eventName>
-			<environment>admin</environment>
-			<listenerClassFile>lib/system/event/listener/GMapWBBOptionFormListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>OptionForm</eventClassName>
-			<eventName>saved</eventName>
-			<environment>admin</environment>
-			<listenerClassFile>lib/system/event/listener/GMapWBBOptionFormListener.class.php</listenerClassFile>
-		</eventlistener>
-
 		<eventlistener><!--mainteance function//-->
 			<eventclassname>UpdateCountersForm</eventclassname>
 			<eventname>validate</eventname>
 			<environment>admin</environment>
-			<inherit>1</inherit>
 			<listenerclassfile>lib/system/event/listener/MapUpdateCountersFormListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UpdateCountersForm</eventclassname>
 			<eventname>save</eventname>
 			<environment>admin</environment>
-			<inherit>1</inherit>
 			<listenerclassfile>lib/system/event/listener/MapUpdateCountersFormListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UpdateCountersForm</eventclassname>
 			<eventname>assignVariables</eventname>
 			<environment>admin</environment>
-			<inherit>1</inherit>
 			<listenerclassfile>lib/system/event/listener/MapUpdateCountersFormListener.class.php</listenerclassfile>
 		</eventlistener>
-		<!-- /admin -->
 	</import>
 </data>
