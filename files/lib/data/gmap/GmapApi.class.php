@@ -22,7 +22,7 @@ class GmapApi extends DatabaseObject {
 		$apikey = $apikey[0];
 		$apikey = explode(":", $apikey);
 		if(count($apikey) == 2) {
-			$this->apikey = $apikey;
+			$this->apikey = $apikey[1];
 		}
 	}
 
@@ -42,6 +42,8 @@ class GmapApi extends DatabaseObject {
 		if(!$this->isActive()) {
 			return;
 		}
+		
+		$res = array();
 
 		$lookupstring = urlencode(StringUtil::trim($location));
 		if(isset($this->cache_search[$lookupstring])) {
@@ -51,7 +53,7 @@ class GmapApi extends DatabaseObject {
 		$req_url = "maps.google.com";
 		$io = @fsockopen($req_url, 80, $errno, $errstr, 5 );
 		if ($io) {
-			$send  = "GET /maps/geo?q=".$lookupstring."&key=".$apikey."&output=csv HTTP/1.1\r\n";
+			$send  = "GET /maps/geo?q=".$lookupstring."&key=".$this->apikey."&output=csv HTTP/1.1\r\n";
 			$send .= "Host: maps.google.com\r\n";
 			$send .= "Accept-Language: de, en;q=0.50\r\n";
 			$send .= "Connection: Close\r\n\r\n";

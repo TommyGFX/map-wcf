@@ -20,4 +20,7 @@
 		<item name="wcf.acp.group.option.user.profile.gmap.personalMap"><![CDATA[Eigene Karten]]></item>
 		<item name="wcf.acp.group.option.user.profile.gmap.personalMap.description"><![CDATA[Kann der Benutzer eigene Karten anlegen? Wenn ja, wieviele?]]></item>
 	</category>
+	<category name="wcf.map">
+		<item name="wcf.map.copyright.small"><![CDATA[Karten Erweiterung, easy-coding.de]]></item>
+	</category>
 </language>

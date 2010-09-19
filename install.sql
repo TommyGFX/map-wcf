@@ -1,7 +1,7 @@
 CREATE TABLE wcf1_gmap_personal (
 	mapID int(10) UNSIGNED NOT NULL auto_increment,
 	userID int(10) UNSIGNED NOT NULL DEFAULT 0,
-	PRIMARY KEY  (mapID),
+	PRIMARY KEY  (mapID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE wcf1_gmap_personal_data (

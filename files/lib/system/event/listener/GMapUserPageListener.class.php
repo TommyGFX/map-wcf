@@ -10,34 +10,56 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class GMapUserPageListener implements EventListener {
+	protected $coordinate = null;
+	protected $personal_maps = array();
+	protected $userID = 0;
 
 	/**
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		
-		
-		return; // TODO: disabled
-	
+		$this->eventObj = $eventObj;
+		$this->className = $className;
+
 		$this->$eventName();
 	}
 	
 	protected function readData() {
+		$this->userID = $this->eventObj->frame->getUserID();
 		
+		// read user location
+		$sql = 'SELECT		X(pt) AS lon,
+					Y(pt) AS lat
+			FROM		wcf'.WCF_N.'_gmap_user
+			WHERE		userID = '.intval($this->userID);
+		$result = WCF::getDB()->sendQuery($sql);
+		$this->coordinate = WCF::getDB()->fetchArray($result);
+		
+		// read personal maps
+		if(false) { // TODO: feature disabled for the moment
+			$sql = 'SELECT		mapID
+				FROM		wcf'.WCF_N.'_gmap_personal
+				WHERE		userID = '.intval($this->userID);
+			$result = WCF::getDB()->sendQuery($sql);
+			while ($row = WCF::getDB()->fetchArray($result)) {
+				$this->personal_maps[] = $row;
+			}
+		}
 	}
 	
 	protected function assignVariables() {
-
-		WCF::getTPL()->assign(array(
-			'user' => $user,
-			'gmap_map_key' => $this->map_key
-		));
-
-		// if user position exists
-		WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
+		if($this->coordinate) {
+			WCF::getTPL()->assign(array(
+				'coordinate' => $this->coordinate
+			));
+			// if user position exists
+			WCF::getTPL()->append('additionalBoxes2', WCF::getTPL()->fetch('userProfileMapSide'));
+		}
 
 		// if user is owner or user has personal maps
-		WCF::getTPL()->append('additionalContents3', WCF::getTPL()->fetch('userProfileMapCenter'));
+		if(WCF::getUser()->userID == $this->userID || $this->personal_maps) {
+			WCF::getTPL()->append('additionalContents3', WCF::getTPL()->fetch('userProfileMapCenter'));
+		}
 	}
 }
 ?>

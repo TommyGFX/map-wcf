@@ -1,8 +1,6 @@
 <?php
 require_once(WCF_DIR.'lib/data/message/bbcode/BBCodeParser.class.php');
 require_once(WCF_DIR.'lib/data/message/bbcode/BBCode.class.php');
-require_once(WCF_DIR.'lib/util/MapDiscover.class.php');
-require_once(WCF_DIR.'lib/util/BoundsUtil.class.php');
 
 /**
  * Fetchs position data from google maps and stores them in database
@@ -12,8 +10,6 @@ require_once(WCF_DIR.'lib/util/BoundsUtil.class.php');
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapBBCode implements BBCode {
-	// map key default setting
-	public $map_key = MAP_API;
 
 	/**
 	 * parses GPX data
@@ -83,12 +79,15 @@ class MapBBCode implements BBCode {
 	 * parses geocoder request
 	 * e.g. Berlin deutschland
 	 */
-	private function parseGeocoder($data, &$stream, &$zoom) {
+	private function parseGeocoder(&$data, &$stream, &$zoom) {
 		$first = array_shift($data);
-
-		$google = new MapDiscover();
-		$res = $google->search($first);
-		$stream[] = $res['x'].','.$res['y'];
+		
+		require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
+		$api = new GmapApi();
+		$res = $api->search($first);
+		if($res) {
+			$stream[] = $res['lat'].','.$res['lon'];
+		}
 
 		if(count($data) > 0) {
 			$this->parseGeocoder($data, $stream, $zoom);
@@ -101,6 +100,7 @@ class MapBBCode implements BBCode {
 	private function show($stream, $zoom) {
 		$bounds = new BoundsUtil();
 		$id = rand();
+
 		$code = '<div id="map'.$id.'" style="width: 100%; height: 300px;"></div>
 		<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;key='.$this->map_key.'&amp;oe='.CHARSET.'" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -153,6 +153,10 @@ class MapBBCode implements BBCode {
 	 * @see BBCode::getParsedTag()
 	 */
 	public function getParsedTag($openingTag, $content, $closingTag, BBCodeParser $parser) {
+
+		// TODO: feature disabled
+		return $content;
+	
 		$zoom = isset($openingTag['attributes'][0]) ? $openingTag['attributes'][0] : null;
 		$content = explode("\n", StringUtil::unifyNewlines($content));
 		

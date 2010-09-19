@@ -80,11 +80,11 @@ class GmapCluster {
 
 			/* Compare against all markers which are left. */
 			foreach ($markers as $key => $target) {
-				$pixels = $this->pixelDistance($marker['lat'], $marker['lon'], $target['lat'], $target['lon'], $zoom);
+				$pixels = $this->pixelDistance($marker['lat'], $marker['lon'], $target['lat'], $target['lon'], $this->zoom);
 
 				/* If two markers are closer than given distance remove */
 				/* target marker from array and add it to cluster.	  */
-				if ($distance > $pixels) {
+				if ($this->distance > $pixels) {
 					unset($markers[$key]);
 					$cluster[] = $target;
 				}

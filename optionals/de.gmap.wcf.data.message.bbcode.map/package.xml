@@ -16,7 +16,7 @@
 
 	<requiredpackages>
 		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.message.bbcode</requiredpackage>
-		<requiredpackage minversion="1.3.0">de.gmap.wcf.data.page.map</requiredpackage>
+		<requiredpackage minversion="2.0.0 RC 1">de.gmap.wcf.data.page.map</requiredpackage>
 	</requiredpackages>
 
 	<instructions type="install">
