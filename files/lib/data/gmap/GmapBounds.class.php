@@ -3,11 +3,10 @@
 /**
  * gets several positions and builds the bounding box
  *
- * @package     de.gmap.wcf.util
  * @author      Torben Brodt
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
-class BoundsUtil {
+class GmapBounds {
 	public $left = 0, $right = 0, $bottom = 0, $top = 0;
 
 	/**

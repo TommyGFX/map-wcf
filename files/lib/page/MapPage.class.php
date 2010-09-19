@@ -10,7 +10,7 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapPage extends AbstractPage {
-	public $templateName = 'MapPage';
+	public $templateName = 'mapOverview';
 
          /**
          * @see Page::assignVariables()

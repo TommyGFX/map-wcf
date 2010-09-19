@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 
 /**
- * instantly updates geoposition
+ * instantly updates geoposition, using my maps from http://gmaps-samples.googlecode.com/svn/trunk/poly/mymapstoolbar.html
  *
  * @package     de.gmap.wcf
  * @author      Torben Brodt

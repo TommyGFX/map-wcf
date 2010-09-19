@@ -1,16 +1,19 @@
 <?php
 
-class Gmap extends Foo {
+/**
+ * gets several positions and returns a clustered array
+ *
+ * @author	Torben Brodt
+ * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
+ */
+class Gmap extends DatabaseObject {
         
         /**
 	 * ask google for geopositions
 	 * @param location
 	 */
 	public static function search($location) {
-		$res = array(
-			'x' => 0,
-			'y' => 0
-		);
+		$res = null;
 
 		$lookupstring = urlencode(trim($location));
 
@@ -26,8 +29,10 @@ class Gmap extends Foo {
 			while (!feof($io)) {
 				$send = fgets($io, 4096);
 				if (preg_match('/^200,[^,]+,([^,]+),([^,]+)$/', $send, $hits)) {
-					$res['x'] = trim($hits[1]);
-					$res['y'] = trim($hits[2]);
+					$res = array(
+						'lat' => trim($hits[1]),
+						'lon' => trim($hits[2])
+					);
 					break;
 				}
 			}
@@ -35,40 +40,5 @@ class Gmap extends Foo {
 		}
 		
 		return $res;
-	}
-
-	/**
-	 * try to update database position
-	 *
-	 * @param location
-	 */
-	public static function update($location) {
-		$column = "userOption".User::getUserOptionID('location');
-		if(empty($column)) return;
-
-		// ask geocoder
-		$res = self::search($street, $zip, $city, $country);
-
-		// update all locations
-		$sql = "UPDATE		wcf".WCF_N."_user
-			USING		wcf".WCF_N."_user_option_value
-			INNER JOIN	wcf".WCF_N."_user USING(userID)
-			SET 		coords = PointFromText('POINT(".$res['x']." ".$res['y'].")')
-			WHERE		".$column." = '".escapeString($location)."';";
-		WCF::getDB()->sendQuery($sql);
-	}
-        
-        /**
-         *
-         * @param pt1 -> point1 in format array(lat, lng)
-         * @param pt2 -> point2 in format array(lat, lng)
-         */
-        public static function getDistance($pt1, $pt2) {
-        	$lat1 = $pt1[0];
-        	$lng1 = $pt1[1];
-        	$lat2 = $pt2[0];
-        	$lng2 = $pt2[1];
-
-		return round(acos((sin($lat1) * sin($lat2)) + (cos($lat1) * cos($lat2) * cos($lng1 - $lng2))) * 6380 / 100 * 1.609344,2);
 	}
 }
