@@ -17,24 +17,5 @@
 			<eventname>readData</eventname>
 			<listenerclassfile>lib/system/event/listener/GMapUserPageListener.class.php</listenerclassfile>
 		</eventlistener>
-		<eventlistener>
-			<eventclassname>UserPage</eventclassname>
-			<eventname>readParameters</eventname>
-			<listenerclassfile>lib/system/event/listener/GMapUserPageListener.class.php</listenerclassfile>
-		</eventlistener>
-		<!-- admin -->
-		<eventlistener>
-			<eventClassName>OptionForm</eventClassName>
-			<eventName>assignVariables</eventName>
-			<environment>admin</environment>
-			<listenerClassFile>lib/system/event/listener/GMapOptionFormListener.class.php</listenerClassFile>
-		</eventlistener>
-		<eventlistener>
-			<eventClassName>UserEditForm</eventClassName>
-			<eventName>saved</eventName>
-			<environment>admin</environment>
-			<listenerClassFile>lib/system/event/listener/GMapUserProfileEditFormListener.class.php</listenerClassFile>
-		</eventlistener>
-		<!-- /admin -->
 	</import>
 </data>

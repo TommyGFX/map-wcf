@@ -3,19 +3,13 @@
 <data>	
 	<import>
 		<categories>
-			<category name="general.gmap.personal">
-				<parent>general.gmap</parent>
+			<category name="user.profile.gmap">
+				<parent>user.profile</parent>
 			</category>
 		</categories>
 		<options>
-			<option name="general.gmap.personalMap">
-				<categoryname>general.gmap.personal</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-				<enableoptions>general.gmap.personalMap.count</enableoptions>
-			</option>
-			<option name="general.gmap.personalMap.count">
-				<categoryname>general.gmap.personal</categoryname>
+			<option name="user.profile.gmap.personalMap">
+				<categoryname>user.profile.gmap</categoryname>
 				<optiontype>integer</optiontype>
 				<defaultvalue>5</defaultvalue>
 			</option>

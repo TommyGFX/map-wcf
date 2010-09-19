@@ -25,22 +25,7 @@
 		}
 		//]]>
 	</script>
-
-	<script type="text/javascript">
-	//<![CDATA[
-		var gmap_wcf = '{@RELATIVE_WCF_DIR}';
-		var gmap_zoom = '{lang}wcf.map.zoom{/lang}';
-		var gmap_marker = '{lang}wcf.map.marker{/lang}';
-		var gmap_url = '{lang}wcf.map.markerUrl{/lang}';
-		var gmap_title = '{lang}wcf.map.markerTitle{/lang}';
-		var gmap_info = '{lang}wcf.map.markerInfo{/lang}';
-		var gmap_save = '{lang}wcf.map.markerSave{/lang}';
-		var gmap_cancel = '{lang}wcf.map.markerCancel{/lang}';
-		var gmap_remove = '{lang}wcf.map.markerRemove{/lang}';
-	//]]>
-	</script>
-	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/labeled_marker.js"></script>
-	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/g-map.js"></script>
+	
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 </head>
 <body>
@@ -91,55 +76,6 @@
 					<img src="icon/g-map/loading.gif" alt="" />
 				</div>
 			</div>
-			
-			<script type="text/javascript">
-			//<![CDATA[
-				var dom_controls;
-				var gmap_errors = new Array('{lang}wcf.map.forbidden{/lang}', '{lang}wcf.map.tomuchentries{/lang}');
-				var ajax_filter = new Object();
-				ajax_filter.markers = true;
-				var map = new GMap2(document.getElementById("map"));
-				var center = new GLatLng({@MAP_BIGMAP_CENTER});
-				map.setCenter(center, {@MAP_BIGMAP_ZOOM});
-				{if $additionalVars|isset}{@$additionalVars}{/if}
-
-				{if MAP_BIGMAP_CTL_MOUSEWHEELZOOM}map.enableScrollWheelZoom();{/if}
-				{if MAP_BIGMAP_CTL_NAVI}map.addControl(new GSmallMapControl());{/if}
-				{if MAP_BIGMAP_CTL_TYPE}
-					map.addMapType(G_PHYSICAL_MAP);
-					map.addMapType(G_SATELLITE_3D_MAP);
-					map.addControl(new GHierarchicalMapTypeControl());
-				{/if}
-				{if MAP_BIGMAP_CTL_SCAL}map.addControl(new GScaleControl());{/if}
-				{if MAP_BIGMAP_CTL_OVER}map.addControl(new GOverviewMapControl());{/if}
-				{if MAP_BIGMAP_TYPE == "m"}map.setMapType(G_NORMAL_MAP);{/if}
-				{if MAP_BIGMAP_TYPE == "h"}map.setMapType(G_HYBRID_MAP);{/if}
-				{if MAP_BIGMAP_TYPE == "s"}map.setMapType(G_SATELLITE_MAP);{/if}
-				
-				// show filter team
-				{if MAP_BIGMAP_GROUPFILTER == "i"}dom_controls = document.getElementById('gmap_controls');{/if}
-				{if MAP_BIGMAP_GROUPFILTER == "s"}dom_controls = document.getElementById('gmap_controls_sub');{/if}
-				{if MAP_BIGMAP_GROUPFILTER != "n" && MAP_GROUP_TEAM}
-					{if $this->user->getPermission("user.map.canViewPersonal")}
-					gAddGroup(function(){ gFilterOption('markers', this.checked); }, '{lang}wcf.map.marker{/lang}', ajax_filter.markers);
-					{/if}
-					{foreach from=$gmap_groups item=$group}
-					gAddGroup(function(){ gFilter('{$group[0]}', this.checked); },'{$group[1]}', {if $group[2]}1{else}0{/if});
-				        {/foreach}
-			        {/if}
-			        
-			        // show filter buttons
-			        {if $additionalFilters|isset}{@$additionalFilters}{/if}
-			        
-			        // load users
-			        {foreach from=$gmap_users item=$user}
-				gAddUser({$user});
-			        {/foreach}
-				
-				// load markers into the map
-				gMap('{$gmap_type}');
-			//]]>
-			</script>
 	  	</div>
 	  	<a href="http://trac.easy-coding.de/trac/g-map" class="externalURL" style="float:right">{lang}wcf.map.copyright_small{/lang}</a>
 	</div>

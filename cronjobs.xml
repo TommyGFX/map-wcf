@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE import SYSTEM "DTD/import.dtd">
-<data>
-	<delete>
-		<cronjob>
-			<classPath>lib/system/cronjob/CoordCronjob.class.php</classPath>
-		</cronjob>
-	</delete>
-</data>

@@ -19,9 +19,17 @@ class GMapUserProfileEditFormListener implements EventListener {
 		$this->eventObj = $eventObj;
 		$this->className = $className;
 		
+		
+	}
+	
+	protected function saved() {
 		if($this->eventObj->activeCategory == 'profile' && $eventName == 'saved') {
 			if(isset($this->eventObj->values['location']) && !empty($this->eventObj->values['location'])) {
-				MapDiscover::update($this->eventObj->values['location']);
+				
+				// update user location
+				// MapDiscover::update();
+				
+				// show info message if no location was found
 			}
 		}
 	}

@@ -3,51 +3,11 @@
 <data>
 	<import>
 		<options>
-			<option name="map_bigmap_max_entrys">
-				<categoryname>map.bigmap</categoryname>
-				<optiontype>text</optiontype>
-				<defaultvalue>200</defaultvalue>
-			</option>
-			<option name="map_usermap_show_right">
-				<categoryname>map.usermap</categoryname>
+			<option name="module_gmap">
+				<categoryname>module.user</categoryname>
 				<optiontype>boolean</optiontype>
-				<defaultvalue><![CDATA[1]]></defaultvalue>
-			</option>
-			<option name="map_usermap_show_center">
-				<categoryname>map.usermap</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue><![CDATA[0]]></defaultvalue>
+				<defaultvalue>1</defaultvalue>
 			</option>
 		</options>
 	</import>
-	
-	<delete>
-		<category name="map"/>
-		<category name="map.general"/>
-		<category name="map.bigmap"/>
-		<category name="map.usermap"/>
-		<category name="map.groups"/>
-		<option name="map_usermap_heigth"/>
-		<option name="map_usermap_height"/>
-		<option name="map_usermap_width"/>
-		<option name="map_api"/>
-		<option name="map_cron_ip"/>
-		<option name="map_bigmap_center"/>
-		<option name="map_bigmap_zoom"/>
-		<option name="map_bigmap_type"/>
-		<option name="map_bigmap_ctl_navi"/>
-		<option name="map_bigmap_ctl_type"/>
-		<option name="map_bigmap_ctl_scal"/>
-		<option name="map_bigmap_ctl_over"/>
-		<option name="map_bigmap_ctl_mousewheelzoom"/>
-		<option name="map_usermap_ctl_type"/>
-		<option name="map_usermap_ctl_scal"/>
-		<option name="map_usermap_ctl_over"/>
-		<option name="map_usermap_zoom"/>
-		<option name="map_usermap_type"/>
-		<option name="map_usermap_ctl_navi"/>
-		<option name="map_bigmap_groupfilter"/>
-		<option name="map_group_team"/>
-		<option name="map_group_online"/>
-	</delete>
 </data>
