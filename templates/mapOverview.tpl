@@ -78,7 +78,7 @@
 	</ul>
 	
 	<div class="mainHeadline">
-		<img src="{icon}gmapL.png{/icon}" alt="" />
+		<img src="{icon}mapL.png{/icon}" alt="" />
 		<div class="headlineContainer">
 			<h2>{lang}wcf.header.menu.map{/lang}</h2>
 		</div>
