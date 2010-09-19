@@ -7,6 +7,7 @@
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class GmapCluster {
+
 	const OFFSET = 268435456;
 	const RADIUS = 85445659.4471; /* $self::OFFSET / pi() */
 	

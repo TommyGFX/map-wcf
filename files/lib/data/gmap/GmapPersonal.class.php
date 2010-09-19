@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * personal objects
+ *
+ * @author	Torben Brodt
+ * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
+ */
 class GmapPersonal {
 	
 	/**
