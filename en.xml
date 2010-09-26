@@ -21,6 +21,6 @@
 		<item name="wcf.acp.group.option.user.profile.gmap.personalMap.description"><![CDATA[Can the user add personal maps? If true, how many maps can he add?]]></item>
 	</category>
 	<category name="wcf.map">
-		<item name="wcf.map.copyright.small"><![CDATA[Map Extension, easy-coding.de]]></item>
+		<item name="wcf.map.copyright.small"><![CDATA[Map Development, easy-coding.de]]></item>
 	</category>
 </language>

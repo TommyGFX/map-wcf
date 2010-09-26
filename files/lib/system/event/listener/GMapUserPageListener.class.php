@@ -36,14 +36,12 @@ class GMapUserPageListener implements EventListener {
 		$this->coordinate = WCF::getDB()->fetchArray($result);
 		
 		// read personal maps
-		if(false) { // TODO: feature disabled for the moment
-			$sql = 'SELECT		mapID
-				FROM		wcf'.WCF_N.'_gmap_personal
-				WHERE		userID = '.intval($this->userID);
-			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				$this->personal_maps[] = $row;
-			}
+		$sql = 'SELECT		mapID
+			FROM		wcf'.WCF_N.'_gmap_personal
+			WHERE		userID = '.intval($this->userID);
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$this->personal_maps[] = $row;
 		}
 	}
 	
@@ -57,6 +55,7 @@ class GMapUserPageListener implements EventListener {
 		}
 
 		// if user is owner or user has personal maps
+		// TODO: feature disabled for the moment
 		if(false && WCF::getUser()->userID == $this->userID || $this->personal_maps) {
 			WCF::getTPL()->append('additionalContents3', WCF::getTPL()->fetch('userProfileMapCenter'));
 		}

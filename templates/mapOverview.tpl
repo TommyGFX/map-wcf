@@ -4,70 +4,35 @@
 
 	{include file='headInclude' sandbox=false}
 	{include file='gmapConstants'}
+	<script type="text/javascript">
+	//<![CDATA[
+	GMAP_ZOOM = 5;
+	GMAP_ENABLE_STREETVIEW = 1; 
+	GMAP_MAP_CONTROL = 'off';
+	//]]>
+	</script>
 	<script src="{@RELATIVE_WCF_DIR}js/gmap/Map.class.js" type="text/javascript"></script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 	<script type="text/javascript">
-		//<![CDATA[
-		if (GMAP_API_KEY != '')  { 
-			document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
-			onloadEvents.push(function() {
-				if (GBrowserIsCompatible()) {
-
-					var AjaxMap = function(url, divID, switchable) {
-						this.url = url;
-						this.constructor(divID, switchable);
-
-						this.update = function() {
-							url = this.url;
-							
-							if(this.mapInitialized) {
-								url += '&zoom='+this.gmap.getZoom();
-								url += '&bounds='+this.gmap.getBounds();
-								url += '&initialized=1';
-							}
-
-							var ajaxRequest = new AjaxRequest();
-							ajaxRequest.openGet(url + SID_ARG_2ND, function(map) {
-								return function() {
-									if(ajaxRequest.xmlHttpRequest.readyState == 4 && ajaxRequest.xmlHttpRequest.status == 200) {
-										var data = eval('(' + ajaxRequest.xmlHttpRequest.responseText + ')');
-										var coordinates;
-
-										if(map.mapInitialized) {
-											map.gmap.clearOverlays();
-											for(var i in data) {
-												coordinates = new GLatLng(data[i].lat, data[i].lon);
-												map.gmap.addOverlay(new GMarker(coordinates));
-											}
-										} else {
-											coordinates = new GLatLng(data[0].lat, data[0].lon);
-											map.setCoordinates(coordinates);
-											map.gmap.clearOverlays();
-											
-											map.update();
-											map.setEvents();
-										}
-									}
-								};
-							}(this));
-						};
-						
-						this.setEvents = function() {
-							GEvent.addListener(this.gmap, "moveend", function(map) {
-								return function() {
-									map.update();
-								}
-							}(this));
-						}
-					};
-					AjaxMap.prototype = new Map();
-
-					gmap = new AjaxMap('index.php?page=MapAjax', 'gmap');
-					gmap.update();
-				}
-			});
-		}
-		//]]>
+	//<![CDATA[
+	if (GMAP_API_KEY != '')  { 
+		document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
+		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/ClusterMarker.class.js" type="text/javascript"><\/script>');
+		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/StreetViewControl.class.js" type="text/javascript"><\/script>');
+		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/AjaxMap.class.js" type="text/javascript"><\/script>');
+		onloadEvents.push(function() {
+			if (GBrowserIsCompatible()) {
+				gmap = new AjaxMap('index.php?page=MapAjax', 'gmap');
+				gmap.registerEvent(function(map) {
+					return function() {
+						if(GMAP_ENABLE_STREETVIEW) map.gmap.addControl(new StreetViewControl());
+					}
+				}(gmap));
+				gmap.update();
+			}
+		});
+	}
+	//]]>
 	</script>
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>
