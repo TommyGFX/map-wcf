@@ -52,6 +52,9 @@ class MapAjaxPage extends AbstractPage {
 		
 		// just get bounds
 		$this->initialized = isset($_GET['initialized']) && $_GET['initialized'];
+		
+		// load content
+		$this->content = isset($_GET['content']) && $_GET['content'];
 	}
 	
         /**

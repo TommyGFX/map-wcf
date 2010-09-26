@@ -22,7 +22,7 @@
 		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/AjaxMap.class.js" type="text/javascript"><\/script>');
 		onloadEvents.push(function() {
 			if (GBrowserIsCompatible()) {
-				gmap = new AjaxMap('index.php?page=MapAjax', 'gmap');
+				var gmap = new AjaxMap('index.php?page=MapAjax', 'gmap');
 				gmap.registerEvent(function(map) {
 					return function() {
 						if(GMAP_ENABLE_STREETVIEW) map.gmap.addControl(new StreetViewControl());

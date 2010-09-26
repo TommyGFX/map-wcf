@@ -44,7 +44,11 @@ class MapBBCode implements BBCode {
 	private function parseCoordinate($data, &$stream, &$zoom) {
 		$first = array_shift($data);
 		
-		$stream[] = $first;
+		list($lat, $lon) = explode(",", $first);
+		$stream[] = array(
+			'lat' => $lat,
+			'lon' => $lon
+		);
 
 		if(count($data) > 0) {
 			$this->parseCoordinate($data, $stream, $zoom);
@@ -60,10 +64,18 @@ class MapBBCode implements BBCode {
 
 		$url = parse_url($first);
 		parse_str($url['query'], $output);
-		if(isset($output['ll'])) {
-			$stream[] = $output['ll'];
-		} else if(isset($output['sll'])) {
-			$stream[] = $output['sll'];
+		if(isset($output['ll']) && $output['ll']) {
+			list($lat, $lon) = explode(",", $output['ll']);
+			$stream[] = array(
+				'lat' => $lat,
+				'lon' => $lon
+			);
+		} else if(isset($output['sll']) && $output['sll']) {
+			list($lat, $lon) = explode(",", $output['sll']);
+			$stream[] = array(
+				'lat' => $lat,
+				'lon' => $lon
+			);
 		}
 
 		if(isset($output['z'])) {
@@ -86,7 +98,10 @@ class MapBBCode implements BBCode {
 		$api = new GmapApi();
 		$res = $api->search($first);
 		if($res) {
-			$stream[] = $res['lat'].','.$res['lon'];
+			$stream[] = array(
+				'lat' => $res['lat'],
+				'lon' => $res['lon']
+			);
 		}
 
 		if(count($data) > 0) {
@@ -98,54 +113,10 @@ class MapBBCode implements BBCode {
 	 *
 	 */
 	private function show($stream, $zoom) {
-		$bounds = new BoundsUtil();
-		$id = rand();
-
-		$code = '<div id="map'.$id.'" style="width: 100%; height: 300px;"></div>
-		<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;key='.$this->map_key.'&amp;oe='.CHARSET.'" type="text/javascript"></script>
-		<script type="text/javascript">
-		//<![CDATA[
-		onloadEvents.push(function() {
-		var map = new GMap2(document.getElementById("map'.$id.'"));'."\n";
-		
-		if(count($stream) == 0) {
-			$stream[] = '37.425525,-122.085743'; // Google Inc
-		}
-
-		// line
-		$line = "var line = new Array();\n";
-		foreach($stream as $pt) {
-			list($lat,$lng) = explode(',',$pt);
-			$bounds->add($lat, $lng);
-
-			$line .= "line.push(new GLatLng(".$pt."));\n";
-			$line .= "map.addOverlay(new GMarker(new GLatLng(".$pt.")));\n";
-		}
-		$line .= "map.addOverlay(new GPolyline(line));\n";
-
-		if(count($stream) > 1) {
-			list($left,$top,$right,$bottom) = explode(',', $bounds->__toString());
-			$centerx = ($left+$right)/2;
-			$centery = ($top+$bottom)/2;
-			$gzoom = $zoom === null ? 'map.getBoundsZoomLevel(bound)' : $zoom;
-			$code .= 'var bound = new GLatLngBounds();
-			bound.extend(new GLatLng('.$left.', '.$bottom.'));
-			bound.extend(new GLatLng('.$right.', '.$top.'));
-			map.setCenter(new GLatLng('.$centerx.', '.$centery.'), '.$gzoom.');'."\n";
-		} else {
-			$gzoom = $zoom === null ? 8 : $zoom;
-			$code .= "map.setCenter(new GLatLng(".$stream[0]."), ".$gzoom.");\n";
-		}
-
-		$code .= $line;
-		
-		$code .= "map.addControl(new GSmallMapControl());
-		map.addMapType(G_PHYSICAL_MAP);
-		map.setMapType(G_HYBRID_MAP);
-		map.addControl(new GHierarchicalMapTypeControl());
-		});
-		//]]></script>";
-		return $code;
+		WCF::getTPL()->assign(array(
+			'bbcodemap_data' => $stream
+		));
+		return WCF::getTPL()->fetch('mapBBCode');
 	}
 	
 
@@ -153,9 +124,6 @@ class MapBBCode implements BBCode {
 	 * @see BBCode::getParsedTag()
 	 */
 	public function getParsedTag($openingTag, $content, $closingTag, BBCodeParser $parser) {
-
-		// TODO: feature disabled
-		return $content;
 	
 		$zoom = isset($openingTag['attributes'][0]) ? $openingTag['attributes'][0] : null;
 		$content = explode("\n", StringUtil::unifyNewlines($content));
