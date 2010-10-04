@@ -7,6 +7,7 @@
 		<packagedescription language="de"><![CDATA[Dieses Paket optimiert einige G-Map Funktionen, wenn das Paket im WBB aufgerufen wird.]]></packagedescription>
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute quelques optimisations WBB à la G-Map pour le WCF.]]></packagedescription>
 		<packagedescription language="tr"><![CDATA[Bu Paket G-Mapin Bazi Özelliklerini WBB Uyarliyor.]]></packagedescription>
+		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge alcune ottimizzazioni WBB al G-Map per WCF.]]></packagedescription>
 		<isunique>0</isunique>
 		<version>2.0.0 RC 1</version>
 		<date>DATE</date>
@@ -28,6 +29,7 @@
 		<eventlistener>eventlistener.xml</eventlistener>
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="en">en.xml</languages>
+		<languages languagecode="it">it.xml</languages>
 	</instructions>
 
 	<instructions type="update" fromversion="2.0.0 RC 1">

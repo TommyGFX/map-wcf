@@ -7,6 +7,7 @@
 		<packagedescription language="de"><![CDATA[Dieses Paket fügt ihrem Forum eine Google-Maps Karte hinzu.]]></packagedescription>
 		<packagedescription language="fr"><![CDATA[Ce paquet ajoute une carte Google Map à vos forums.]]></packagedescription>
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
+		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge una mappa di Google sul tuo forum.]]></packagedescription>
 		<isunique>1</isunique>
 		<version>2.0.0 RC 2</version>
 		<date>DATE</date>
@@ -23,7 +24,6 @@
 		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
 		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.gmap</requiredpackage>
 	</requiredpackages>
-	
 	<optionalpackages>
 		<optionalpackage file="optionals/de.gmap.wbb.tar.gz">de.gmap.wbb</optionalpackage>
 		<optionalpackage file="optionals/de.gmap.wcf.data.message.bbcode.map.tar.gz">de.gmap.wcf.data.message.bbcode.map</optionalpackage>
@@ -36,6 +36,7 @@
 		<pagelocation>pagelocation.xml</pagelocation>
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="en">en.xml</languages>
+		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<pagemenu>pagemenu.xml</pagemenu>
 		<options>options.xml</options>
