@@ -47,7 +47,13 @@ function ClusterMarker(latlng, count, imgdir) {
 	 */
 	this.getLatLng = function() {
 		return this.latlng_;
-	}
+	};
+	
+	this.openInfoWindowHtml = function(html) {
+		var window = this.map_.getInfoWindow();
+		window.reset(this.getLatLng(), [new GInfoWindowTab("", html)]);
+		window.show();
+	};
 }
 
 ClusterMarker.prototype = new GOverlay();

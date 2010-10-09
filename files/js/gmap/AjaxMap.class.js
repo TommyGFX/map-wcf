@@ -15,10 +15,11 @@ var AjaxMap = function(url, divID, switchable) {
 	};
 	
 	/**
-	 * called in content GMarker or ClusterMarker
+	 * 
 	 */
-	this.fireClickEvent = function() {
-		alert(this.getLatLng());
+	this.fireClickEvent = function(marker) {
+		marker.openInfoWindowHtml(marker.getLatLng() + "\nzoom: " + this.gmap.getZoom());
+		// start ajax request for ClusterMarker here
 	};
 
 	this.update = function() {
@@ -52,7 +53,11 @@ var AjaxMap = function(url, divID, switchable) {
 								marker = new GMarker(coordinates);
 							}
 
-							GEvent.addListener(marker, "click", map.fireClickEvent);
+							GEvent.addListener(marker, "click", function(map, marker) {
+								return function() {
+									map.fireClickEvent(marker);
+								};
+							}(map, marker));
 							map.gmap.addOverlay(marker);
 						}
 					} else {
