@@ -25,10 +25,9 @@ if (GMAP_API_KEY != '') {
 			if (GBrowserIsCompatible()) {
 				var marker, coordinates;
 				var data = {@$bbcodemap_data|json_encode};
-				var j = 0;
-				for(var i in data) {
+				for(var i=0; i<data.length; i++) {
 					coordinates = new GLatLng(data[i].lat, data[i].lon);
-					if(j++ == 0) {
+					if(i == 0) {
 						gmap.setCoordinates(coordinates);
 						gmap.gmap.clearOverlays();
 						gmap.runEvents();
