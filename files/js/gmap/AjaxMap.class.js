@@ -23,6 +23,7 @@ var AjaxMap = function(url, divID, switchable) {
 	};
 
 	this.update = function() {
+		// TODO: only run ajax update when leaving bounding box (extra 30%)
 		url = this.url;
 		
 		if(this.mapInitialized) {

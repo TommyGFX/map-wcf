@@ -43,6 +43,7 @@ class MapAjaxPage extends AbstractPage {
 				);
 
 				// extra 30%
+				// TODO: let javascript control the bounding box
 				$this->bounds[0]['lat'] -= abs($this->bounds[0]['lat'] - $this->bounds[1]['lat']) * 0.3;
 				$this->bounds[1]['lat'] += abs($this->bounds[0]['lat'] - $this->bounds[1]['lat']) * 0.3;
 				$this->bounds[0]['lon'] -= abs($this->bounds[0]['lon'] - $this->bounds[1]['lon']) * 0.3;
