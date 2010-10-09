@@ -13,6 +13,13 @@ var AjaxMap = function(url, divID, switchable) {
 	this.registerEvent = function(callback) {
 		this.events.push(callback);
 	};
+	
+	/**
+	 * called in content GMarker or ClusterMarker
+	 */
+	this.fireClickEvent = function() {
+		alert(this.getLatLng());
+	};
 
 	this.update = function() {
 		url = this.url;
@@ -38,13 +45,14 @@ var AjaxMap = function(url, divID, switchable) {
 							if(data[i].count) {
 								marker = new ClusterMarker(
 									new GLatLng(data[i].lat, data[i].lon),
-									data[i].count
+									data[i].count,
+									RELATIVE_WCF_DIR + 'icon/gmap/'
 								);
 							} else {
 								marker = new GMarker(coordinates);
 							}
-							
-							
+
+							GEvent.addListener(marker, "click", map.fireClickEvent);
 							map.gmap.addOverlay(marker);
 						}
 					} else {
