@@ -50,9 +50,7 @@ function ClusterMarker(latlng, count, imgdir) {
 	};
 	
 	this.openInfoWindowHtml = function(html) {
-		var window = this.map_.getInfoWindow();
-		window.reset(this.getLatLng(), [new GInfoWindowTab("", html)]);
-		window.show();
+		this.map_.openInfoWindowHtml(this.getLatLng(), html);
 	};
 }
 

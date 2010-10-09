@@ -9,7 +9,7 @@
 		<packagedescription language="tr"><![CDATA[Bu Paket G-Mapin Bazi Özelliklerini WBB Uyarliyor.]]></packagedescription>
 		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge alcune ottimizzazioni WBB al G-Map per WCF.]]></packagedescription>
 		<isunique>0</isunique>
-		<version>2.0.0 RC 1</version>
+		<version>2.0.0 RC 3</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wbb</plugin>
 	</packageinformation>
@@ -32,7 +32,8 @@
 		<languages languagecode="it">it.xml</languages>
 	</instructions>
 
-	<instructions type="update" fromversion="2.0.0 RC 1">
+	<instructions type="update" fromversion="2.0.0 RC 2">
 		<files>files.tar</files>
+		<languages languagecode="it">it.xml</languages>
 	</instructions>
 </package>

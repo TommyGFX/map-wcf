@@ -13,12 +13,12 @@ require_once(WCF_DIR.'lib/data/gmap/GmapCluster.class.php');
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapAjaxPage extends AbstractPage {
+	public $action = '';
 	protected $zoom = 0;
 	protected $distance = 35;
 	protected $bounds= array();
-	protected $initialized = false;
 	
-	protected $markers = array();
+	protected $datapoints = array();
 	
         /**
          * @see Page::readData()
@@ -41,21 +41,18 @@ class MapAjaxPage extends AbstractPage {
 						'lon' => $match[4]
 					),
 				);
-
-				// extra 30%
-				// TODO: let javascript control the bounding box
-				$this->bounds[0]['lat'] -= abs($this->bounds[0]['lat'] - $this->bounds[1]['lat']) * 0.3;
-				$this->bounds[1]['lat'] += abs($this->bounds[0]['lat'] - $this->bounds[1]['lat']) * 0.3;
-				$this->bounds[0]['lon'] -= abs($this->bounds[0]['lon'] - $this->bounds[1]['lon']) * 0.3;
-				$this->bounds[1]['lon'] += abs($this->bounds[0]['lon'] - $this->bounds[1]['lon']) * 0.3;
 			}
 		}
 		
 		// just get bounds
-		$this->initialized = isset($_GET['initialized']) && $_GET['initialized'];
+		$this->action = $_GET['action'];
 		
 		// load content
 		$this->content = isset($_GET['content']) && $_GET['content'];
+		
+		// coordinates
+		$this->lat = isset($_GET['lat']) ? floatval($_GET['lat']) : 0;
+		$this->lon = isset($_GET['lon']) ? floatval($_GET['lon']) : 0;
 	}
 	
         /**
@@ -66,7 +63,8 @@ class MapAjaxPage extends AbstractPage {
 		
 		$markers = array();
 
-		$sql = 'SELECT		X(pt) AS lon,
+		$sql = 'SELECT		'.($this->action == 'pick' ? 'userID AS id,' : '').'
+					X(pt) AS lon,
 					Y(pt) AS lat
 			FROM		wcf'.WCF_N.'_gmap_user
 			WHERE		1';
@@ -76,7 +74,7 @@ class MapAjaxPage extends AbstractPage {
 			$sql .= ' AND Y(pt) BETWEEN '.floatval($this->bounds[0]['lat']).' AND '.floatval($this->bounds[1]['lat']).' ';
 		}
 			
-		if(!$this->initialized) {
+		if(!$this->action == 'initialize') {
 			$sql = 'SELECT	AVG(lon) AS lon,
 					AVG(lat) AS lat
 				FROM (
@@ -90,7 +88,17 @@ class MapAjaxPage extends AbstractPage {
 		}
 		
 		$cluster = new GmapCluster($this->distance, $this->zoom);
-		$this->markers = $cluster->getMarkers($markers);
+		if($this->action == 'pick') {
+			require_once(WCF_DIR.'lib/data/user/User.class.php');
+			$ids = $cluster->getIDs($markers, $this->lat, $this->lon);
+			$this->datapoints = User::getUsers(implode(",", $ids));
+			$this->datapoints = array_map(create_function('$a', 'return array(
+				intval($a->userID),
+				$a->username
+			);'), $this->datapoints);
+		} else {
+			$this->datapoints = $cluster->getMarkers($markers);
+		}
         }
 
         /**
@@ -99,7 +107,7 @@ class MapAjaxPage extends AbstractPage {
         public function show() {
 		parent::show();
 
-		echo json_encode($this->markers);
+		echo json_encode($this->datapoints);
         }
 }
 ?>
