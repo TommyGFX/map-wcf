@@ -23,7 +23,7 @@ var AjaxMap = function(url, divID, switchable) {
 	 */
 	this.fireClickEvent = function(marker) {
 		var id = ++this.requestCounter;
-		marker.openInfoWindowHtml('<div id="info-'+id+'">...</div>');
+		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-'+id+'">...</div>');
 		
 		var url = this.url;
 		url += '&zoom='+this.zoomUsed;
