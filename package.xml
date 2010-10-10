@@ -9,7 +9,7 @@
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge una mappa di Google sul tuo forum.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>2.0.0 RC 3</version>
+		<version>2.0.0</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -24,6 +24,7 @@
 		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
 		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.gmap</requiredpackage>
 	</requiredpackages>
+
 	<optionalpackages>
 		<optionalpackage file="optionals/de.gmap.wbb.tar.gz">de.gmap.wbb</optionalpackage>
 		<optionalpackage file="optionals/de.gmap.wcf.data.message.bbcode.map.tar.gz">de.gmap.wcf.data.message.bbcode.map</optionalpackage>
@@ -43,8 +44,17 @@
 		<eventlistener>eventlistener.xml</eventlistener>
 	</instructions>
 	
+	<instructions type="update" fromversion="2.0.0 RC 3">
+		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<languages languagecode="it">it.xml</languages>
+		<sql>update.sql</sql>
+        </instructions>
+	
 	<instructions type="update" fromversion="2.0.0 RC 2">
 		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
 		<languages languagecode="it">it.xml</languages>
+		<sql>update.sql</sql>
         </instructions>
 </package>

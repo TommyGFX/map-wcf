@@ -23,7 +23,9 @@ var AjaxMap = function(url, divID, switchable) {
 	 */
 	this.fireClickEvent = function(marker) {
 		var id = ++this.requestCounter;
-		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-'+id+'">...</div>');
+		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-'+id+'">'+
+			'<img src="' +RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />'+
+			'</div>');
 		
 		var url = this.url;
 		url += '&zoom='+this.zoomUsed;
@@ -36,18 +38,29 @@ var AjaxMap = function(url, divID, switchable) {
 		ajaxRequest.openGet(url + SID_ARG_2ND, function(map, id) {
 			return function() {
 				if(ajaxRequest.xmlHttpRequest.readyState == 4 && ajaxRequest.xmlHttpRequest.status == 200) {
-					var dom = document.getElementById('info-'+id);
+					var avatar, dom = document.getElementById('info-'+id);
 					if(!dom) {
 						return;
 					}
 					var data = eval('(' + ajaxRequest.xmlHttpRequest.responseText + ')');
-					var html = [];
+					var html = '<ul class="dataList">';
 					for(var i=0; i<data.length; i++) {
-						html.push('<a href="index.php?page=User&amp;userID=' + data[i][0] + SID_ARG_2ND + '">' + 
-							data[i][1] +
-							'</a>');
+						avatar = data[i][2] ? data[i][2] : RELATIVE_WCF_DIR + 'images/avatars/avatar-default.png';
+						html += '<li class="container-'+(i%2 == 0 ? 1 : 0)+'">'+
+								'<div class="containerIcon">'+
+									'<a href="index.php?page=User&amp;userID=' + data[i][0] + SID_ARG_2ND + '">' + 
+										'<img style="width:24px;height:24px" src="'+avatar+'" alt="" />'+
+									'</a>'+
+								'</div>'+
+								'<div class="containerContent">'+
+									'<a href="index.php?page=User&amp;userID=' + data[i][0] + SID_ARG_2ND + '">' + 
+										data[i][1] +
+									'</a>'+
+								'</div>'+
+							'</li>';
 					}
-					dom.innerHTML = html.join(', ');
+					html += '</ul>';
+					dom.innerHTML = html;
 				};
 			};
 		}(this, id));

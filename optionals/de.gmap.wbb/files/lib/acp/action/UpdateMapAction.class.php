@@ -37,6 +37,13 @@ class UpdateMapAction extends UpdateCounterAction {
 		
 		$i = 0;
 		
+		// cleanup disabled users
+		$sql = 'DELETE FROM	wcf1_gmap_user
+			USING		wcf1_gmap_user
+			LEFT JOIN 	wcf1_user ON wcf1_gmap_user.userID = wcf1_user.userID
+			WHERE		ISNULL(wcf1_user.userID)';
+		WCF::getDB()->sendQuery($sql);
+		
 		// update
 		$sql = "SELECT		userID,
 					".$col." AS loc

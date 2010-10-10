@@ -5,7 +5,7 @@
 		<packageName>G-Map BBCode</packageName>
 		<packageDescription><![CDATA[This BBCode allows you to add a map with infinite markers to your posting.]]></packageDescription>
 		<plugin>com.woltlab.wcf.data.page</plugin>
-		<version>2.0.0 RC 3</version>
+		<version>2.0.0</version>
 		<date>DATE</date>
 	</packageinformation>
 
@@ -30,6 +30,10 @@
 	</instructions>
 	
 	<instructions type="update" fromversion="2.0.0 RC 2">
+		<templates>templates.tar</templates>
+        </instructions>
+	
+	<instructions type="update" fromversion="2.0.0 RC 3">
 		<templates>templates.tar</templates>
         </instructions>
 </package>
