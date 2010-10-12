@@ -17,6 +17,12 @@
 	//<![CDATA[
 	if (GMAP_API_KEY != '')  { 
 		document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
+	}
+	//]]>
+	</script>
+	<script type="text/javascript">
+	//<![CDATA[
+	if (GMAP_API_KEY != '')  {
 		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/ClusterMarker.class.js" type="text/javascript"><\/script>');
 		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/StreetViewControl.class.js" type="text/javascript"><\/script>');
 		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/AjaxMap.class.js" type="text/javascript"><\/script>');

@@ -9,7 +9,7 @@
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge una mappa di Google sul tuo forum.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>2.0.1</version>
+		<version>2.0.2</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -45,13 +45,21 @@
 		<eventlistener>eventlistener.xml</eventlistener>
 	</instructions>
 	
+	<instructions type="update" fromversion="2.0.1">
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+        </instructions>
+	
 	<instructions type="update" fromversion="2.0.0">
 		<files>files.tar</files>
+		<templates>templates.tar</templates>
 		<languages languagecode="de-informal">de-informal.xml</languages>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.0 RC 3">
 		<files>files.tar</files>
+		<templates>templates.tar</templates>
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<pagemenu>pagemenu.xml</pagemenu>
 		<languages languagecode="it">it.xml</languages>
@@ -60,6 +68,7 @@
 	
 	<instructions type="update" fromversion="2.0.0 RC 2">
 		<files>files.tar</files>
+		<templates>templates.tar</templates>
 		<languages languagecode="de-informal">de-informal.xml</languages>
 		<pagemenu>pagemenu.xml</pagemenu>
 		<languages languagecode="it">it.xml</languages>
