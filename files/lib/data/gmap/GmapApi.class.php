@@ -18,6 +18,7 @@ class GmapApi extends DatabaseObject {
 		$res = null;
 
 		$apikey = GMAP_API_KEY;
+		$apikey = StringUtil::unifyNewlines($apikey);
 		$apikey = explode("\n", $apikey);
 		$apikey = $apikey[0];
 		$apikey = explode(":", $apikey);
