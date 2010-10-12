@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="de-informal">
+	<category name="wbb.acp.updateCounters">
+		<item name="wbb.acp.updateCounters.counter.map"><![CDATA[Karte]]></item>
+	</category>
+</language>

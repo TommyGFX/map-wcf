@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
-<language languagecode="de">
+<language languagecode="de-informal">
 	<category name="wcf.header.menu">
 		<item name="wcf.header.menu.map"><![CDATA[Karte]]></item>
 	</category>
