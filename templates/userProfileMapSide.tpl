@@ -1,7 +1,7 @@
 <div id="userProfileMap">
 	<div class="border">
 		<div class="containerHead">
-			<h3 class="containerContent">{lang}wcf.user.profile.map{/lang} </h3>
+			<h3>{lang}wcf.user.profile.map{/lang}</h3>
 		</div>
 		<div class="container-1" id="userMap">
 			<div id="userMapCanvas" style="width: 100%; height: 260px; overflow:hidden"></div>
