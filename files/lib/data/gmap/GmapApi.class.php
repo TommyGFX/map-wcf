@@ -11,24 +11,29 @@ class GmapApi extends DatabaseObject {
 	protected $cache_search = array();
 
 	/**
-	 *
+	 * creates new instance
 	 */
 	public function __construct() {
-
-		$res = null;
-
 		$apikey = GMAP_API_KEY;
-		$apikey = StringUtil::unifyNewlines($apikey);
-		$apikey = explode("\n", $apikey);
+		$apikey = explode("\n", StringUtil::unifyNewlines($apikey));
 		$apikey = $apikey[0];
 		$apikey = explode(":", $apikey);
+		
+		// this is the way, woltlab wants the users to enter their api key
 		if(count($apikey) == 2) {
 			$this->apikey = $apikey[1];
+		}
+
+		// this is the way, almost all of the woltlab users really enter their api key
+		else if(!empty($apikey)) {
+			$this->apikey = $apikey[0];
 		}
 	}
 
 	/**
 	 * is active? api key existent?
+	 *
+	 * @return	boolean
 	 */
 	public function isActive() {
 		return !empty($this->apikey);
@@ -36,42 +41,36 @@ class GmapApi extends DatabaseObject {
         
         /**
 	 * ask google for geopositions
-	 * @param location
+	 * 
+	 * @param 	$location		string
+	 * @return				array<float>	keys are lat and lon
 	 */
 	public function search($location) {
 
 		if(!$this->isActive()) {
 			return;
 		}
-		
-		$res = array();
 
 		$lookupstring = urlencode(StringUtil::trim($location));
 		if(isset($this->cache_search[$lookupstring])) {
 			return $this->cache_search[$lookupstring];
 		}
-
-		$req_url = "maps.google.com";
-		$io = @fsockopen($req_url, 80, $errno, $errstr, 5 );
-		if ($io) {
-			$send  = "GET /maps/geo?q=".$lookupstring."&key=".$this->apikey."&output=csv HTTP/1.1\r\n";
-			$send .= "Host: maps.google.com\r\n";
-			$send .= "Accept-Language: de, en;q=0.50\r\n";
-			$send .= "Connection: Close\r\n\r\n";
-			fputs($io, $send);
-
-			while (!feof($io)) {
-				$send = fgets($io, 4096);
-				if (preg_match('/^200,[^,]+,([^,]+),([^,]+)$/', $send, $hits)) {
-					$res = array(
-						'lat' => trim($hits[1]),
-						'lon' => trim($hits[2])
-					);
-					break;
-				}
+		
+		$url = "http://maps.google.com/maps/geo?q=".$lookupstring."&key=".$this->apikey."&output=csv";
+		
+		require_once(WCF_DIR.'lib/util/FileUtil.class.php');
+		$tmp = FileUtil::downloadFileFromHttp($url, 'gmap.search');
+		$res = array();
+		foreach(file($tmp) as $row) {
+			if (preg_match('/^200,[^,]+,([^,]+),([^,]+)$/', $row, $hits)) {
+				$res = array(
+					'lat' => trim($hits[1]),
+					'lon' => trim($hits[2])
+				);
+				break;
 			}
-			fclose($io);
 		}
+		@unlink($tmp);
 
 		return $this->cache_search[$lookupstring] = $res;
 	}

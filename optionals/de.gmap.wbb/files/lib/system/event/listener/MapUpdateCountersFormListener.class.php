@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 
 /**
- * adds another item to the mainteance list
+ * adds another item to the maintenance list
  * 
  * @package     de.gmap.wbb.acp.action
  * @author      Torben Brodt

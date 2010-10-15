@@ -1,7 +1,6 @@
 <div id="userProfileMap">
 	<div class="border">
 		<div class="containerHead">
-			<div class="containerIcon"><img src="{icon}mapM.png{/icon}" alt="" title="{lang}wcf.map.copyright{/lang}"/></div>
 			<h3 class="containerContent">{lang}wcf.user.profile.map{/lang} </h3>
 		</div>
 		<div class="container-1" id="userMap">

@@ -138,7 +138,9 @@ class MapAjaxPage extends AbstractPage {
          */
         public function show() {
 		parent::show();
-
+		
+		// send header for corrent charset
+		@header('Content-Type: application/json; charset='.CHARSET);
 		echo json_encode($this->datapoints);
         }
 }

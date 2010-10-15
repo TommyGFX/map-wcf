@@ -11,14 +11,25 @@ GMAP_MAP_CONTROL = 'off';
 //<![CDATA[
 if (GMAP_API_KEY != '') {
 	document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
+}
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+if (GMAP_API_KEY != '')  {
 	document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/StreetViewControl.class.js" type="text/javascript"><\/script>');
 	onloadEvents.push(function() {
-		var gmap = new BBCodeMap();
+		var sv, gmap = new BBCodeMap();
 		gmap.registerEvent(function(map) {
 			return function() {
-				if(GMAP_ENABLE_STREETVIEW) gmap.gmap.addControl(new StreetViewControl());
-			}
+				if(GMAP_ENABLE_STREETVIEW) {
+					sv = new StreetViewControl();
+					gmap.gmap.addControl(sv);
+				}
+			};
 		}(gmap));
+		
+		// write div layer with unique id
 		gmap.write();
 
 		return function() {
@@ -35,6 +46,11 @@ if (GMAP_API_KEY != '') {
 					
 					marker = new GMarker(coordinates);
 					gmap.gmap.addOverlay(marker);
+				}
+				// enable street view from beginning?
+				if(false && sv && data.length > 0) {
+					coordinates = new GLatLng(data[0].lat, data[0].lon);
+					sv.container2.showstreetview(coordinates);
 				}
 			}
 		};

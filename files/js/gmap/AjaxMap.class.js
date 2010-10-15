@@ -17,7 +17,8 @@ function AjaxMap(url, divID, switchable) {
 	};
 	this.fireClickEvent = function (marker) {
 		var id = ++this.requestCounter;
-		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' + '<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>');
+		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
+			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>');
 		var url = this.url;
 		url += '&zoom=' + this.zoomUsed;
 		url += '&bounds=' + this.boundsUsed;
@@ -87,6 +88,8 @@ function AjaxMap(url, divID, switchable) {
 					map.zoomUsed = zoom;
 					var data = eval('(' + ajaxRequest.xmlHttpRequest.responseText + ')');
 					var coordinates, overlay;
+					
+					// update map
 					if (map.mapInitialized) {
 						map.gmap.clearOverlays();
 						for (var i = 0; i < data.length; i++) {
@@ -103,7 +106,10 @@ function AjaxMap(url, divID, switchable) {
 							}(map, marker));
 							map.gmap.addOverlay(marker);
 						}
-					} else {
+					} 
+					
+					// first load
+					else {
 						coordinates = new GLatLng(data[0].lat, data[0].lon);
 						map.setCoordinates(coordinates);
 						map.gmap.clearOverlays();

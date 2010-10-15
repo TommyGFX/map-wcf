@@ -23,20 +23,28 @@ class GMapUserProfileEditFormListener implements EventListener {
 	}
 	
 	protected function saved() {
-		if($this->eventObj->activeCategory == 'profile') {
-			if(isset($this->eventObj->values['location']) && !empty($this->eventObj->values['location'])) {
-				
-				// update user location
+		if($this->eventObj->activeCategory == 'profile' && isset($this->eventObj->values['location'])) {
+
+			// update user location			
+			if(!empty($this->eventObj->values['location'])) {
 				require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
 				$api = new GmapApi();
 				$point = $api->search($this->eventObj->values['location']);
-			
+		
 				if($point) {
 					$sql = "REPLACE INTO	wcf".WCF_N."_gmap_user
 								(userID, pt)
-						VALUES		(".$this->eventObj->user->userID.", PointFromText('POINT(".$point['lon']." ".$point['lat'].")'))";
+						VALUES		(".intval($this->eventObj->user->userID).",
+								PointFromText('POINT(".$point['lon']." ".$point['lat'].")'))";
 					WCF::getDB()->sendQuery($sql);
 				}
+			}
+
+			// drop user location
+			else {
+				$sql = "DELETE FROM	wcf".WCF_N."_gmap_user
+					WHERE 		userID = ".intval($this->eventObj->user->userID);
+				WCF::getDB()->sendQuery($sql);
 			}
 		}
 	}

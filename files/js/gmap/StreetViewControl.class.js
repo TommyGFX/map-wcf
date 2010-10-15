@@ -22,11 +22,15 @@ SVControl.prototype.initialize = function (map) {
 	this.dragging = false;
 	this.streetviewclicked = false;
 	this.hasStreetviewData = false;
-	this.browserflashbug = ((navigator.vendor) && navigator.vendor.indexOf("Apple") != -1) || ((navigator.userAgent) && navigator.userAgent.indexOf("Chrome") != -1);
+	this.browserflashbug = ((navigator.vendor) && navigator.vendor.indexOf("Apple") != -1) 
+		|| ((navigator.userAgent) && navigator.userAgent.indexOf("Chrome") != -1);
 	this.width = this.map.getContainer().style.width;
 	this.height = this.map.getContainer().style.height;
 	this.panoramacontainer = document.createElement("div");
-	this.map.getContainer().parentNode.insertBefore(this.panoramacontainer, this.map.getContainer().nextSibling);
+	this.map.getContainer().parentNode.insertBefore(
+		this.panoramacontainer, 
+		this.map.getContainer().nextSibling
+	);
 	this.streetview = new GStreetviewOverlay();
 	this.map.addOverlay(this.streetview);
 	this.streetview.hide();
@@ -42,7 +46,8 @@ SVControl.prototype.initialize = function (map) {
 	this.container.appendChild(this.svbutton);
 	this.img = document.createElement("img");
 	this.img.setAttribute("src", "http://maps.gstatic.com/mapfiles/cb/mod_cb_scout/cb_scout_sprite_003.png");
-	this.img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; position: absolute; left: -62px; top: -40px; width: 147px; height: 935px;";
+	this.img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; "+
+		"position: absolute; left: -62px; top: -40px; width: 147px; height: 935px;";
 	this.svbutton.appendChild(this.img);
 	map.getContainer().appendChild(this.container);
 	this.dragbutton = new GDraggableObject(this.container, {
@@ -108,12 +113,17 @@ SVControl.prototype.funcdragend = function () {
 	}
 	if (this.SVControl.dragging) {
 		this.SVControl.dragging = false;
-		this.SVControl.point = this.SVControl.map.fromContainerPixelToLatLng(new GPoint(this.left + (25 / 2), this.top + (66 / 2)));
-		this.SVControl.streetviewclient.getNearestPanoramaLatLng(this.SVControl.point, callback(this.SVControl.showstreetview, {
-			bind: this.SVControl,
-			args: [],
-			suppressArgs: true
-		}));
+		this.SVControl.point = this.SVControl.map.fromContainerPixelToLatLng(
+			new GPoint(this.left + (25 / 2), this.top + (66 / 2))
+		);
+		this.SVControl.streetviewclient.getNearestPanoramaLatLng(
+			this.SVControl.point, 
+			callback(this.SVControl.showstreetview, {
+				bind: this.SVControl,
+				args: [],
+				suppressArgs: true
+			}
+		));
 		this.SVControl.container.style.width = "25px";
 		this.SVControl.svbutton.style.width = "25px";
 		this.SVControl.img.style.left = "-62px";
@@ -154,10 +164,12 @@ SVControl.prototype.showstreetview = function (point) {
 			posx = parseInt(this.panoramacontainer.clientWidth) - 21 - 16 - 2;
 		}
 		var posy = -this.panoramacontainer.clientHeight + 4;
-		this.closecontainer.style.cssText = "float:left; overflow: hidden; width: 16px; height: 16px; position: relative; cursor: pointer; left: " + posx + "px; top: " + posy + "px;";
+		this.closecontainer.style.cssText = "float:left; overflow: hidden; width: 16px; height: 16px; "+
+			"position: relative; cursor: pointer; left: " + posx + "px; top: " + posy + "px;";
 		var img = document.createElement("img");
 		img.setAttribute("src", "http://maps.gstatic.com/mapfiles/cb/close-cross_v2.png");
-		img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; position: absolute; left: -16px; top: 0px;  width: 32px; height: 16px;";
+		img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; position: absolute; "+
+			"left: -16px; top: 0px;  width: 32px; height: 16px;";
 		this.closecontainer.appendChild(img);
 		this.closecontainer.SVControl = this;
 		this.panoramacontainer.parentNode.appendChild(this.closecontainer);
@@ -206,7 +218,8 @@ StreetViewControl.prototype.initialize = function (map) {
 	this.container.appendChild(svbutton);
 	var img = document.createElement("img");
 	img.setAttribute("src", "http://maps.gstatic.com/mapfiles/cb/mod_cb_scout/cb_scout_sprite_003.png");
-	img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; position: absolute; left: -102px; top: -845px; width: 147px; height: 935px;";
+	img.style.cssText = "border: 0px none ; margin: 0px; padding: 0px; position: absolute; "+
+		"left: -102px; top: -845px; width: 147px; height: 935px;";
 	svbutton.appendChild(img);
 	map.getContainer().appendChild(this.container);
 	this.container2 = new SVControl(map);
