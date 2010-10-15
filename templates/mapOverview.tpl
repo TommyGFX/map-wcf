@@ -57,7 +57,7 @@
 	
 	{if $userMessages|isset}{@$userMessages}{/if}
 	
-	<div class="border content">
+	<div class="border">
 		<div class="container-1">
 			<div style="position:relative">
 				<div id="gmap"><div id="gmapCanvas" style="width: 100%; height: 500px"></div></div>
