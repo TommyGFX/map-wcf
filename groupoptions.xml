@@ -1,18 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/options.dtd">
-<data>	
+<data>
 	<import>
 		<categories>
 			<category name="user.profile.gmap">
 				<parent>user.profile</parent>
 			</category>
 		</categories>
-		<options>
-			<option name="user.profile.gmap.personalMap">
-				<categoryname>user.profile.gmap</categoryname>
-				<optiontype>integer</optiontype>
-				<defaultvalue>5</defaultvalue>
-			</option>
-		</options>
 	</import>
+	<delete>
+		<option name="user.profile.gmap.personalMap" />
+	</delete>
 </data>

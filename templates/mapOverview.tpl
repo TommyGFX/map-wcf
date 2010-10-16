@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	//<![CDATA[
 	GMAP_ZOOM = 5;
-	GMAP_ENABLE_STREETVIEW = 1; 
+	GMAP_ENABLE_STREETVIEW = 1;
 	GMAP_MAP_CONTROL = 'off';
 	//]]>
 	</script>
@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 	<script type="text/javascript">
 	//<![CDATA[
-	if (GMAP_API_KEY != '')  { 
+	if (GMAP_API_KEY != '')  {
 		document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
 	}
 	//]]>
@@ -47,18 +47,20 @@
 	<ul class="breadCrumbs">
 		<li><a href="index.php?page=Index{@SID_ARG_2ND}"><img src="{icon}indexS.png{/icon}" alt="" /> <span>{lang}{PAGE_TITLE}{/lang}</span></a> &raquo;</li>
 	</ul>
-	
+
 	<div class="mainHeadline">
 		<img src="{icon}mapL.png{/icon}" alt="" />
 		<div class="headlineContainer">
 			<h2>{lang}wcf.header.menu.map{/lang}</h2>
 		</div>
 	</div>
-	
+
+	{include file="mapEntryHeader"}
 	{if $userMessages|isset}{@$userMessages}{/if}
+	{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 	
-	<div class="border">
-		<div class="container-1">
+	<div class="border tabMenuContent">
+		<div class="container-1" style="padding:0px">
 			<div style="position:relative">
 				<div id="gmap"><div id="gmapCanvas" style="width: 100%; height: 500px"></div></div>
 			</div>

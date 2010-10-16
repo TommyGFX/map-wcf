@@ -17,10 +17,11 @@
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.user.profile.gmap"><![CDATA[Mappa]]></item>
 		<item name="wcf.acp.group.option.category.user.profile.gmap.description"><![CDATA[]]></item>
-		<item name="wcf.acp.group.option.user.profile.gmap.personalMap"><![CDATA[Mappe personali]]></item>
-		<item name="wcf.acp.group.option.user.profile.gmap.personalMap.description"><![CDATA[Può aggiungere l'utente le mappe personali? Se è vero, quante mappe può aggiungere?]]></item>
 	</category>
 	<category name="wcf.map">
 		<item name="wcf.map.copyright.small"><![CDATA[Sviluppo mappa, easy-coding.de]]></item>
+	</category>
+	<category name="wcf.gmap.menu">
+		<item name="wcf.gmap.menu.link.index"><![CDATA[Mappa utente]]></item>
 	</category>
 </language>

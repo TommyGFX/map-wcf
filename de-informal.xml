@@ -23,4 +23,7 @@
 	<category name="wcf.map">
 		<item name="wcf.map.copyright.small"><![CDATA[Karten Programmierung, easy-coding.de]]></item>
 	</category>
+	<category name="wcf.gmap.menu">
+		<item name="wcf.gmap.menu.link.index"><![CDATA[Benutzerkarte]]></item>
+	</category>
 </language>

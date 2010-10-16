@@ -1,6 +1,8 @@
 <?php
 // wcf imports
 require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
+require_once(WCF_DIR.'lib/page/util/menu/PageMenu.class.php');
+require_once(WCF_DIR.'lib/page/util/menu/GmapMenu.class.php');
 
 /**
  * Returns the abstract page for for the Gooogle Map
@@ -19,7 +21,8 @@ class MapPage extends AbstractPage {
                 parent::assignVariables();
 
 		WCF::getTPL()->assign(array(
-			'allowSpidersToIndexThisPage' => true
+			'allowSpidersToIndexThisPage' => true,
+			'gmapmenu' => GmapMenu::getInstance()
 		));
         }
 
@@ -27,10 +30,11 @@ class MapPage extends AbstractPage {
 	 * @see Page::show()
 	 */
 	public function show() {
-
 		// set active header menu item
-		require_once(WCF_DIR.'lib/page/util/menu/HeaderMenu.class.php');
-		HeaderMenu::setActiveMenuItem('wcf.header.menu.map');
+		PageMenu::setActiveMenuItem('wcf.header.menu.map');
+		
+		// set gmap menu to home
+		GmapMenu::getInstance()->setActiveMenuItem('wcf.gmap.menu.link.index');
 
 		parent::show();
 	}

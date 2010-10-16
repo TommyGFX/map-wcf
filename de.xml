@@ -17,10 +17,11 @@
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.user.profile.gmap"><![CDATA[Karte]]></item>
 		<item name="wcf.acp.group.option.category.user.profile.gmap.description"><![CDATA[]]></item>
-		<item name="wcf.acp.group.option.user.profile.gmap.personalMap"><![CDATA[Eigene Karten]]></item>
-		<item name="wcf.acp.group.option.user.profile.gmap.personalMap.description"><![CDATA[Kann der Benutzer eigene Karten anlegen? Wenn ja, wieviele?]]></item>
 	</category>
 	<category name="wcf.map">
 		<item name="wcf.map.copyright.small"><![CDATA[Karten Programmierung, easy-coding.de]]></item>
+	</category>
+	<category name="wcf.gmap.menu">
+		<item name="wcf.gmap.menu.link.index"><![CDATA[Benutzerkarte]]></item>
 	</category>
 </language>
