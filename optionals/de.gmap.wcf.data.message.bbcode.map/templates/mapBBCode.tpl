@@ -22,6 +22,7 @@ if (GMAP_API_KEY != '')  {
 		var sv, gmap = new BBCodeMap();
 		gmap.registerEvent(function(map) {
 			return function() {
+				gmap.gmap.setZoom({$bbcodemap_zoom});
 				if(GMAP_ENABLE_STREETVIEW) {
 					sv = new StreetViewControl();
 					gmap.gmap.addControl(sv);
