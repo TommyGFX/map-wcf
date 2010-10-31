@@ -64,7 +64,7 @@ class UpdateMapAction extends UpdateCounterAction {
 			$i++;
 		}
 
-		if ($i == 0) {
+		if ($count == 0 || $i == 0) {
 			$this->calcProgress();
 			$this->finish();
 		}
