@@ -63,6 +63,10 @@ class MapBBCode implements BBCode {
 		$first = array_shift($data);
 
 		$url = parse_url($first);
+		if(!isset($url['query'])) {
+			return;
+		}
+
 		parse_str($url['query'], $output);
 		if(isset($output['ll']) && $output['ll']) {
 			list($lat, $lon) = explode(",", $output['ll']);
