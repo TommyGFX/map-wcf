@@ -110,11 +110,15 @@ function AjaxMap(url, divID, switchable) {
 					
 					// first load
 					else {
-						coordinates = new GLatLng(data[0].lat, data[0].lon);
-						map.setCoordinates(coordinates);
-						map.gmap.clearOverlays();
-						map.update();
-						map.runEvents();
+						if(data.length) {
+							coordinates = new GLatLng(data[0].lat, data[0].lon);
+							map.setCoordinates(coordinates);
+							map.gmap.clearOverlays();
+							map.update();
+							map.runEvents();
+						} else {
+							map.setLocation("Deutschland");
+						}
 					}
 				}
 			};
