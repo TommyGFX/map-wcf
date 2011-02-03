@@ -114,4 +114,22 @@
 
 		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
+	
+	<instructions type="update" fromversion="1.3.7 pl 5">
+		<sql>update1.sql</sql>
+		<script>acp/update_gmap.php</script>
+
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		<pagelocation>pagelocation.xml</pagelocation>
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
+		<languages languagecode="it">it.xml</languages>
+		<groupoptions>groupoptions.xml</groupoptions>
+		<useroptions>useroptions.xml</useroptions>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<options>options.xml</options>
+		<eventlistener>eventlistener.xml</eventlistener>
+        </instructions>
 </package>
