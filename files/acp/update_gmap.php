@@ -43,7 +43,7 @@ $sql = "UPDATE	wcf".WCF_N."_user_option_value
 WCF::getDB()->sendQuery($sql);
 
 // move coordinates to binary table
-$sql = "INSERT IGNORE INTO	
+$sql = "INSERT IGNORE INTO
 			wcf".WCF_N."_gmap_user
 	SELECT		userID,
 			PointFromText(CONCAT('POINT(',
@@ -66,6 +66,34 @@ foreach(array_chunk($vars, 50) as $chunk) {
 	$sql = "DELETE FROM	wcf".WCF_N."_language_item
 		WHERE		languageItem IN ('".implode("','", $chunk)."')";
 	WCF::getDB()->sendQuery($sql);
+}
+
+// transfer api key
+if(defined('MAP_API') && defined('GMAP_API_KEY')) {
+	$newapi = GMAP_API_KEY;
+	if(empty($newapi)) {
+		$apikey = array();
+
+		$url = PAGE_URL;
+		if(preg_match('/http[s]?:\/\/([^\/]+)/', $url, $res)) {
+			$url = $res[1];
+		}
+
+		$apikey[] = $url.':'.MAP_API;
+
+		// further api keys?
+		// ...
+
+		// update
+		$sql = "UPDATE	wcf".WCF_N."_option
+			SET	optionValue = '".escapeString(implode("\n", $apikey))."'
+			WHERE	optionName = 'gmap_api_key'";
+		WCF::getDB()->sendQuery($sql);
+
+		require_once(WCF_DIR.'lib/acp/option/Options.class.php');
+		Options::resetFile();
+		Options::resetCache();
+	}
 }
 
 // try to delete this file

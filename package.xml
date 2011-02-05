@@ -22,7 +22,7 @@
 	<requiredpackages>
 		<requiredpackage minversion="1.1.0 Beta 3">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
-		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.gmap</requiredpackage>
+		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.data.gmap.tar.gz">com.woltlab.wcf.data.gmap</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>
