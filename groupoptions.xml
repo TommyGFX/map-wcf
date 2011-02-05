@@ -9,6 +9,14 @@
 		</categories>
 	</import>
 	<delete>
+		<category name="user.map" />
 		<option name="user.profile.gmap.personalMap" />
+		<option name="user.map.canUse" />
+		<option name="user.map.canAdd" />
+		<option name="user.map.canAddCount" />
+		<option name="user.map.canUpdateNonPersonal" />
+		<option name="user.map.canViewPersonal" />
+		<option name="user.map.canView" />
+		<option name="user.map.header" />
 	</delete>
 </data>
