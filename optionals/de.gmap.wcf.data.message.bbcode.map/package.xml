@@ -48,4 +48,9 @@
 		<templates>templates.tar</templates>
 		<files>files.tar</files>
         </instructions>
+	
+	<instructions type="update" fromversion="1.0.2">
+		<templates>templates.tar</templates>
+		<files>files.tar</files>
+        </instructions>
 </package>
