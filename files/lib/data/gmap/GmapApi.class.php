@@ -59,18 +59,22 @@ class GmapApi extends DatabaseObject {
 		$url = "http://maps.google.com/maps/geo?q=".$lookupstring."&key=".$this->apikey."&output=csv";
 		
 		require_once(WCF_DIR.'lib/util/FileUtil.class.php');
-		$tmp = FileUtil::downloadFileFromHttp($url, 'gmap.search');
 		$res = array();
-		foreach(file($tmp) as $row) {
-			if (preg_match('/^200,[^,]+,([^,]+),([^,]+)$/', $row, $hits)) {
-				$res = array(
-					'lat' => trim($hits[1]),
-					'lon' => trim($hits[2])
-				);
-				break;
+		try {
+			$tmp = FileUtil::downloadFileFromHttp($url, 'gmap.search');
+			foreach(file($tmp) as $row) {
+				if (preg_match('/^200,[^,]+,([^,]+),([^,]+)$/', $row, $hits)) {
+					$res = array(
+						'lat' => trim($hits[1]),
+						'lon' => trim($hits[2])
+					);
+					break;
+				}
 			}
+			@unlink($tmp);
+		} catch(Exception $e) {
+			error_log($e->getMessage());
 		}
-		@unlink($tmp);
 
 		return $this->cache_search[$lookupstring] = $res;
 	}

@@ -20,6 +20,7 @@
 	</category>
 	<category name="wcf.map">
 		<item name="wcf.map.copyright.small"><![CDATA[Sviluppo mappa, easy-coding.de]]></item>
+		<item name="wcf.map.noConnectivity"><![CDATA[Sorry, currently your server cannot reach google.]]></item>
 	</category>
 	<category name="wcf.gmap.menu">
 		<item name="wcf.gmap.menu.link.index"><![CDATA[Mappa utente]]></item>
