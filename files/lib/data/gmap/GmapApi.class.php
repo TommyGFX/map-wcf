@@ -38,6 +38,30 @@ class GmapApi extends DatabaseObject {
 	public function isActive() {
 		return !empty($this->apikey);
 	}
+	
+	public function getFields() {
+		if(defined('GMAP_CUSTOMINPUT') && !empty(GMAP_CUSTOMINPUT)) {
+			$cols = explode(",", GMAP_CUSTOMINPUT);
+		} else {
+			$cols = array('location');
+		}
+		return $cols;
+	}
+	
+	public function getColumn() {
+		$cols = array();
+		foreach($this->getFields() as $field) {
+			$cols[] = User::getUserOptionID($field);
+		}
+
+		$col = array();
+		foreach($cols as $id) {
+			$col[] = 'CONCAT(userOption'.$id.', IF(userOption'.$id.' = '', '', ' '))';
+		}
+		$col = 'CONCAT('.implode(',', $col).')';
+		
+		return $col;
+	}
         
         /**
 	 * ask google for geopositions

@@ -23,21 +23,31 @@ class GMapUserProfileEditFormListener implements EventListener {
 	}
 	
 	protected function saved() {
-		if($this->eventObj->activeCategory == 'profile' && isset($this->eventObj->values['location'])) {
+		if($this->eventObj->activeCategory == 'profile') {
+			require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
+			$api = new GmapApi();
 
-			// update user location			
-			if(!empty($this->eventObj->values['location'])) {
-				require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
-				$api = new GmapApi();
-				$point = $api->search($this->eventObj->values['location']);
-		
-				if($point) {
-					$sql = "REPLACE INTO	wcf".WCF_N."_gmap_user
-								(userID, pt)
-						VALUES		(".intval($this->eventObj->user->userID).",
-								PointFromText('POINT(".$point['lon']." ".$point['lat'].")'))";
-					WCF::getDB()->sendQuery($sql);
+			// build search query
+			$search = array();
+			foreach($api->getFields() as $key) {
+				if(isset($this->eventObj->values[$key])) {
+					$search[] = $this->eventObj->values[$key];
 				}
+			}
+			
+			// wrong form
+			if(count($search) == 0) {
+				return;
+			}
+
+			$point = $api->search(implode(' ', $search));
+	
+			if($point) {
+				$sql = "REPLACE INTO	wcf".WCF_N."_gmap_user
+							(userID, pt)
+					VALUES		(".intval($this->eventObj->user->userID).",
+							PointFromText('POINT(".$point['lon']." ".$point['lat'].")'))";
+				WCF::getDB()->sendQuery($sql);
 			}
 
 			// drop user location

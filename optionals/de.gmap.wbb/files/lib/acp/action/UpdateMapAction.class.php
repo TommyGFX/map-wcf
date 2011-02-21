@@ -18,15 +18,13 @@ class UpdateMapAction extends UpdateCounterAction {
 	public function execute() {
 		parent::execute();
 
-		$col = User::getUserOptionID('location');
 		$api = new GmapApi();
-
-		if(empty($col) || !$api->isActive()) {
+		if(!$api->isActive()) {
 			$this->calcProgress();
 			$this->finish();
 		}
 
-		$col = "userOption".$col;
+		$col = $api->getColumn();
 
 		// count board
 		$sql = "SELECT		COUNT(*) AS count
