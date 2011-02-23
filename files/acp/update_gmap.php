@@ -36,20 +36,22 @@ $sql = "UPDATE	wcf".WCF_N."_user_option_value
 	SET	$location = IF($map_enable = 0, '', CONCAT(
 			CONCAT($location, IF($location = '', '', ' ')),
 			CONCAT($map_street, IF($map_street = '', '', ' ')),
-			CONCAT($map_city, IF($map_city = '', '', ' ')),
 			CONCAT($map_zip, IF($map_zip = '', '', ' ')),
+			CONCAT(IF($map_city=$location,'',$map_city), IF(IF($map_city=$location,'',$map_city) = '', '', ' ')),
 			$map_country
 		))";
 WCF::getDB()->sendQuery($sql);
+
 
 // move coordinates to binary table
 $sql = "INSERT IGNORE INTO
 			wcf".WCF_N."_gmap_user
 	SELECT		userID,
 			PointFromText(CONCAT('POINT(',
-				SUBSTRING($map_coord, 1, LOCATE(',', $map_coord) - 1),' ',
-				SUBSTRING($map_coord, LOCATE(',', $map_coord) + 1),')'
-			)) AS pt
+				SUBSTRING($map_coord, LOCATE(',', $map_coord) + 1),
+				' ',
+				SUBSTRING($map_coord, 1, LOCATE(',', $map_coord) - 1),
+			')')) AS pt
 	FROM		wcf".WCF_N."_user_option_value
 	WHERE		$map_coord != '' AND $map_coord != '0,0'";
 WCF::getDB()->sendQuery($sql);

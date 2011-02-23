@@ -40,7 +40,7 @@ class GmapApi extends DatabaseObject {
 	}
 	
 	public function getFields() {
-		if(defined('GMAP_CUSTOMINPUT') && !empty(GMAP_CUSTOMINPUT)) {
+		if(defined('GMAP_CUSTOMINPUT') && $const = GMAP_CUSTOMINPUT && !empty($const)) {
 			$cols = explode(",", GMAP_CUSTOMINPUT);
 		} else {
 			$cols = array('location');
@@ -56,7 +56,7 @@ class GmapApi extends DatabaseObject {
 
 		$col = array();
 		foreach($cols as $id) {
-			$col[] = 'CONCAT(userOption'.$id.', IF(userOption'.$id.' = '', '', ' '))';
+			$col[] = 'CONCAT(userOption'.$id.', IF(userOption'.$id.' = "", "", " "))';
 		}
 		$col = 'CONCAT('.implode(',', $col).')';
 		
