@@ -3,12 +3,9 @@
 <data>
 	<delete>
 		<category name="profile.map"/>
-		<option name="map_enable"/>
 		<option name="map_street"/>
 		<option name="map_zip"/>
 		<option name="map_city"/>
 		<option name="map_country"/>
-		<option name="map_coord"/>
-		<option name="map_lastlookup"/>
 	</delete>
 </data>

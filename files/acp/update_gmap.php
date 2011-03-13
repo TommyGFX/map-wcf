@@ -40,7 +40,7 @@ $sql = "UPDATE	wcf".WCF_N."_user_option_value
 			CONCAT(IF($map_city=$location,'',$map_city), IF(IF($map_city=$location,'',$map_city) = '', '', ' ')),
 			$map_country
 		))";
-WCF::getDB()->sendQuery($sql);
+// WCF::getDB()->sendQuery($sql);
 
 
 // move coordinates to binary table
