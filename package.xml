@@ -23,7 +23,6 @@
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
 		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.data.gmap.tar.gz">com.woltlab.wcf.data.gmap</requiredpackage>
-		<requiredpackage file="optionals/de.easy-coding.wcf.map.custominput.tar.gz">de.easy-coding.wcf.map.custominput</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>

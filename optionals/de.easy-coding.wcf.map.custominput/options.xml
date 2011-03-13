@@ -10,7 +10,7 @@
 			<option name="gmap_custominput">
 				<categoryname>gmap_custominput</categoryname>
 				<optiontype>text</optiontype>
-				<defaultvalue><![CDATA[map_street,map_zip,map_city,map_country]]></defaultvalue>
+				<defaultvalue><![CDATA[]]></defaultvalue>
 			</option>
 		</options>
 	</import>
