@@ -1,6 +1,7 @@
 <?php
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
+require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
 
 /**
  * Admin to configure custom useroptions.
@@ -11,6 +12,18 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  * @package	de.easy-coding.wcf.map.custominput
  */
 class MapCustomInputListener implements EventListener {
+
+	public function validate($tmp) {
+		$cols = array();
+		foreach($tmp as $field) {
+			$col = User::getUserOptionID($field);
+			if($col) {
+				$cols[] = $col;
+			}
+		}
+		return $cols;
+	}
+
 	/**
 	 * @see EventListener::execute()
 	 */
@@ -22,7 +35,10 @@ class MapCustomInputListener implements EventListener {
 	
 		switch($eventName) {
 			case 'readData':
+				
 				$this->current = explode(",", $eventObj->activeOptions['gmap_custominput']['optionValue']);
+				$this->current = $this->validate($this->current);
+				$eventObj->activeOptions['gmap_custominput']['optionValue'] = implode(",", $this->current);
 				$this->getOptionIDs();
 				$this->readOptions();
 			break;
@@ -58,6 +74,7 @@ class MapCustomInputListener implements EventListener {
 					d.innerHTML = '.json_encode(WCF::getTPL()->fetch('mapCustomInput')).';
 					document.getElementById("gmap_custominputDiv").appendChild(d);
 					
+					var d = document.getElementById("gmap_custominput").value = "";
 					document.getElementById("gmap_custominput").style.display = "none";
 				});
 				</script>');

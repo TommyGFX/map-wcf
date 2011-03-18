@@ -7,7 +7,7 @@
 			</div>
 			<a href="#" onclick="return changeCustomInput('{$opt.optionName}')">
 				<h3 class="itemListTitle">
-					{$opt.optionName}
+					{lang}wcf.user.option.{$opt.optionName}{/lang}
 				</h3>
 			</a>
 		</li>

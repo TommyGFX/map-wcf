@@ -39,15 +39,28 @@ class GmapApi extends DatabaseObject {
 		return !empty($this->apikey);
 	}
 	
+	/**
+	 * @var array<string>
+	 */
 	public function getFields() {
 		if(defined('GMAP_CUSTOMINPUT') && $const = GMAP_CUSTOMINPUT && !empty($const)) {
-			$cols = explode(",", GMAP_CUSTOMINPUT);
+			$tmp = explode(",", GMAP_CUSTOMINPUT);
+			$cols = array();
+			foreach($tmp as $field) {
+				$col = User::getUserOptionID($field);
+				if($col) {
+					$cols[] = $field;
+				}
+			}
 		} else {
 			$cols = array('location');
 		}
 		return $cols;
 	}
 	
+	/**
+	 * @var string
+	 */
 	public function getColumn() {
 		$cols = array();
 		foreach($this->getFields() as $field) {
