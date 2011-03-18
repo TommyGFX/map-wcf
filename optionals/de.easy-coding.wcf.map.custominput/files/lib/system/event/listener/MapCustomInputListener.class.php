@@ -73,8 +73,6 @@ class MapCustomInputListener implements EventListener {
 					var d = document.createElement("div");
 					d.innerHTML = '.json_encode(WCF::getTPL()->fetch('mapCustomInput')).';
 					document.getElementById("gmap_custominputDiv").appendChild(d);
-					
-					var d = document.getElementById("gmap_custominput").value = "";
 					document.getElementById("gmap_custominput").style.display = "none";
 				});
 				</script>');
