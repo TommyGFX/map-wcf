@@ -17,8 +17,8 @@ class MapCustomInputListener implements EventListener {
 		$cols = array();
 		foreach($tmp as $field) {
 			$col = User::getUserOptionID($field);
-			if($col) {
-				$cols[] = $col;
+			if($col && in_array($col, explode(",", $this->optionIDs))) {
+				$cols[] = $field;
 			}
 		}
 		return $cols;
@@ -35,11 +35,10 @@ class MapCustomInputListener implements EventListener {
 	
 		switch($eventName) {
 			case 'readData':
-				
+				$this->getOptionIDs();
 				$this->current = explode(",", $eventObj->activeOptions['gmap_custominput']['optionValue']);
 				$this->current = $this->validate($this->current);
 				$eventObj->activeOptions['gmap_custominput']['optionValue'] = implode(",", $this->current);
-				$this->getOptionIDs();
 				$this->readOptions();
 			break;
 			case 'assignVariables':
@@ -96,9 +95,10 @@ class MapCustomInputListener implements EventListener {
 					)
 					AND option_table.editable < 4
 					AND option_table.visible < 4
+					AND option_table.optionType IN ('text', 'select')
 			ORDER BY	package_dependency.priority";
 		$result = WCF::getDB()->sendQuery($sql);
-		$options = array();
+		$options = array(0);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$options[$row['optionName']] = $row['optionID'];
 		}

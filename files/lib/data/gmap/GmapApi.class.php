@@ -43,7 +43,7 @@ class GmapApi extends DatabaseObject {
 	 * @var array<string>
 	 */
 	public function getFields() {
-		if(defined('GMAP_CUSTOMINPUT') && $const = GMAP_CUSTOMINPUT && !empty($const)) {
+		if(defined('GMAP_CUSTOMINPUT') && ($const = GMAP_CUSTOMINPUT) && !empty($const)) {
 			$tmp = explode(",", GMAP_CUSTOMINPUT);
 			$cols = array();
 			foreach($tmp as $field) {
@@ -83,7 +83,6 @@ class GmapApi extends DatabaseObject {
 	 * @return				array<float>	keys are lat and lon
 	 */
 	public function search($location) {
-
 		if(!$this->isActive()) {
 			return;
 		}
