@@ -5,7 +5,7 @@
 		<packagename>Google Maps: Custom Inputfields</packagename>
 		<packagedescription><![CDATA[This plugin allows the admin to define custom useroptions which can be used for the google maps query.]]></packagedescription>
 		<plugin>com.woltlab.wcf.data.page</plugin>
-		<version>1.0.0 Beta 1</version>
+		<version>1.0.0</version>
 		<date>DATE</date>
 	</packageinformation>
 
@@ -16,7 +16,7 @@
 
 	<requiredpackages>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="2.0.0 RC 1">de.gmap.wcf.data.page.map</requiredpackage>
+		<requiredpackage minversion="2.0.5">de.gmap.wcf.data.page.map</requiredpackage>
 	</requiredpackages>
 
 	<instructions type="install">
@@ -28,7 +28,7 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="1.0.0">
+	<instructions type="update" fromversion="1.0.0 Beta 1">
 		<files>files.tar</files>
         </instructions>
 </package>
