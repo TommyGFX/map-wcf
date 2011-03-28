@@ -4,9 +4,11 @@
 	<packageinformation>
 		<packagename>Google Maps: Custom Inputfields</packagename>
 		<packagedescription><![CDATA[This plugin allows the admin to define custom useroptions which can be used for the google maps query.]]></packagedescription>
+		<isunique>1</isunique>
 		<plugin>com.woltlab.wcf.data.page</plugin>
 		<version>1.0.0</version>
 		<date>DATE</date>
+		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
 
 	<authorinformation>
