@@ -5,10 +5,9 @@
 		<packagename>Google Maps: BBCode</packagename>
 		<packagedescription><![CDATA[This BBCode allows you to add a map with infinite markers to your posting.]]></packagedescription>
 		<isunique>1</isunique>
-		<plugin>com.woltlab.wcf.data.page</plugin>
 		<version>2.0.2</version>
 		<date>DATE</date>
-		<plugin>com.woltlab.wcf</plugin>
+		<plugin>de.gmap.wcf.data.page.map</plugin>
 	</packageinformation>
 
 	<authorinformation>
