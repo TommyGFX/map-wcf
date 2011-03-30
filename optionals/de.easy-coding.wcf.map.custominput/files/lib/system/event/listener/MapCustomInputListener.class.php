@@ -70,13 +70,23 @@ class MapCustomInputListener implements EventListener {
 				}
 				onloadEvents.push(function() {
 					var d = document.createElement("div");
-					d.innerHTML = '.json_encode(WCF::getTPL()->fetch('mapCustomInput')).';
+					d.innerHTML = "'.$this->encode(WCF::getTPL()->fetch('mapCustomInput')).'";
 					document.getElementById("gmap_custominputDiv").appendChild(d);
 					document.getElementById("gmap_custominput").style.display = "none";
 				});
 				</script>');
 			break;
 		}
+	}
+	
+	protected function encode($template) {
+		$search = array(
+			"\n" => ' ',
+			"\t" => ' ',
+			'"' => '\"'
+		);
+		$template = str_replace(array_keys($search), $search, $template);
+		return $template;
 	}
 	
 	/**
