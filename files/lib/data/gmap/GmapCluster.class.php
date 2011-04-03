@@ -79,7 +79,7 @@ class GmapCluster {
 	 *
 	 * @param	$markers	Array of lat and lon locations.
 	 */
-	public function getMarkers(array $markers, $pick = array()) {
+	public function getMarkers(array $markers, $pick = null) {
 		$clustered = array();
 
 		/* Loop until all markers have been compared. */
@@ -103,8 +103,15 @@ class GmapCluster {
 			/* we were comparing to and remove the original from array. */
 			if (count($cluster) > 0) {
 				$cluster[] = $marker;
+				if($pick !== null && count($clustered) == $pick - 1) {
+					$tmp = $this->getCluster($cluster, true);
+					return $tmp['ids'];
+				}
 				$clustered[] = $this->getCluster($cluster);
 			} else {
+				if($pick !== null && count($clustered) == $pick - 1) {
+					return array($marker['id']);
+				}
 				$clustered[] = $marker;
 			}
 		}
@@ -115,7 +122,7 @@ class GmapCluster {
 	 *
 	 * @param	$markers	Array of lat and lon locations.
 	 */
-	public function getIDs(array $markers, $lat, $lon) {
+	public function getIDs(array $markers, $idx) {
 
 		/* Loop until all markers have been compared. */
 		while (count($markers)) {

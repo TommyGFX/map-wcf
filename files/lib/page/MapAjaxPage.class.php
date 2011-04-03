@@ -53,6 +53,9 @@ class MapAjaxPage extends AbstractPage {
 		// coordinates
 		$this->lat = isset($_GET['lat']) ? floatval($_GET['lat']) : 0;
 		$this->lon = isset($_GET['lon']) ? floatval($_GET['lon']) : 0;
+		
+		// pick action
+		$this->idx = isset($_GET['idx']) ? intval($_GET['idx']) : 0;
 	}
 
         /**
@@ -89,7 +92,7 @@ class MapAjaxPage extends AbstractPage {
 
 		$cluster = new GmapCluster($this->distance, $this->zoom);
 		if($this->action == 'pick') {
-			$ids = $cluster->getIDs($markers, $this->lat, $this->lon);
+			$ids = $cluster->getIDs($markers, $this->idx);
 			if($ids === null) {
 				$this->datapoints = array();	
 				$this->datapoints[] = array(
