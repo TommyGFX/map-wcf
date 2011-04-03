@@ -90,7 +90,14 @@ class MapAjaxPage extends AbstractPage {
 		$cluster = new GmapCluster($this->distance, $this->zoom);
 		if($this->action == 'pick') {
 			$ids = $cluster->getIDs($markers, $this->lat, $this->lon);
-			if($ids !== null) {
+			if($ids === null) {
+				$this->datapoints = array();	
+				$this->datapoints[] = array(
+					0,
+					'n/a',
+					''
+				);
+			} else {
 				$this->datapoints = $this->getUsers($ids);
 			}
 		} else {
