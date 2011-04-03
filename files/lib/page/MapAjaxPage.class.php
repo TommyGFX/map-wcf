@@ -94,7 +94,7 @@ class MapAjaxPage extends AbstractPage {
 				$this->datapoints = array();	
 				$this->datapoints[] = array(
 					0,
-					'n/a',
+					'data n/a',
 					''
 				);
 			} else {
