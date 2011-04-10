@@ -7,7 +7,6 @@
 		<isunique>1</isunique>
 		<version>1.0.0</version>
 		<date>DATE</date>
-		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
 
 	<authorinformation>
