@@ -27,7 +27,7 @@ if ( typeof BBCodeMap === 'undefined' ) {
 		 * document write div containers
 		 */
 		this.write = function() {
-			document.write('<div id="' + this.divID + '"><div id="' + this.divID + 'Canvas" style="height: 300px"></div></div>');
+			document.write('<div id="' + this.divID + '"><div id="' + this.divID + 'Canvas" style="height: 330px"></div></div>');
 		}
 	
 		this.runEvents = function() {
