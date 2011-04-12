@@ -7,7 +7,6 @@
 		<isunique>1</isunique>
 		<version>2.0.3</version>
 		<date>DATE</date>
-		<plugin>de.gmap.wcf.data.page.map</plugin>
 	</packageinformation>
 
 	<authorinformation>
