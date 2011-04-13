@@ -7,6 +7,7 @@
 		<isunique>1</isunique>
 		<version>2.0.3</version>
 		<date>DATE</date>
+		<plugin>com.woltlab.wcf.data.message.bbcode</plugin>
 	</packageinformation>
 
 	<authorinformation>
