@@ -61,8 +61,18 @@ class MapAjaxPage extends AbstractPage {
         /**
          * @see Page::readData()
          */
-        public function readData() {
+	public function readData() {
 		parent::readData();
+		
+		if (WCF::getUser()->getPermission('user.profile.gmap.canViewUsers')) {
+			$this->readUserData();
+		}
+	}
+
+	/**
+	 * read user data
+	 */
+	public function readUserData() {
 
 		$markers = array();
 

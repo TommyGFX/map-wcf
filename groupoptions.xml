@@ -7,6 +7,13 @@
 				<parent>user.profile</parent>
 			</category>
 		</categories>
+		<options>
+			<option name="user.profile.gmap.canViewUsers">
+				<categoryname>user.profile.gmap</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+		</option>
 	</import>
 	<delete>
 		<category name="user.map" />

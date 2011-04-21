@@ -17,12 +17,18 @@ class GMapUserPageListener implements EventListener {
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
+
+		// skip
+		if(!WCF::getUser()->getPermission('user.profile.gmap.canViewUsers')) {
+			return;
+		}
+
 		$this->eventObj = $eventObj;
 		$this->className = $className;
 
 		$this->$eventName();
 	}
-	
+
 	protected function readData() {
 		$this->userID = $this->eventObj->frame->getUserID();
 		

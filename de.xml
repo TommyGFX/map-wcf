@@ -17,6 +17,8 @@
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.user.profile.gmap"><![CDATA[Karte]]></item>
 		<item name="wcf.acp.group.option.category.user.profile.gmap.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.user.profile.gmap.canViewUsers"><![CDATA[Kann Benutzer sehen]]></item>
+		<item name="wcf.acp.group.option.user.profile.gmap.canViewUsers.description"><![CDATA[Mitglieder dieser Benutzergruppe können Benutzer auf der Karte sehen.]]></item>
 	</category>
 	<category name="wcf.map">
 		<item name="wcf.map.copyright.small"><![CDATA[Karten Programmierung, easy-coding.de]]></item>
