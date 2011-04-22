@@ -103,13 +103,13 @@ class GmapCluster {
 			/* we were comparing to and remove the original from array. */
 			if (count($cluster) > 0) {
 				$cluster[] = $marker;
-				if($pick !== null && count($clustered) == $pick - 1) {
+				if($pick !== null && count($clustered) == $pick) {
 					$tmp = $this->getCluster($cluster, true);
 					return $tmp['ids'];
 				}
 				$clustered[] = $this->getCluster($cluster);
 			} else {
-				if($pick !== null && count($clustered) == $pick - 1) {
+				if($pick !== null && count($clustered) == $pick) {
 					return array($marker['id']);
 				}
 				$clustered[] = $marker;
