@@ -23,7 +23,7 @@ function AjaxMap(url, divID, switchable) {
 		url += '&zoom=' + this.zoomUsed;
 		url += '&bounds=' + this.boundsUsed;
 		url += '&action=pick';
-		url += '&index=' + marker.index;
+		url += '&idx=' + marker.idx;
 		var ajaxRequest = new AjaxRequest();
 		ajaxRequest.openGet(url + SID_ARG_2ND, function (map, id) {
 			return function () {
@@ -98,7 +98,7 @@ function AjaxMap(url, divID, switchable) {
 							} else {
 								marker = new GMarker(coordinates);
 							}
-							marker.index = i;
+							marker.idx = i;
 							GEvent.addListener(marker, "click", function (map, marker) {
 								return function () {
 									map.fireClickEvent(marker);
@@ -110,7 +110,7 @@ function AjaxMap(url, divID, switchable) {
 					
 					// first load
 					else {
-						if(data.length) {
+						if(data.length && data[0] && data[0].lat) {
 							coordinates = new GLatLng(data[0].lat, data[0].lon);
 							map.setCoordinates(coordinates);
 							map.gmap.clearOverlays();

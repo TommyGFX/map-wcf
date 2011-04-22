@@ -58,6 +58,11 @@
 	<instructions type="update" fromversion="2.0.5">
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
+		<languages languagecode="it">it.xml</languages>
+		<groupoptions>groupoptions.xml</groupoptions>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.4">

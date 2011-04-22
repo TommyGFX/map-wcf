@@ -117,44 +117,4 @@ class GmapCluster {
 		}
 		return $clustered;
 	}
-
-	/**
-	 *
-	 * @param	$markers	Array of lat and lon locations.
-	 */
-	public function getIDs(array $markers, $idx) {
-
-		/* Loop until all markers have been compared. */
-		while (count($markers)) {
-			$marker  = array_pop($markers);
-			$cluster = array();
-
-			/* Compare against all markers which are left. */
-			foreach ($markers as $key => $target) {
-				$pixels = $this->pixelDistance($marker['lat'], $marker['lon'], $target['lat'], $target['lon'], $this->zoom);
-
-				/* If two markers are closer than given distance remove */
-				/* target marker from array and add it to cluster.	  */
-				if ($this->distance > $pixels) {
-					unset($markers[$key]);
-					$cluster[] = $target;
-				}
-			}
-
-			/* If a marker has been added to cluster, add also the one  */
-			/* we were comparing to and remove the original from array. */
-			if (count($cluster) > 0) {
-				$cluster[] = $marker;
-				$cluster = $this->getCluster($cluster, true);
-				if(abs($cluster['lat'] - $lat) < 0.000000001 && abs($cluster['lon'] - $lon) < 0.000000001) {
-					return $cluster['ids'];
-				}
-			} else {
-				if(abs($marker['lat'] - $lat) < 0.000000001 && abs($marker['lon'] - $lon) < 0.000000001) {
-					return array($marker['id']);
-				}
-			}
-		}
-		return null;
-	}
 }
