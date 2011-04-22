@@ -13,7 +13,7 @@
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-		</option>
+		</options>
 	</import>
 	<delete>
 		<category name="user.map" />
