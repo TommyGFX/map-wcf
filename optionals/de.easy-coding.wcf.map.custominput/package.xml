@@ -7,6 +7,7 @@
 		<isunique>1</isunique>
 		<version>1.0.0</version>
 		<date>DATE</date>
+		<plugin>com.woltlab.wcf.page.user.profile</plugin>
 	</packageinformation>
 
 	<authorinformation>
@@ -17,6 +18,7 @@
 	<requiredpackages>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="2.0.5">de.gmap.wcf.data.page.map</requiredpackage>
+		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
 	</requiredpackages>
 
 	<instructions type="install">
