@@ -5,7 +5,7 @@
 		<packagename>Google Maps: Custom Inputfields</packagename>
 		<packagedescription><![CDATA[This plugin allows the admin to define custom useroptions which can be used for the google maps query.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf.page.user.profile</plugin>
 	</packageinformation>
@@ -27,6 +27,7 @@
 		<options>options.xml</options>
 		<eventlistener>eventlistener.xml</eventlistener>
 		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de.xml</languages>
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
