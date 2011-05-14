@@ -7,37 +7,20 @@
 	<script type="text/javascript">
 	//<![CDATA[
 	GMAP_ZOOM = 5;
-	GMAP_ENABLE_STREETVIEW = 1;
 	GMAP_MAP_CONTROL = 'off';
 	//]]>
 	</script>
-	<script src="{@RELATIVE_WCF_DIR}js/gmap/Map.class.js" type="text/javascript"></script>
+	<script src="{@RELATIVE_WCF_DIR}js/gmap/Map3.class.js" type="text/javascript"></script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=de"></script>
 	<script type="text/javascript">
 	//<![CDATA[
-	if (GMAP_API_KEY != '')  {
-		document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
-	}
-	//]]>
-	</script>
-	<script type="text/javascript">
-	//<![CDATA[
-	if (GMAP_API_KEY != '')  {
-		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/ClusterMarker.class.js" type="text/javascript"><\/script>');
-		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/StreetViewControl.class.js" type="text/javascript"><\/script>');
-		document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/AjaxMap.class.js" type="text/javascript"><\/script>');
-		onloadEvents.push(function() {
-			if (GBrowserIsCompatible()) {
-				var gmap = new AjaxMap('index.php?page=MapAjax', 'gmap');
-				gmap.registerEvent(function(map) {
-					return function() {
-						if(GMAP_ENABLE_STREETVIEW) map.gmap.addControl(new StreetViewControl());
-					}
-				}(gmap));
-				gmap.update();
-			}
-		});
-	}
+	document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/ClusterMarker.class.js" type="text/javascript"><\/script>');
+	document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/AjaxMap.class.js" type="text/javascript"><\/script>');
+	onloadEvents.push(function() {
+		var gmap = new AjaxMap('index.php?page=MapAjax' + SID_ARG_2ND, 'gmap');
+		gmap.update();
+	});
 	//]]>
 	</script>
 </head>

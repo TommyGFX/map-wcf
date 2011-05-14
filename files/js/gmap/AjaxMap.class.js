@@ -5,17 +5,24 @@
  * @url		http://trac.easy-coding.de/trac/wcf/wiki/Gmap
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
-function AjaxMap(url, divID, switchable) {
-	this.url = url;
-	this.requestCounter = 0;
-	this.events = [];
-	this.boundsUsed = null;
-	this.zoomUsed = null;
-	this.constructor(divID, switchable);
-	this.registerEvent = function (callback) {
+var AjaxMap = Class.create(Map3, {
+	initialize: function($super, url, divID, switchable) {
+		$super(divID, switchable);
+
+		this.mapInitialized = false;
+		this.url = url;
+		this.requestCounter = 0;
+		this.events = [];
+		this.markers =  [];
+		this.boundsUsed = null;
+		this.zoomUsed = null;
+	},
+	
+	registerEvent: function (callback) {
 		this.events.push(callback);
-	};
-	this.fireClickEvent = function (marker) {
+	},
+
+	fireClickEvent: function (marker) {
 		var id = ++this.requestCounter;
 		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
 			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>');
@@ -43,8 +50,8 @@ function AjaxMap(url, divID, switchable) {
 				};
 			};
 		}(this, id));
-	};
-	this.getBounds = function () {
+	},
+	getBounds: function () {
 		var bounds = this.gmap.getBounds();
 		var a = bounds.getSouthWest();
 		var b = bounds.getNorthEast();
@@ -52,11 +59,11 @@ function AjaxMap(url, divID, switchable) {
 		b.y += Math.abs(a.y - b.y) * 0.3;
 		a.x -= Math.abs(a.x - b.x) * 0.2;
 		b.x += Math.abs(a.x - b.x) * 0.2;
-		bounds.extend(new GLatLng(a.y, a.x));
-		bounds.extend(new GLatLng(b.y, b.x));
+		bounds.extend(new google.maps.LatLng(a.y, a.x));
+		bounds.extend(new google.maps.LatLng(b.y, b.x));
 		return bounds;
-	};
-	this.needsUpdate = function () {
+	},
+	needsUpdate: function () {
 		if (!this.mapInitialized) {
 			return true;
 		}
@@ -64,8 +71,14 @@ function AjaxMap(url, divID, switchable) {
 			return true;
 		}
 		return !this.boundsUsed.containsBounds(this.gmap.getBounds());
-	};
-	this.update = function () {
+	},
+	clearMarkers: function() {
+	    for(var i=0; i < this.markers.length; i++){
+		this.markers[i].setMap(null);
+	    }
+	    this.markers = [];
+	},
+	update: function () {
 		if (!this.needsUpdate()) {
 			return;
 		}
@@ -90,30 +103,47 @@ function AjaxMap(url, divID, switchable) {
 					
 					// update map
 					if (map.mapInitialized) {
-						map.gmap.clearOverlays();
+						map.clearMarkers();
+						map.markerCount = 0;
+
 						for (var i = 0; i < data.length; i++) {
-							coordinates = new GLatLng(data[i].lat, data[i].lon);
+
+							coordinates = new google.maps.LatLng(data[i].lat, data[i].lon);
 							if (data[i].count) {
-								marker = new ClusterMarker(new GLatLng(data[i].lat, data[i].lon), data[i].count, RELATIVE_WCF_DIR + 'icon/gmap/');
+								marker = new ClusterMarker(new google.maps.LatLng(data[i].lat, data[i].lon), data[i].count, RELATIVE_WCF_DIR + 'icon/gmap/');
 							} else {
-								marker = new GMarker(coordinates);
+								marker = new google.maps.Marker({
+									clickable: true,
+									map: map.gmap,
+									position: coordinates
+								});
 							}
 							marker.idx = i;
-							GEvent.addListener(marker, "click", function (map, marker) {
+							google.maps.event.addListener(marker, "click", function (map, marker) {
 								return function () {
 									map.fireClickEvent(marker);
 								};
 							}(map, marker));
 							map.gmap.addOverlay(marker);
+						
+							// increase marker count
+							map.coordinates[map.markerCount] = [data[i].lat, data[i].lon];
+							map.markers.push(marker);
+							map.markerCount++;
 						}
 					} 
 					
 					// first load
 					else {
+						map.mapInitialized = true;
 						if(data.length && data[0] && data[0].lat) {
-							coordinates = new GLatLng(data[0].lat, data[0].lon);
-							map.setCoordinates(coordinates);
-							map.gmap.clearOverlays();
+							map.coordinates[map.markerCount] = [data[0].lat, data[0].lon];
+							map.markerCount++;
+
+							map.showMap();
+							map.setBounds();
+
+							// map.clearMarkers();
 							map.update();
 							map.runEvents();
 						} else {
@@ -123,9 +153,9 @@ function AjaxMap(url, divID, switchable) {
 				}
 			};
 		}(this, bounds, zoom));
-	};
-	this.runEvents = function () {
-		GEvent.addListener(this.gmap, "moveend", function (map) {
+	},
+	runEvents: function () {
+		google.maps.event.addListener(this.gmap, "moveend", function (map) {
 			return function () {
 				map.update();
 			};
@@ -133,6 +163,5 @@ function AjaxMap(url, divID, switchable) {
 		for (var i = 0; i < this.events.length; i++) {
 			this.events[i]();
 		}
-	};
-};
-AjaxMap.prototype = new Map();
+	}
+});
