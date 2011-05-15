@@ -8,6 +8,12 @@
 var AjaxMap = Class.create(Map3, {
 	initialize: function($super, url, divID, switchable) {
 		$super(divID, switchable);
+		
+		google.maps.event.addListener(this.gmap, 'bounds_changed', function(map) {
+			return function() {
+				map.currentBounds = map.gmap.getBounds();
+			};
+		}(this));
 
 		this.mapInitialized = false;
 		this.url = url;
@@ -16,6 +22,7 @@ var AjaxMap = Class.create(Map3, {
 		this.markers =  [];
 		this.boundsUsed = null;
 		this.zoomUsed = null;
+		this.currentBounds = null;
 	},
 	
 	registerEvent: function (callback) {
@@ -24,8 +31,11 @@ var AjaxMap = Class.create(Map3, {
 
 	fireClickEvent: function (marker) {
 		var id = ++this.requestCounter;
-		marker.openInfoWindowHtml('<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
-			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>');
+
+		var infoWindow = new google.maps.InfoWindow({ content: '<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
+			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>' });
+		infoWindow.open(this.gmap, marker);
+		
 		var url = this.url;
 		url += '&zoom=' + this.zoomUsed;
 		url += '&bounds=' + this.boundsUsed;
@@ -52,7 +62,10 @@ var AjaxMap = Class.create(Map3, {
 		}(this, id));
 	},
 	getBounds: function () {
-		var bounds = this.gmap.getBounds();
+		var bounds = this.currentBounds;
+		if(!bounds) {
+			return null;
+		}
 		var a = bounds.getSouthWest();
 		var b = bounds.getNorthEast();
 		a.y -= Math.abs(a.y - b.y) * 0.3;
@@ -70,7 +83,7 @@ var AjaxMap = Class.create(Map3, {
 		if (this.gmap.getZoom() != this.zoomUsed) {
 			return true;
 		}
-		return !this.boundsUsed.containsBounds(this.gmap.getBounds());
+		return this.getBounds() === null || !this.boundsUsed.contains(this.currentBounds);
 	},
 	clearMarkers: function() {
 	    for(var i=0; i < this.markers.length; i++){
@@ -109,8 +122,13 @@ var AjaxMap = Class.create(Map3, {
 						for (var i = 0; i < data.length; i++) {
 
 							coordinates = new google.maps.LatLng(data[i].lat, data[i].lon);
-							if (data[i].count) {
-								marker = new ClusterMarker(new google.maps.LatLng(data[i].lat, data[i].lon), data[i].count, RELATIVE_WCF_DIR + 'icon/gmap/');
+							if (data[i].count && false) {
+								marker = new ClusterMarker(
+									map.gmap,
+									new google.maps.LatLng(data[i].lat, data[i].lon), 
+									data[i].count, 
+									RELATIVE_WCF_DIR + 'icon/gmap/'
+								);
 							} else {
 								marker = new google.maps.Marker({
 									clickable: true,
@@ -124,7 +142,6 @@ var AjaxMap = Class.create(Map3, {
 									map.fireClickEvent(marker);
 								};
 							}(map, marker));
-							map.gmap.addOverlay(marker);
 						
 							// increase marker count
 							map.coordinates[map.markerCount] = [data[i].lat, data[i].lon];
@@ -139,15 +156,14 @@ var AjaxMap = Class.create(Map3, {
 						if(data.length && data[0] && data[0].lat) {
 							map.coordinates[map.markerCount] = [data[0].lat, data[0].lon];
 							map.markerCount++;
-
 							map.showMap();
-							map.setBounds();
-
+							// map.setBounds();
 							// map.clearMarkers();
+
 							map.update();
 							map.runEvents();
 						} else {
-							map.setLocation("Deutschland");
+							map.showMap();
 						}
 					}
 				}
@@ -155,7 +171,7 @@ var AjaxMap = Class.create(Map3, {
 		}(this, bounds, zoom));
 	},
 	runEvents: function () {
-		google.maps.event.addListener(this.gmap, "moveend", function (map) {
+		google.maps.event.addListener(this.gmap, "idle", function (map) {
 			return function () {
 				map.update();
 			};

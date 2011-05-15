@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS wcf1_gmap_user;
 CREATE TABLE wcf1_gmap_user (
 	userID int(10) UNSIGNED NOT NULL,
 	pt point NOT NULL,
-	PRIMARY KEY  (userID),
+	PRIMARY KEY (userID),
 	SPATIAL KEY pt (pt)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

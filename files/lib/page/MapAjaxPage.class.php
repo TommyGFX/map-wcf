@@ -87,7 +87,7 @@ class MapAjaxPage extends AbstractPage {
 			$sql .= ' AND Y(pt) BETWEEN '.floatval($this->bounds[0]['lat']).' AND '.floatval($this->bounds[1]['lat']).' ';
 		}
 
-		if(!$this->action == 'initialize') {
+		if($this->action == 'initialize') {
 			$sql = 'SELECT	AVG(lon) AS lon,
 					AVG(lat) AS lat
 				FROM (

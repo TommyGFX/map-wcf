@@ -1,5 +1,5 @@
-function ClusterMarker(latlng, count, imgdir) {
-	
+function ClusterMarker(map, latlng, count, imgdir) {
+
 }
 
 /**
