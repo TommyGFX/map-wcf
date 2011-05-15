@@ -19,36 +19,18 @@ function ClusterMarker(map, latlng, count, imgdir) {
  * @extends google.maps.OverlayView
  * @ignore
  */
-function ClusterIcon(cluster, styles, opt_padding) {
-  cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
-
+function ClusterIcon(map, styles, opt_padding) {
   this.styles_ = styles;
   this.padding_ = opt_padding || 0;
   this.cluster_ = cluster;
   this.center_ = null;
-  this.map_ = cluster.getMap();
+  this.map_ = map;
   this.div_ = null;
   this.sums_ = null;
   this.visible_ = false;
 
   this.setMap(this.map_);
 }
-
-
-/**
- * Triggers the clusterclick event and zoom's if the option is set.
- */
-ClusterIcon.prototype.triggerClusterClick = function() {
-  var markerClusterer = this.cluster_.getMarkerClusterer();
-
-  // Trigger the clusterclick event.
-  google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_);
-
-  if (markerClusterer.isZoomOnClick()) {
-    // Zoom into the cluster.
-    this.map_.fitBounds(this.cluster_.getBounds());
-  }
-};
 
 
 /**

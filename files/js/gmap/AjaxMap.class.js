@@ -11,7 +11,8 @@ var AjaxMap = Class.create(Map3, {
 		
 		google.maps.event.addListener(this.gmap, 'bounds_changed', function(map) {
 			return function() {
-				map.currentBounds = map.gmap.getBounds();
+				map.zoomDisplayed = map.gmap.getZoom();
+				map.boundsDisplayed = map.gmap.getBounds();
 			};
 		}(this));
 
@@ -20,9 +21,10 @@ var AjaxMap = Class.create(Map3, {
 		this.requestCounter = 0;
 		this.events = [];
 		this.markers =  [];
+		this.boundsDisplayed = null;
 		this.boundsUsed = null;
 		this.zoomUsed = null;
-		this.currentBounds = null;
+		this.zoomDisplayed = null;
 	},
 	
 	registerEvent: function (callback) {
@@ -61,20 +63,15 @@ var AjaxMap = Class.create(Map3, {
 			};
 		}(this, id));
 	},
-	getBounds: function () {
-		var bounds = this.currentBounds;
-		if(!bounds) {
-			return null;
-		}
-		var a = bounds.getSouthWest();
-		var b = bounds.getNorthEast();
-		a.y -= Math.abs(a.y - b.y) * 0.3;
-		b.y += Math.abs(a.y - b.y) * 0.3;
-		a.x -= Math.abs(a.x - b.x) * 0.2;
-		b.x += Math.abs(a.x - b.x) * 0.2;
-		bounds.extend(new google.maps.LatLng(a.y, a.x));
-		bounds.extend(new google.maps.LatLng(b.y, b.x));
-		return bounds;
+	expand: function (latLng) {
+		var a = latLng.getSouthWest();
+		var b = latLng.getNorthEast();
+		var a_lat = a.lat() - ( Math.abs(a.lat() - b.lat()) * 0.3 );
+		var b_lat = b.lat() + ( Math.abs(a.lat() - b.lat()) * 0.3 );
+		var a_lng = a.lng() - ( Math.abs(a.lng() - b.lng()) * 0.2 );
+		var b_lng = b.lng() + ( Math.abs(a.lng() - b.lng()) * 0.2 );
+		latLng.extend(new google.maps.LatLng(a_lat, a_lng));
+		latLng.extend(new google.maps.LatLng(b_lat, b_lng));
 	},
 	needsUpdate: function () {
 		if (!this.mapInitialized) {
@@ -83,7 +80,17 @@ var AjaxMap = Class.create(Map3, {
 		if (this.gmap.getZoom() != this.zoomUsed) {
 			return true;
 		}
-		return this.getBounds() === null || !this.boundsUsed.contains(this.currentBounds);
+		xxx = this.boundsDisplayed;
+		if(!xxx) {
+			return true;
+		}
+		xxx = [xxx.getSouthWest(), xxx.getNorthEast()];
+		for(var i=0; i<xxx.length; i++) {
+			if(this.boundsUsed.contains(xxx[i]) == false) {
+				return true;
+			}
+		}
+		return false;
 	},
 	clearMarkers: function() {
 	    for(var i=0; i < this.markers.length; i++){
@@ -95,11 +102,16 @@ var AjaxMap = Class.create(Map3, {
 		if (!this.needsUpdate()) {
 			return;
 		}
-		var bounds, zoom, url = this.url;
+		var url = this.url;
+
+		// load with extra percents
+		bounds = this.boundsDisplayed;
+		if(bounds) {
+			this.expand(bounds);
+		}
+
 		if (this.mapInitialized) {
-			bounds = this.getBounds();
-			zoom = this.gmap.getZoom();
-			url += '&zoom=' + zoom;
+			url += '&zoom=' + this.zoomDisplayed;
 			url += '&bounds=' + bounds;
 			url += '&action=update';
 		} else {
@@ -168,7 +180,7 @@ var AjaxMap = Class.create(Map3, {
 					}
 				}
 			};
-		}(this, bounds, zoom));
+		}(this, bounds, this.zoomDisplayed));
 	},
 	runEvents: function () {
 		google.maps.event.addListener(this.gmap, "idle", function (map) {

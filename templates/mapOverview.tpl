@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	//<![CDATA[
 	GMAP_ZOOM = 5;
-	GMAP_MAP_CONTROL = 'off';
+	GMAP_MAP_CONTROL = 'zoom';
 	//]]>
 	</script>
 	<script src="{@RELATIVE_WCF_DIR}js/gmap/Map3.class.js" type="text/javascript"></script>
