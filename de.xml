@@ -13,6 +13,8 @@
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.module_gmap"><![CDATA[Benutzerkarte]]></item>
 		<item name="wcf.acp.option.module_gmap.description"><![CDATA[Aktiviert die Benutzerkarte.]]></item>
+		<item name="wcf.acp.option.gmap_zoom_page"><![CDATA[Karten-Zoom (Übersicht)]]></item>
+		<item name="wcf.acp.option.gmap_zoom_page.description"><![CDATA[Wählen Sie den Standard-Karten-Zoom für die Übersichtskarte aus.]]></item>
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.user.profile.gmap"><![CDATA[Karte]]></item>

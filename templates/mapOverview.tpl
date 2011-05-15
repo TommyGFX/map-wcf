@@ -6,7 +6,7 @@
 	{include file='gmapConstants'}
 	<script type="text/javascript">
 	//<![CDATA[
-	GMAP_ZOOM = 5;
+	GMAP_ZOOM = {GMAP_ZOOM_PAGE};
 	GMAP_MAP_CONTROL = 'zoom';
 	//]]>
 	</script>

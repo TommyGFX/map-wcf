@@ -13,6 +13,8 @@
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.module_gmap"><![CDATA[User Map]]></item>
 		<item name="wcf.acp.option.module_gmap.description"><![CDATA[Activates the user map.]]></item>
+		<item name="wcf.acp.option.gmap_zoom_page"><![CDATA[Map zoom (Overview)]]></item>
+		<item name="wcf.acp.option.gmap_zoom_page.description"><![CDATA[Select the default map zoom for the overview page.]]></item>
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.user.profile.gmap"><![CDATA[Map]]></item>

@@ -9,6 +9,30 @@
 				<defaultvalue>1</defaultvalue>
 			</option>
 		</options>
+		<options>
+			<option name="gmap_zoom_page">
+				<categoryname>general.gmap</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>5</defaultvalue>
+				<selectoptions>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</selectoptions>
+			</option>
+		</options>
 	</import>
 
 	<delete>
