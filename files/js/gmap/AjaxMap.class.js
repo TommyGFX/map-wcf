@@ -36,7 +36,8 @@ var AjaxMap = Class.create(Map3, {
 
 		var infoWindow = new google.maps.InfoWindow({ content: '<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
 			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>' });
-		infoWindow.open(this.gmap, marker);
+		infoWindow.setPosition(marker.getLatLng());
+		infoWindow.open(this.gmap);
 		
 		var url = this.url;
 		url += '&zoom=' + this.zoomUsed;
@@ -80,13 +81,13 @@ var AjaxMap = Class.create(Map3, {
 		if (this.gmap.getZoom() != this.zoomUsed) {
 			return true;
 		}
-		xxx = this.boundsDisplayed;
-		if(!xxx) {
+		var bd = this.boundsDisplayed;
+		if(!bd) {
 			return true;
 		}
-		xxx = [xxx.getSouthWest(), xxx.getNorthEast()];
-		for(var i=0; i<xxx.length; i++) {
-			if(this.boundsUsed.contains(xxx[i]) == false) {
+		bd = [bd.getSouthWest(), bd.getNorthEast()];
+		for(var i=0; i<bd.length; i++) {
+			if(this.boundsUsed.contains(bd[i]) == false) {
 				return true;
 			}
 		}
@@ -134,11 +135,11 @@ var AjaxMap = Class.create(Map3, {
 						for (var i = 0; i < data.length; i++) {
 
 							coordinates = new google.maps.LatLng(data[i].lat, data[i].lon);
-							if (data[i].count && false) {
+							if (data[i].count) {
 								marker = new ClusterMarker(
-									map.gmap,
-									new google.maps.LatLng(data[i].lat, data[i].lon), 
-									data[i].count, 
+									map,
+									coordinates,
+									data[i].count,
 									RELATIVE_WCF_DIR + 'icon/gmap/'
 								);
 							} else {
@@ -147,13 +148,16 @@ var AjaxMap = Class.create(Map3, {
 									map: map.gmap,
 									position: coordinates
 								});
+								google.maps.event.addListener(marker, "click", function (map, marker) {
+									return function () {
+										map.fireClickEvent(marker);
+									};
+								}(map, marker));
 							}
+							marker.getLatLng = function() {
+								return coordinates;
+							};
 							marker.idx = i;
-							google.maps.event.addListener(marker, "click", function (map, marker) {
-								return function () {
-									map.fireClickEvent(marker);
-								};
-							}(map, marker));
 						
 							// increase marker count
 							map.coordinates[map.markerCount] = [data[i].lat, data[i].lon];
@@ -169,8 +173,6 @@ var AjaxMap = Class.create(Map3, {
 							map.coordinates[map.markerCount] = [data[0].lat, data[0].lon];
 							map.markerCount++;
 							map.showMap();
-							// map.setBounds();
-							// map.clearMarkers();
 
 							map.update();
 							map.runEvents();

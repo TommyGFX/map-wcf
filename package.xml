@@ -9,7 +9,7 @@
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge una mappa di Google sul tuo forum.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>2.0.7</version>
+		<version>3.0.0 Beta 1</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -22,7 +22,7 @@
 	<requiredpackages>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.0.4">com.woltlab.wcf.page.user.profile</requiredpackage>
-		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.data.gmap.tar.gz">com.woltlab.wcf.data.gmap</requiredpackage>
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.gmap.tar.gz">com.woltlab.wcf.data.gmap</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>

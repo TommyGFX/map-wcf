@@ -1,5 +1,63 @@
+/**
+ * wrapper for cluster icon
+ *
+ * @author      Torben Brodt <easy-coding.de>
+ * @url		http://trac.easy-coding.de/trac/wcf/wiki/Gmap
+ * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
+ */
 function ClusterMarker(map, latlng, count, imgdir) {
 
+	var styles = [];
+	var padding = 60;
+	var sizes = [53, 56, 66, 78, 90];
+
+	var i = 0;
+	for (i = 1; i <= 5; ++i) {
+		styles.push({
+			'url': imgdir + "m" + i + ".png",
+			'height': sizes[i - 1],
+			'width': sizes[i - 1]
+		});
+	}
+	
+	var index = 0;
+	var dv = count;
+	while (dv !== 0) {
+		dv = parseInt(dv / 10, 10);
+		index ++;
+	}
+
+	if (styles.length < index) {
+		index = styles.length;
+	}
+
+	var cluster = {
+		getMap: function() {
+			return map.gmap;
+		},
+		getMarkerClusterer: function() {
+			return {
+				extend: function() {
+					
+				}
+			};
+		}
+	};
+	var sums = {
+		text: count,
+		index: index,
+	};
+	var icon = new ClusterIcon(cluster, styles);
+	icon.triggerClusterClick = function (map, marker) {
+		return function () {
+			map.fireClickEvent(marker);
+		};
+	}(map, icon);
+	icon.setCenter(latlng);
+	icon.setSums(sums);
+	icon.show();
+	
+	return icon;
 }
 
 /**
@@ -19,18 +77,37 @@ function ClusterMarker(map, latlng, count, imgdir) {
  * @extends google.maps.OverlayView
  * @ignore
  */
-function ClusterIcon(map, styles, opt_padding) {
+function ClusterIcon(cluster, styles, opt_padding) {
+  cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
+
   this.styles_ = styles;
   this.padding_ = opt_padding || 0;
   this.cluster_ = cluster;
   this.center_ = null;
-  this.map_ = map;
+  this.map_ = cluster.getMap();
   this.div_ = null;
   this.sums_ = null;
   this.visible_ = false;
 
   this.setMap(this.map_);
 }
+
+ClusterIcon.prototype = new google.maps.OverlayView();
+
+/**
+ * Triggers the clusterclick event and zoom's if the option is set.
+ */
+ClusterIcon.prototype.triggerClusterClick = function() {
+  var markerClusterer = this.cluster_.getMarkerClusterer();
+
+  // Trigger the clusterclick event.
+  google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_);
+
+  if (markerClusterer.isZoomOnClick()) {
+    // Zoom into the cluster.
+    this.map_.fitBounds(this.cluster_.getBounds());
+  }
+};
 
 
 /**
