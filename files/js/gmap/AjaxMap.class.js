@@ -25,6 +25,7 @@ var AjaxMap = Class.create(Map3, {
 		this.boundsUsed = null;
 		this.zoomUsed = null;
 		this.zoomDisplayed = null;
+		this.infoWindow = null;
 	},
 	
 	registerEvent: function (callback) {
@@ -34,10 +35,17 @@ var AjaxMap = Class.create(Map3, {
 	fireClickEvent: function (marker) {
 		var id = ++this.requestCounter;
 
-		var infoWindow = new google.maps.InfoWindow({ content: '<div style="overflow:auto;width:217px;height:70px;" id="info-' + id + '">' +
-			'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + '</div>' });
-		infoWindow.setPosition(marker.getLatLng());
-		infoWindow.open(this.gmap);
+		if(this.infoWindow === null) {
+			this.infoWindow = new google.maps.InfoWindow({
+				content: '<div style="overflow:auto;width:217px;height:70px;" id="' + this.divID + 'infoWindow">' +
+					'<img src="' + RELATIVE_WCF_DIR + 'icon/gmap/ajax-loader.gif" alt="" />' + 
+					'</div>'
+			});
+		}
+
+		var c = this.coordinates[marker.getLatLng()];
+		this.infoWindow.setPosition(new google.maps.LatLng(c[0], c[1]));
+		this.infoWindow.open(this.gmap);
 		
 		var url = this.url;
 		url += '&zoom=' + this.zoomUsed;
@@ -48,7 +56,7 @@ var AjaxMap = Class.create(Map3, {
 		ajaxRequest.openGet(url + SID_ARG_2ND, function (map, id) {
 			return function () {
 				if (ajaxRequest.xmlHttpRequest.readyState == 4 && ajaxRequest.xmlHttpRequest.status == 200) {
-					var avatar, dom = document.getElementById('info-' + id);
+					var avatar, dom = document.getElementById(map.divID + 'infoWindow');
 					if (!dom) {
 						return;
 					}
@@ -155,14 +163,14 @@ var AjaxMap = Class.create(Map3, {
 								}(map, marker));
 							}
 							marker.getLatLng = function() {
-								return coordinates;
+								return this.idx;
 							};
 							marker.idx = i;
-						
+
 							// increase marker count
+							map.markerCount = i;
 							map.coordinates[map.markerCount] = [data[i].lat, data[i].lon];
-							map.markers.push(marker);
-							map.markerCount++;
+							map.markers[map.markerCount] = marker;
 						}
 					} 
 					

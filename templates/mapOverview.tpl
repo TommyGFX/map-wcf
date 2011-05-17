@@ -10,9 +10,9 @@
 	GMAP_MAP_CONTROL = 'zoom';
 	//]]>
 	</script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language={@$this->language->getLanguageCode()}"></script>
 	<script src="{@RELATIVE_WCF_DIR}js/gmap/Map3.class.js" type="text/javascript"></script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=de"></script>
 	<script type="text/javascript">
 	//<![CDATA[
 	document.write('<script src="{@RELATIVE_WCF_DIR}js/gmap/ClusterMarker.class.js" type="text/javascript"><\/script>');
@@ -23,6 +23,11 @@
 	});
 	//]]>
 	</script>
+	<style type="text/css">
+	#gmapCanvas {
+		color:#333 !important;
+	}
+	</style>
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>
 {include file="header" sandbox=false}
