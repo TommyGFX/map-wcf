@@ -9,18 +9,17 @@
 	</div>
 </div>
 {include file='gmapConstants'}
-<script src="{@RELATIVE_WCF_DIR}js/gmap/Map.class.js" type="text/javascript"></script>
+<script src="{@RELATIVE_WCF_DIR}js/gmap/Map3.class.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language={@$this->language->getLanguageCode()}"></script>
 <script type="text/javascript">
 	//<![CDATA[
-	if (GMAP_API_KEY != '')  { 
-	        document.write('<script src="http://maps.google.com/maps?file=api&amp;v=2.118&amp;hl={@$this->language->getLanguageCode()}&amp;key=' + GMAP_API_KEY + '&amp;oe={CHARSET}" type="text/javascript"><\/script>');
-	        onloadEvents.push(function() {
-	                if (GBrowserIsCompatible()) {
-				var map = new Map('userMap');
-				coordinates = new GLatLng({$coordinate.lat}, {$coordinate.lon});
-				map.setCoordinates(coordinates);
-	                }
-	        });
-	}
+        onloadEvents.push(function() {
+		var map = new Map3('userMap');
+		map.loadMarkers([{
+			latitude: {$coordinate.lat},
+			longitude: {$coordinate.lon},
+		}]);
+		map.showMap();
+        });
 	//]]>
 </script>
