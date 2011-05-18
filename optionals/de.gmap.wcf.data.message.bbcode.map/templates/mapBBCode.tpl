@@ -5,18 +5,12 @@
 <script type="text/javascript">
 //<![CDATA[
 onloadEvents.push(function() {
-	var sv, gmap = new BBCodeMap();
-	gmap.registerEvent(function(map) {
-		return function() {
-			gmap.gmap.setZoom({$bbcodemap_zoom});
-		};
-	}(gmap));
+	var gmap = new BBCodeMap();
 
 	// write div layer with unique id
 	gmap.write();
 
 	return function() {
-		var marker, coordinates;
 		var data = {@$bbcodemap_data|json_encode};
 
 		var coordinates = [];
@@ -28,9 +22,9 @@ onloadEvents.push(function() {
 		}
 
 		if(coordinates.length) {
+			gmap.lazyInit();
 			gmap.loadMarkers(coordinates);
 			gmap.showMap();
-			gmap.runEvents();
 		}
 	};
 }());

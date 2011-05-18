@@ -6,8 +6,8 @@
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 var AjaxMap = Class.create(Map3, {
-	initialize: function($super, url, divID, switchable) {
-		$super(divID, switchable);
+	initialize: function($super, url, divID, lookupClientLocation) {
+		$super(divID, lookupClientLocation);
 		
 		google.maps.event.addListener(this.gmap, 'bounds_changed', function(map) {
 			return function() {

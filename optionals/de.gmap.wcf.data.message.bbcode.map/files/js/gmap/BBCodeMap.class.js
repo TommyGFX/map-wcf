@@ -7,21 +7,20 @@
  */
 if ( typeof BBCodeMap === 'undefined' ) {
 	var BBCodeMap = Class.create(Map3, {
-		initialize: function($super, switchable) {
+		initialize: function($super, lookupClientLocation) {
 			// instance counter
 			if ( typeof BBCodeMap.counter === 'undefined' ) {
 				// It has not... perform the initilization
 				BBCodeMap.counter = 0;
 			}
 			++BBCodeMap.counter;
-	
-			$super('bbcodemap-' + BBCodeMap.counter, switchable);
+			
+			this.divID = 'bbcodemap-' + BBCodeMap.counter;
+			this.lazyInit = function() {
+				$super(this.divID, lookupClientLocation);
+			};
 	
 			this.events = [];
-		},
-	
-		registerEvent: function(callback) {
-			this.events.push(callback);
 		},
 	
 		/**
@@ -30,11 +29,5 @@ if ( typeof BBCodeMap === 'undefined' ) {
 		write: function() {
 			document.write('<div id="' + this.divID + '"><div id="' + this.divID + 'Canvas" style="height: 330px"></div></div>');
 		},
-
-		runEvents: function() {
-			for(var i=0; i<this.events.length; i++) {
-				this.events[i]();
-			}
-		}
 	});
 }
