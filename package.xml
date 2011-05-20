@@ -11,7 +11,7 @@
 		<isunique>1</isunique>
 		<version>3.0.0</version>
 		<date>DATE</date>
-		<plugin>com.woltlab.wcf</plugin>
+		<plugin>com.woltlab.wcf.page.user.profile</plugin>
 	</packageinformation>
 	
 	<authorinformation>
