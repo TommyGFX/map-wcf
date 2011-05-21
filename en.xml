@@ -23,6 +23,7 @@
 		<item name="wcf.acp.group.option.user.profile.gmap.canViewUsers.description"><![CDATA[Members of this group can view users on the map.]]></item>
 	</category>
 	<category name="wcf.map">
+		<item name="wcf.map.noPosition"><![CDATA[We couldn't validate your location. Please check your input.]]></item>
 		<item name="wcf.map.copyright.small"><![CDATA[Map Development, easy-coding.de]]></item>
 		<item name="wcf.map.noConnectivity"><![CDATA[Sorry, currently your server cannot reach google.]]></item>
 	</category>

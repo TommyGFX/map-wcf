@@ -23,6 +23,7 @@
 		<item name="wcf.acp.group.option.user.profile.gmap.canViewUsers.description"><![CDATA[Mitglieder dieser Benutzergruppe können Benutzer auf der Karte sehen.]]></item>
 	</category>
 	<category name="wcf.map">
+		<item name="wcf.map.noPosition"><![CDATA[Leider konnten wir Ihren Wohnort nicht finden, bitte überprüfen Sie Ihre Angaben.]]></item>
 		<item name="wcf.map.copyright.small"><![CDATA[Karten Programmierung, easy-coding.de]]></item>
 		<item name="wcf.map.noConnectivity"><![CDATA[Fehler: Der Server kann im Moment keine Verbindung zu Google herstellen.]]></item>
 	</category>

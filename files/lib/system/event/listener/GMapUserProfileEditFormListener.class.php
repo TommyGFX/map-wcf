@@ -39,8 +39,16 @@ class GMapUserProfileEditFormListener implements EventListener {
 			if(count($search) == 0) {
 				return;
 			}
-
-			$point = $api->search(implode(' ', $search));
+			
+			$query = trim(implode(' ', $search));
+			if($query) {
+				$point = $api->search($query);
+				if(!$point) {
+					WCF::getTPL()->append('<p class="error">'.WCF::getLanguage()->get('wcf.map.noPosition').'</p>');
+				}
+			} else {
+				$point = false;
+			}
 	
 			if($point) {
 				$sql = "REPLACE INTO	wcf".WCF_N."_gmap_user
