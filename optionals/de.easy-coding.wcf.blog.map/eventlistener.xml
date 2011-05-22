@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/eventListeners.dtd">
+<data>	
+	<import>
+		<eventlistener>
+			<eventclassname>UserBlogEntryAddForm</eventclassname>
+			<inherit>1</inherit>
+			<eventname>saved</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserBlogEntryAddForm</eventclassname>
+			<inherit>1</inherit>
+			<eventname>readData</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserBlogEntryAddForm</eventclassname>
+			<inherit>1</inherit>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+
+		<eventlistener>
+			<eventclassname>UserBlogEntryPage</eventclassname>
+			<eventname>readData</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserBlogEntryPage</eventclassname>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+	</import>
+</data>

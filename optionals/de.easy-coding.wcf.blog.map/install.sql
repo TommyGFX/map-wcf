@@ -1,0 +1,9 @@
+ALTER TABLE wcf1_user_blog ADD location VARCHAR(255) NOT NULL DEFAULT '';
+
+DROP TABLE IF EXISTS wcf1_gmap_blog;
+CREATE TABLE wcf1_gmap_blog (
+	blogID int(10) UNSIGNED NOT NULL,
+	pt point NOT NULL,
+	PRIMARY KEY (blogID),
+	SPATIAL KEY pt (pt)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
