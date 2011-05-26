@@ -23,11 +23,6 @@
 	});
 	//]]>
 	</script>
-	<style type="text/css">
-	#gmapCanvas {
-		color:#333 !important;
-	}
-	</style>
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>
 {include file="header" sandbox=false}
