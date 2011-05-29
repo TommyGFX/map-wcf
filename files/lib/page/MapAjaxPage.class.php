@@ -144,10 +144,15 @@ class MapAjaxPage extends AbstractPage {
 				$user->getAvatar()->setMaxSize(24, 24);
 				$avatar = $user->getAvatar()->getURL();
 			}
+			
+			$username = $user->username;
+			if(CHARSET != 'UTF-8') {
+				$username = StringUtil::encodeHTML($username);
+			}
 					
 			$users[] = array(
 				intval($user->userID),
-				$user->username,
+				$username,
 				$avatar
 			);
 		}
