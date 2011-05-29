@@ -44,7 +44,7 @@ class GMapUserProfileEditFormListener implements EventListener {
 			if($query) {
 				$point = $api->search($query);
 				if(!$point) {
-					WCF::getTPL()->append('<p class="error">'.WCF::getLanguage()->get('wcf.map.noPosition').'</p>');
+					WCF::getTPL()->append('userMessages', '<p class="error">'.WCF::getLanguage()->get('wcf.map.noPosition').'</p>');
 				}
 			} else {
 				$point = false;
