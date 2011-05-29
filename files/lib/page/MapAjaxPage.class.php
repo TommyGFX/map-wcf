@@ -146,8 +146,10 @@ class MapAjaxPage extends AbstractPage {
 			}
 			
 			$username = $user->username;
+			
+			// json encode can only use utf-8
 			if(CHARSET != 'UTF-8') {
-				$username = StringUtil::encodeHTML($username);
+				$username = StringUtil::convertEncoding(CHARSET, 'UTF-8', $username);
 			}
 					
 			$users[] = array(
@@ -166,9 +168,15 @@ class MapAjaxPage extends AbstractPage {
         public function show() {
 		parent::show();
 		
-		// send header for corrent charset
+		// json encode can only use utf-8, thats why we converted all data before
+		$str = json_encode($this->datapoints);
+
 		@header('Content-Type: application/json; charset='.CHARSET);
-		echo json_encode($this->datapoints);
+		if(CHARSET != 'UTF-8') {
+			echo StringUtil::convertEncoding('UTF-8', CHARSET, $str);
+		} else {
+			echo $str;
+		}
         }
 }
 ?>
