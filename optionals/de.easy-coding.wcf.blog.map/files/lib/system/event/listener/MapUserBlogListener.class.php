@@ -10,6 +10,7 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class MapUserBlogListener implements EventListener {
+	protected $location = '';
 
 	/**
 	 * @see EventListener::execute()
@@ -29,14 +30,14 @@ class MapUserBlogListener implements EventListener {
 		}
 	}
 
+	/**
+	 * read blog location
+	 */
 	protected function page_readData() {
-		$blogID = $this->eventObj->entryID;
-
-		// read user location
 		$sql = 'SELECT		X(pt) AS lon,
 					Y(pt) AS lat
 			FROM		wcf'.WCF_N.'_gmap_blog
-			WHERE		blogID = '.intval($blogID);
+			WHERE		blogID = '.intval($this->eventObj->entryID);
 		$result = WCF::getDB()->sendQuery($sql);
 		$this->coordinate = WCF::getDB()->fetchArray($result);
 	}
@@ -46,41 +47,53 @@ class MapUserBlogListener implements EventListener {
 			WCF::getTPL()->assign(array(
 				'coordinate' => $this->coordinate
 			));
-			// if user position exists
-			WCF::getTPL()->append('additionalBoxes1', WCF::getTPL()->fetch('userProfileMapSide'));
+
+			// if user position exists, add map to beginning
+			array_unshift($this->eventObj->sidebar->sidebarBoxes, 'userProfileMapSide');
 		}
 	}
 
-	protected function form_readData() {
-		$blogID = $this->eventObj->entryID;
+	/**
+	 * read form
+	 */
+	protected function form_readFormParameters() {
+		if(count($_POST)) {
+			if (isset($_POST['location'])) $this->location = StringUtil::trim($_POST['location']);
+		}
+	}
 
-		// read user location
-		$sql = 'SELECT		X(pt) AS lon,
-					Y(pt) AS lat
-			FROM		wcf'.WCF_N.'_gmap_blog
-			WHERE		blogID = '.intval($blogID);
-		$result = WCF::getDB()->sendQuery($sql);
-		$this->coordinate = WCF::getDB()->fetchArray($result);
+	/**
+	 * read existing data if no form was sent
+	 */
+	protected function form_readData() {
+		if(!count($_POST) && isset($this->eventObj->entry)) {
+			$this->location = $this->eventObj->entry->location;
+		}
 	}
 	
+	/**
+	 * show form
+	 */
 	protected function form_assignVariables() {
-		if($this->coordinate) {
-			WCF::getTPL()->assign(array(
-				'coordinate' => $this->coordinate
-			));
-			// if user position exists
-			WCF::getTPL()->append('additionalBoxes1', WCF::getTPL()->fetch('userProfileMapSide'));
-		}
+		WCF::getTPL()->assign(array(
+			'location' => $this->location
+		));
+		WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('userBlogEntryAddLocation'));
 	}
 	
 	protected function form_saved() {
-		$query = trim(implode(' ', $this->location));
+		$sql = "UPDATE  wcf".WCF_N."_user_blog
+	                SET     location = '".escapeString($this->location)."'
+	                WHERE   entryID = ".intval($this->eventObj->entry->entryID);
+	        WCF::getDB()->sendQuery($sql);
+
+		$query = $this->location;		
 		if($query) {
 			require_once(WCF_DIR.'lib/data/gmap/GmapApi.class.php');
 			$api = new GmapApi();
 			$point = $api->search($query);
 			if(!$point) {
-				WCF::getTPL()->append('<p class="error">'.WCF::getLanguage()->get('wcf.map.noPosition').'</p>');
+				WCF::getTPL()->append('userMessages', '<p class="error">'.WCF::getLanguage()->get('wcf.map.noPosition').'</p>');
 			}
 		} else {
 			$point = false;
@@ -89,7 +102,7 @@ class MapUserBlogListener implements EventListener {
 		if($point) {
 			$sql = "REPLACE INTO	wcf".WCF_N."_gmap_blog
 						(blogID, pt)
-				VALUES		(".intval($this->eventObj->entry->blogID).",
+				VALUES		(".intval($this->eventObj->entry->entryID).",
 						PointFromText('POINT(".$point['lon']." ".$point['lat'].")'))";
 			WCF::getDB()->sendQuery($sql);
 		}
@@ -97,7 +110,7 @@ class MapUserBlogListener implements EventListener {
 		// drop user location
 		else {
 			$sql = "DELETE FROM	wcf".WCF_N."_gmap_blog
-				WHERE 		blogID = ".intval($this->eventObj->entry->blogID);
+				WHERE 		blogID = ".intval($this->eventObj->entry->entryID);
 			WCF::getDB()->sendQuery($sql);
 		}
 	}

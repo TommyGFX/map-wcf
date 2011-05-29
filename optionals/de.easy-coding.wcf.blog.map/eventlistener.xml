@@ -5,12 +5,11 @@
 		<eventlistener>
 			<eventclassname>UserBlogEntryAddForm</eventclassname>
 			<inherit>1</inherit>
-			<eventname>saved</eventname>
+			<eventname>readFormParameters</eventname>
 			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventclassname>UserBlogEntryAddForm</eventclassname>
-			<inherit>1</inherit>
+			<eventclassname>UserBlogEntryEditForm</eventclassname>
 			<eventname>readData</eventname>
 			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
 		</eventlistener>
@@ -18,6 +17,12 @@
 			<eventclassname>UserBlogEntryAddForm</eventclassname>
 			<inherit>1</inherit>
 			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserBlogEntryAddForm</eventclassname>
+			<inherit>1</inherit>
+			<eventname>saved</eventname>
 			<listenerclassfile>lib/system/event/listener/MapUserBlogListener.class.php</listenerclassfile>
 		</eventlistener>
 

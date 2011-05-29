@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="de">
+	<category name="wcf.user.blog">
+		<item name="wcf.user.blog.entry.location"><![CDATA[Ort]]></item>
+		<item name="wcf.user.blog.entry.location.description"><![CDATA[Tragen Sie hier die vollständige Adresse des Blogs ein.]]></item>
+	</category>
+</language>
