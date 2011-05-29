@@ -28,6 +28,7 @@
 	<optionalpackages>
 		<optionalpackage file="optionals/de.gmap.wbb.tar.gz">de.gmap.wbb</optionalpackage>
 		<optionalpackage file="optionals/de.gmap.wcf.data.message.bbcode.map.tar.gz">de.gmap.wcf.data.message.bbcode.map</optionalpackage>
+		<optionalpackage file="optionals/de.easy-coding.wcf.blog.map.tar.gz">de.easy-coding.wcf.blog.map</optionalpackage>
 	</optionalpackages>
 	
 	<instructions type="install">
