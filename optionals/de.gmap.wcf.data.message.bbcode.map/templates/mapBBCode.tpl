@@ -25,6 +25,7 @@ onloadEvents.push(function() {
 			gmap.lazyInit();
 			gmap.loadMarkers(coordinates);
 			gmap.showMap();
+			{if $bbcodemap_zoom}gmap.gmap.setZoom({$bbcodemap_zoom});{/if}
 		}
 	};
 }());

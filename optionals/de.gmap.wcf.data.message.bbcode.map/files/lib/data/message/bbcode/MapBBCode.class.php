@@ -118,7 +118,7 @@ class MapBBCode implements BBCode {
 	 */
 	private function show($stream, $zoom) {
 		WCF::getTPL()->assign(array(
-			'bbcodemap_zoom' => $zoom,
+			'bbcodemap_zoom' => intval($zoom),
 			'bbcodemap_data' => $stream
 		));
 		return WCF::getTPL()->fetch('mapBBCode');
@@ -130,7 +130,7 @@ class MapBBCode implements BBCode {
 	 */
 	public function getParsedTag($openingTag, $content, $closingTag, BBCodeParser $parser) {
 	
-		$zoom = isset($openingTag['attributes'][0]) ? $openingTag['attributes'][0] : GMAP_ZOOM;
+		$zoom = isset($openingTag['attributes'][0]) ? intval($openingTag['attributes'][0]) : 0;
 		$content = explode("\n", StringUtil::unifyNewlines($content));
 		
 		if(count($content) == 0) return $content;
