@@ -87,7 +87,11 @@ class GmapApi extends DatabaseObject {
 			return;
 		}
 
+		if (CHARSET != 'UTF-8') {
+			$location = StringUtil::convertEncoding(CHARSET, 'UTF-8', $location);
+		}
 		$lookupstring = urlencode(StringUtil::trim($location));
+		
 		if(isset($this->cache_search[$lookupstring])) {
 			return $this->cache_search[$lookupstring];
 		}
