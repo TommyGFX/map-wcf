@@ -9,7 +9,7 @@
 		<packagedescription language="tr"><![CDATA[Bu Paket Foruma Google-Map Haritasi Ekler.]]></packagedescription>
 		<packagedescription language="it"><![CDATA[Questo pacchetto aggiunge una mappa di Google sul tuo forum.]]></packagedescription>
 		<isunique>1</isunique>
-		<version>3.0.2</version>
+		<version>3.0.3</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf.page.user.profile</plugin>
 	</packageinformation>
@@ -46,22 +46,36 @@
 		<eventlistener>eventlistener.xml</eventlistener>
 	</instructions>
 	
+	<instructions type="update" fromversion="3.0.2">
+		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<groupoptions>groupoptions.xml</groupoptions>
+        </instructions>
+	
 	<instructions type="update" fromversion="3.0.1">
 		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<groupoptions>groupoptions.xml</groupoptions>
         </instructions>
 	
 	<instructions type="update" fromversion="3.0.0">
 		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<groupoptions>groupoptions.xml</groupoptions>
 		<templates>templates.tar</templates>
         </instructions>
 	
 	<instructions type="update" fromversion="3.0.0 Beta 1">
 		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<groupoptions>groupoptions.xml</groupoptions>
 		<templates>templates.tar</templates>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.7">
 		<files>files.tar</files>
+		<pagemenu>pagemenu.xml</pagemenu>
+		<groupoptions>groupoptions.xml</groupoptions>
 		<templates>templates.tar</templates>
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
@@ -78,6 +92,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.5">
@@ -89,6 +104,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.4">
@@ -100,6 +116,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.3">
@@ -112,6 +129,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.2">
@@ -124,6 +142,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.1">
@@ -136,6 +155,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.0">
@@ -148,6 +168,7 @@
 		<languages languagecode="it">it.xml</languages>
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
+		<pagemenu>pagemenu.xml</pagemenu>
         </instructions>
 	
 	<instructions type="update" fromversion="2.0.0 RC 3">

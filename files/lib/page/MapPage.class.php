@@ -35,6 +35,12 @@ class MapPage extends AbstractPage {
 	 * @see Page::show()
 	 */
 	public function show() {
+
+		// skip
+		if(!MODULE_GMAP) {
+			throw new IllegalLinkException();
+		}
+
 		// set active header menu item
 		PageMenu::setActiveMenuItem('wcf.header.menu.map');
 		
@@ -78,18 +84,5 @@ class MapPage extends AbstractPage {
 		}
 		return $val;
 	}
-
-        /**
-         * @see Page::show()
-         */
-        public function show() {
-
-		// skip
-		if(!MODULE_GMAP) {
-			throw new IllegalLinkException();
-		}
-        
-		parent::show();
-        }
 }
 ?>
