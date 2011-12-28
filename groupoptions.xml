@@ -5,6 +5,7 @@
 		<categories>
 			<category name="user.profile.gmap">
 				<parent>user.profile</parent>
+				<options>module_gmap</options>
 			</category>
 		</categories>
 		<options>

@@ -19,7 +19,7 @@ class GMapUserPageListener implements EventListener {
 	public function execute($eventObj, $className, $eventName) {
 
 		// skip
-		if(!WCF::getUser()->getPermission('user.profile.gmap.canViewUsers')) {
+		if(!MODULE_GMAP || !WCF::getUser()->getPermission('user.profile.gmap.canViewUsers')) {
 			return;
 		}
 

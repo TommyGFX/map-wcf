@@ -166,6 +166,12 @@ class MapAjaxPage extends AbstractPage {
          * @see Page::show()
          */
         public function show() {
+
+		// skip
+		if(!MODULE_GMAP) {
+			throw new IllegalLinkException();
+		}
+        
 		parent::show();
 		
 		// json encode can only use utf-8, thats why we converted all data before

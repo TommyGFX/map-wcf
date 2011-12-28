@@ -78,5 +78,18 @@ class MapPage extends AbstractPage {
 		}
 		return $val;
 	}
+
+        /**
+         * @see Page::show()
+         */
+        public function show() {
+
+		// skip
+		if(!MODULE_GMAP) {
+			throw new IllegalLinkException();
+		}
+        
+		parent::show();
+        }
 }
 ?>

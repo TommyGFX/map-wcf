@@ -16,6 +16,12 @@ class GMapUserProfileEditFormListener implements EventListener {
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
+
+		// skip
+		if(!MODULE_GMAP) {
+			return;
+		}
+
 		$this->eventObj = $eventObj;
 		$this->className = $className;
 		

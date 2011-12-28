@@ -8,6 +8,7 @@
 			<link>index.php?page=Map</link>
 			<showorder>10</showorder>
 			<position>header</position>
+			<options>module_gmap</options>
 		</pagemenuitem>
 	</import>
 </data>
