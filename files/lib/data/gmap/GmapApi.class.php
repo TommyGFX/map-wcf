@@ -7,36 +7,15 @@
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 class GmapApi extends DatabaseObject {
-	protected $apikey = null;
 	protected $cache_search = array();
 
 	/**
-	 * creates new instance
-	 */
-	public function __construct() {
-		$apikey = GMAP_API_KEY;
-		$apikey = explode("\n", StringUtil::unifyNewlines($apikey));
-		$apikey = $apikey[0];
-		$apikey = explode(":", $apikey);
-		
-		// this is the way, woltlab wants the users to enter their api key
-		if(count($apikey) == 2) {
-			$this->apikey = $apikey[1];
-		}
-
-		// this is the way, almost all of the woltlab users really enter their api key
-		else if(!empty($apikey)) {
-			$this->apikey = $apikey[0];
-		}
-	}
-
-	/**
 	 * is active? api key existent?
-	 *
+	 * @deprecated no api key needed any longer
 	 * @return	boolean
 	 */
 	public function isActive() {
-		return !empty($this->apikey);
+		return true;
 	}
 	
 	/**
@@ -83,10 +62,6 @@ class GmapApi extends DatabaseObject {
 	 * @return				array<float>	keys are lat and lon
 	 */
 	public function search($location) {
-		if(!$this->isActive()) {
-			return;
-		}
-
 		if (CHARSET != 'UTF-8') {
 			$location = StringUtil::convertEncoding(CHARSET, 'UTF-8', $location);
 		}
@@ -96,7 +71,7 @@ class GmapApi extends DatabaseObject {
 			return $this->cache_search[$lookupstring];
 		}
 		
-		$url = "http://maps.google.com/maps/geo?q=".$lookupstring."&key=".$this->apikey."&output=csv";
+		$url = "http://maps.google.com/maps/geo?q=".$lookupstring."&output=csv";
 		
 		require_once(WCF_DIR.'lib/util/FileUtil.class.php');
 		$res = array();
