@@ -3,17 +3,20 @@ In der Übersichtskarte über alle Forenbenutzer werden Benutzer in Cluster zusa
 
 Streetview ist sowohl im BBCode (extra Plugin), als auch in der Übersichtskarte aktiviert.
 
-== Anlaufstellen ==
+Anlaufstellen
+------------- 
  * Probleme mit dem Plugin? Unter "Issues" könnt ihr das Problem schildern.
  * Download des Plugin? Das Plugin wird kostenlos über den Woltlbab Marketplace zur Vergügung gestellt.
  * Das Plugin wird von Torben Brodt auf http://www.easy-coding.de weiterentwickelt.
 
-== Infor für Betreiber des WBB ==
+Infor für Betreiber des WBB
+---------------------------
 Ihr solltet über den Woltlab Marketplace zusätzlich das G-Map (WBB) Paket installieren.
 Über System > Wartung > Anzeigen aktualisieren > Karte könnt ihr dann die Positionen initial in die Datenbank laden.
 Ansonsten werden die Wohnort Informationen erst via Profilupdate übernommen.
 
-== Info für Benutzer der Version 1.*: ==
+Info für Benutzer der Version 1
+-------------------------------
 Version 2 bietet vorerst keine Personal Markers mehr. Es ist geplant diese später wieder mit einem Plugin anzubieten.
 Der Code wurde komplett neu geschrieben. Wenn ihr Version 2 installieren wollt, müsst ihr die alte Version vorher deinstallieren.
 Die etlichen Datenfelder für Straße, Wohnort, etc wurden entfernt. Es werden nur noch die von Woltlab standardisierten Felder genutzt. Das schließt auch den API Key ein.
