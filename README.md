@@ -3,6 +3,12 @@ In der Übersichtskarte über alle Forenbenutzer werden Benutzer in Cluster zusa
 
 Streetview ist sowohl im BBCode (extra Plugin), als auch in der Übersichtskarte aktiviert.
 
+Demo
+----
+ * Benutzerkarte: http://www.easy-coding.de/index.php?page=Map
+ * Karte im Profil: http://www.easy-coding.de/user/1-torben-brodt.html
+ * Google Maps BBCode: http://www.easy-coding.de/map-bbcode-demo-t4744.html
+
 Anlaufstellen
 ------------- 
  * Probleme mit dem Plugin? Unter "Issues" könnt ihr das Problem schildern.
