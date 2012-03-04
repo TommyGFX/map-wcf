@@ -48,7 +48,7 @@
 				<div id="gmap"><div id="gmapCanvas" style="width: 100%; height: 500px"></div></div>
 			</div>
 	  	</div>
-	  	<a href="http://trac.easy-coding.de/trac/wcf/wiki/Gmap" class="externalURL" style="float:right">{lang}wcf.map.copyright.small{/lang}</a>
+	  	<a href="https://github.com/torbenbrodt/map-wcf" class="externalURL" style="float:right">{lang}wcf.map.copyright.small{/lang}</a>
 	</div>
 </div>
 

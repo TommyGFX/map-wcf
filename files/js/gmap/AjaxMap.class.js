@@ -2,7 +2,7 @@
  * allow to refresh map from ajax context
  *
  * @author      Torben Brodt <easy-coding.de>
- * @url		http://trac.easy-coding.de/trac/wcf/wiki/Gmap
+ * @url		https://github.com/torbenbrodt/map-wcf
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 var AjaxMap = Class.create(Map3, {

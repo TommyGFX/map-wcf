@@ -2,7 +2,7 @@
  * bb code map, include guard is important!
  *
  * @author      Torben Brodt <easy-coding.de>
- * @url		http://trac.easy-coding.de/trac/wcf/wiki/Gmap
+ * @url		https://github.com/torbenbrodt/map-wcf
  * @license	GNU General Public License <http://opensource.org/licenses/gpl-3.0.html>
  */
 if ( typeof BBCodeMap === 'undefined' ) {
