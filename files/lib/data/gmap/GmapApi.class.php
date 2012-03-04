@@ -8,6 +8,13 @@
  */
 class GmapApi extends DatabaseObject {
 	protected $cache_search = array();
+	
+	/**
+	 *
+	 */
+	public function __construct() {
+		
+	}
 
 	/**
 	 * is active? api key existent?
